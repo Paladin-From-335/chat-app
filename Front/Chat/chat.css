@@ -1,0 +1,12 @@
+body{
+    background: url("https://i.pinimg.com/originals/ce/5e/13/ce5e134326303b011d5d86016acbae9a.jpg");
+    background-size: 100%;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 1.6em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.chat_wrapper{
+    width: 80%;
+}
