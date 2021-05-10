@@ -1,0 +1,121 @@
+body{
+    background: url("https://i.pinimg.com/originals/ce/5e/13/ce5e134326303b011d5d86016acbae9a.jpg");
+    background-size: 100%;
+    font-family: "Roboto", sans-serif;
+    /*font-family: 'Lemonada', cursive;*/
+    font-size: 14px;
+    line-height: 1.6em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.chat_wrapper{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 600px;
+    display: flex;
+    grid-gap: 2px;
+
+}
+#dialogs{
+    width: 25%;
+    background: lightblue;
+    border: 1px solid black;
+    height: 100%;
+    overflow: auto;
+    max-height: 600px;
+}
+.chat_dialogs_template{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    background: rgb(77, 182, 224);
+    color: gray;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.header_content{
+    margin-top: 2px;
+    margin-left: 20px;
+}
+#messages{
+    font-size: 16px;
+    height: 500px;
+    min-height: 350px;
+    background: whitesmoke;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.write_area{
+    height: 105px;
+    display: flex;
+    justify-content: space-around;
+    background: rgb(77, 182, 224);
+}
+#textarea{
+    font-family: Arial;
+    margin-left: 15%;
+    margin-right: 10px;
+    font-size: 16px;
+    height: 100px;
+    width: 75%;
+    resize: initial;
+    border-radius: 5px;
+    outline: none;
+    text-align: left;
+}
+.btnWrp{
+    width: 60px;
+}
+#button {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    color: #313133;
+    background: lightskyblue;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(82, 152, 199, 0.64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    margin-top: 22px;
+    margin-left: -6px;
+}
+
+#button::before {
+    content: '';
+    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    border: 8px solid lightblue;
+    box-shadow: 0 0 60px rgba(67, 153, 238, 0.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+    filter: blur(2px);
+}
+#button:hover, button:focus {
+    color: #313133;
+    width: 56px;
+    height: 56px;
+    transform: translateX(2px);
+}
+#button:hover::before, button:focus::before {
+    opacity: 1;
+}
+#button:hover::after, button:focus::after {
+    animation: none;
+    display: none;
+}

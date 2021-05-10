@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="chat_wrapper">
+    <div id="dialogs">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+    <div class="chat_dialogs_template">
+        <header class="header">
+            <span id="chatname" class="header_content">Chatname</span>
+            <span id="status" class="header_content">You are offline</span>
+        </header>
+        <div id="messages"></div>
+        <form id="form">
+            <div class="write_area">
+                <textarea id="textarea" onkeydown="enterButton(event)"></textarea>
+               <div class="btnWrp"> <button type="submit" id="button">-></button> </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script src="../scripts/chat.js"></script>
+</body>
+<link rel="stylesheet" href="../css/message.css">
+</html>
