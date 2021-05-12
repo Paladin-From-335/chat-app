@@ -1,7 +1,6 @@
 package com.github.chat;
 
 import com.github.chat.config.ServerConfig;
-import com.github.chat.utils.ServiceHandler;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.slf4j.Logger;
@@ -11,7 +10,7 @@ import javax.servlet.ServletException;
 
 public class BackendRun {
 
-    private static final Logger log = LoggerFactory.getLogger(ServiceHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(BackendRun.class);
 
     public static void main(String[] args) {
         try {

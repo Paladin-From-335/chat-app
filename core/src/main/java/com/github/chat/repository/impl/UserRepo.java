@@ -8,11 +8,12 @@ import com.github.chat.repository.IUsersRepo;
 import com.github.micro.orm.CustomJdbcTemplate;
 import com.github.micro.orm.CustomRowExtractor;
 import com.github.micro.orm.CustomRowMapper;
+import com.zaxxer.hikari.HikariDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IUsersRepositoryImpl implements IUsersRepo {
+public class UserRepo implements IUsersRepo {
 
     private static final CustomRowMapper<User> USER_CUSTOM_ROW_MAPPER = rs -> new User(
             rs.getLong(1),
@@ -42,24 +43,9 @@ public class IUsersRepositoryImpl implements IUsersRepo {
 
     private final CustomJdbcTemplate jdbcTemplate;
 
-    public IUsersRepositoryImpl(CustomJdbcTemplate jdbcTemplate) {
+    public UserRepo(HikariDataSource jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
-//    @Override
-//    public User save(User user) {
-//        this.jdbcTemplate.update("", user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(),
-//                user.getEmail(), user.getLogin(), user.getPassword(), user.getPhone());
-//        String query = "";
-//        return this.jdbcTemplate.insert(query, USER_CUSTOM_ROW_MAPPER);
-//    }
-//
-//    @Override
-//    public List<User> findAll() {
-//        String query = "user.id, user.first_name, user.last_name, user.email, user.login, user.password, user.phone, " +
-//                "role.id, role.name where data > ?";
-//        return this.jdbcTemplate.find(query, LIST_CUSTOM_ROW_EXTRACTOR, "");
-//    }
 
     @Override
     public User insert(UserRegDto userRegDto) {
@@ -68,9 +54,8 @@ public class IUsersRepositoryImpl implements IUsersRepo {
     }
 
     @Override
-    public User findById(long id) {
-        String query = "";
-        return this.jdbcTemplate.findBy(query, USER_CUSTOM_ROW_MAPPER, id);
+    public User findByReg(UserRegDto userRegDto) {
+        return null;
     }
 
     @Override
@@ -80,14 +65,19 @@ public class IUsersRepositoryImpl implements IUsersRepo {
     }
 
     @Override
-    public void update(UserRegDto userRegDto) {
+    public void update(User user) {
         String query = "";
-        this.jdbcTemplate.delete(query, userRegDto.getEmail(), userRegDto.getLogin(), userRegDto.getPassword());
+        this.jdbcTemplate.delete(query, user.getEmail(), user.getLogin(), user.getPassword());
     }
 
     @Override
-    public void delete(UserRegDto userRegDto) {
+    public void delete(User user) {
         String query = "";
-        this.jdbcTemplate.delete(query, userRegDto.getLogin());
+        this.jdbcTemplate.delete(query, user.getLogin());
+    }
+
+    @Override
+    public List<User> findAll() {
+        return null;
     }
 }

@@ -10,15 +10,14 @@ public interface IUsersRepo {
 
     User insert(UserRegDto userRegDto);
 
-    User findById(long id);
+    User findByReg(UserRegDto userRegDto);
 
     User findByAuth(UserAuthDto userAuthDto);
 
-    void update(UserRegDto userRegDto);
+    void update(User user);
 
-    void delete(UserRegDto userRegDto);
+    void delete(User user);
 
-    //User save(User user);
+    List<User> findAll();
 
-    //List<User> findAll();
 }

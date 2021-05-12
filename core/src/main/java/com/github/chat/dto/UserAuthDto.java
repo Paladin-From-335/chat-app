@@ -1,38 +1,29 @@
 package com.github.chat.dto;
 
+import com.github.chat.entity.User;
+
 import java.util.Objects;
 
 public class UserAuthDto {
-    long id;
-    String login;
-    String password;
 
-    public UserAuthDto(String login, String password) {
+    private String login;
 
+    private String password;
+
+    public UserAuthDto(){}
+
+    public UserAuthDto(String login, String password){
         this.login = login;
         this.password = password;
     }
 
-    public UserAuthDto(long id, String login, String password) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-    }
-
-    public UserAuthDto() {
+    public UserAuthDto(User user){
+        this.login = user.getLogin();
+        this.password = user.getPassword();
     }
 
     public UserAuthDto(UserRegDto userRegDto) {
-        this.login = userRegDto.getLogin();
-        this.password = userRegDto.getPassword();
-    }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getLogin() {
@@ -56,19 +47,18 @@ public class UserAuthDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserAuthDto that = (UserAuthDto) o;
-        return id == that.id && Objects.equals(login, that.login) && Objects.equals(password, that.password);
+        return Objects.equals(getLogin(), that.getLogin()) && Objects.equals(getPassword(), that.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password);
+        return Objects.hash(getLogin(), getPassword());
     }
 
     @Override
     public String toString() {
         return "UserAuthDto{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
+                "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

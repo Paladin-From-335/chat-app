@@ -1,4 +1,4 @@
 package com.github.chat.exceptions;
 
-public class BadRequest extends  RuntimeException {
+public class BadRequest extends RuntimeException {
 }
