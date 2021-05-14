@@ -1,34 +1,31 @@
-const headers = {
-    'Content-Type': '*',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-    'crossdomain': 'true',
-}
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+
+let logIn = {
+    login: username,
+    password: password
+};
 
 function authorization() {
-    const login = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    let authData = {
-        'login': login,
-        'password': password
-    }
-
-
-    axios.get('http://127.0.0.1:8080', authData)
-        .then((res) => {
-            console.log(res.status)
-            if(res.status === 200){
-                console.log("OK");
-                document.location.href='../../Chat/chat.html'
+    axios.post("http://localhost:8081/login/auth", logIn)
+        .then((response) => {
+                if (response.status >= 200 && response.status < 300) {
+                    localStorage.setItem("token", response.data);
+                    console.log(response.data);
+                    document.location = "..\\html\\chat.html";
+                }
+            }, (error) => {
+                console.log(error);
+                window.location = '..\\html\\NotFound.html';
             }
-        })
-        .catch((error) => {
-            console.error(error)
-        })
+        )
 }
 
+
 function registration() {
+
+    let xhr = new XMLHttpRequest();
+
     const login = document.getElementById('username_reg').value;
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
@@ -37,19 +34,29 @@ function registration() {
     const email = document.getElementById('email').value;
 
     let postData = {
-        'login': login,
-        'firstname': firstname,
-        'lastname': lastname,
-        'password': password,
-        'confPassword': confPassword,
-        'email': email
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        login: login,
+        nickname: "Pupka",
+        password: password,
+        confPassword: confPassword,
+        phone: "88005553535",
     };
 
-    axios.post("http://127.0.0.1:8080", postData, {headers})
+    axios.post("http://localhost:8081/login/registration", postData, {
+        headers: {
+            'Content-Type':'application/json'
+        }
+    })
         .then((response) => {
-                console.log(response);
+                if (response.status >= 200 && response.status < 300) {
+                    console.log("success");
+                    document.location = "..\\html\\modal.html"
+                }
             }, (error) => {
                 console.log(error);
             }
         )
+
 }

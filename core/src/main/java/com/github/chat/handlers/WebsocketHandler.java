@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
 
+@ServerEndpoint("/chat")
 public class WebsocketHandler {
 
     private static final Logger log = LoggerFactory.getLogger(WebsocketHandler.class);
@@ -25,17 +27,6 @@ public class WebsocketHandler {
         this.broker = broker;
 
     }
-
-//    @OnMessage
-//    public void messages(Session session, String payload) {
-//        try {
-//            Envelope env = JsonHelper.fromJson(payload, Envelope.class).orElseThrow();
-//            log.info("Enter");
-//            this.websocketDispatcher.notifyAllSubs(session, env);
-//        } catch (Throwable e){
-//            log.warn("Enter {}", e.getMessage());
-//        }
-//    }
 
     @OnMessage
     public void messages(Session session, String payload) {

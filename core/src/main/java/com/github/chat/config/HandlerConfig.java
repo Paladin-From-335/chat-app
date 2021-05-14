@@ -7,7 +7,7 @@ import com.github.chat.network.WSConnectionPool;
 
 public class HandlerConfig {
 
-    public static UsersHandler usersController(){
+    public static UsersHandler usersHandlers() {
         return new UsersHandler(ControllerConfig.usersController());
     }
 

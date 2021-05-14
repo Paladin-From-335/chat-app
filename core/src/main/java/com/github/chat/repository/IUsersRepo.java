@@ -4,20 +4,22 @@ import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.entity.User;
 
-import java.util.List;
+import java.util.Collection;
 
-public interface IUsersRepo {
+public interface IUsersRepo<T> {
 
-    User insert(UserRegDto userRegDto);
+    Collection<T> findAll();
 
-    User findByReg(UserRegDto userRegDto);
+    User findByAuth(UserAuthDto userAuthorizationDto);
 
-    User findByAuth(UserAuthDto userAuthDto);
+    User findByReg(UserRegDto userRegistrationDto);
 
-    void update(User user);
+    User insert(UserRegDto userRegistrationDto);
+
+    User update(User user);
 
     void delete(User user);
 
-    List<User> findAll();
+    void deleteAll();
 
 }

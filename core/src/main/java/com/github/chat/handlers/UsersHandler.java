@@ -44,6 +44,7 @@ public class UsersHandler extends HttpServlet {
 
     @Override
     public void doOptions(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("DOOPT");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "*");
         resp.setHeader("Access-Control-Allow-Headers", "*");
@@ -51,7 +52,8 @@ public class UsersHandler extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, NullPointerException {
+        System.out.println("DOGET");
         ServletOutputStream out = resp.getOutputStream();
         String result = Optional.of(this.usersController.auth(new UserAuthDto())).orElseThrow(BadRequest::new);
         out.write(result.getBytes());
@@ -61,6 +63,7 @@ public class UsersHandler extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("DOPIST");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "*");
         resp.setHeader("Access-Control-Allow-Headers", "*");
@@ -71,7 +74,8 @@ public class UsersHandler extends HttpServlet {
             String url = req.getRequestURI();
             System.out.println("Body:\n" + body);
             System.out.println(url);
-            if (url.equals("/auth")) {
+            if (url.contains("/auth")) {
+                System.out.println("If AUTH");
                 UserAuthDto payload = JsonHelper.fromJson(body, UserAuthDto.class).orElseThrow(BadRequest::new);
                 String result = Optional.of(this.usersController.auth(payload)).orElseThrow(BadRequest::new);
                 resp.setContentType("application/json");
@@ -82,10 +86,11 @@ public class UsersHandler extends HttpServlet {
                 out.close();
                 return;
             }
-            if (url.contains("/reg")) {
+            if (url.contains("/registration")) {
+                System.out.println("IF REGISTR");
                 log.info(url);
                 UserRegDto payload = JsonHelper.fromJson(body, UserRegDto.class).orElseThrow(BadRequest::new);
-                this.usersController.reg(payload);
+                this.usersController.registration(payload);
                 resp.setStatus(HttpServletResponse.SC_ACCEPTED);
             } else {
                 log.warn("BADREQUEST");

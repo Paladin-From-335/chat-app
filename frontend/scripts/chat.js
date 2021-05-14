@@ -3,7 +3,7 @@ const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const textarea = document.getElementById('textarea');
 
-const ws = new WebSocket('ws://localhost:3000');
+const ws = new WebSocket('ws://localhost:8081/chat');
 
 function setStatus (value){
     status.innerHTML = value;
@@ -39,10 +39,14 @@ document.getElementById('button').addEventListener('click', (event) => {
 });
 
 
-function enterButton(event){
-    if(event.keyCode === 13){
-        printMessage(event.target.value);
-        event.preventDefault();
+window.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        if(!textarea){
+            printMessage(textarea.value);
+            
+        }
+        console.log(textarea.value);
+        e.preventDefault();
         textarea.value = '';
     }
-}
+});

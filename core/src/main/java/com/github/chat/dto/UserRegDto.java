@@ -1,12 +1,14 @@
 package com.github.chat.dto;
 
+import com.github.chat.entity.User;
+
 import java.util.Objects;
 
 public class UserRegDto {
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
     private String login;
 
@@ -14,39 +16,50 @@ public class UserRegDto {
 
     private String confPassword;
 
-    private String nickName;
+    private String nickname;
 
     private String email;
 
-    private long phoneNum;
+    private String phone;
 
-    public UserRegDto(){}
+    public UserRegDto(String firstName, String lastName, String login, String password, String confPassword, String email, String phone){}
 
-    public UserRegDto(String firstName, String lastName, String login, String password, String confPassword, String nickName, String email, long phoneNum){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public UserRegDto(String firstname, String lastname, String login, String nickname,  String password, String confPassword, String email, String phone){
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.login = login;
         this.password = password;
         this.confPassword = confPassword;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.email = email;
-        this.phoneNum = phoneNum;
+        this.phone = phone;
+    }
+
+    public UserRegDto(User user){
+        this.firstname = user.getFirstName();
+        this.lastname = user.getLastName();
+        this.login = user.getLogin();
+        this.password = user.getPassword();
+        this.confPassword = user.getPassword();
+        this.nickname = user.getNickName();
+        this.email = user.getEmail();
+        this.phone = user.getPhone();
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastname;
     }
 
     public String getLogin() {
@@ -65,9 +78,9 @@ public class UserRegDto {
         this.password = password;
     }
 
-    public String getNickName() { return nickName; }
+    public String getNickName() { return nickname; }
 
-    public void setNickName(String nickName) { this.nickName = nickName; }
+    public void setNickName(String nickName) { this.nickname = nickname; }
 
     public String getConfPassword() {
         return confPassword;
@@ -85,12 +98,12 @@ public class UserRegDto {
         this.email = email;
     }
 
-    public long getPhoneNum() {
-        return phoneNum;
+    public String getPhone() {
+        return this.phone;
     }
 
     public void setPhoneNum(long phoneNum) {
-        this.phoneNum = phoneNum;
+        this.phone = phone;
     }
 
     @Override
@@ -98,28 +111,32 @@ public class UserRegDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserRegDto that = (UserRegDto) o;
-        return phoneNum == that.phoneNum && Objects.equals(firstName, that.firstName)
-                && Objects.equals(lastName, that.lastName) && Objects.equals(login, that.login)
-                && Objects.equals(password, that.password) && Objects.equals(confPassword, that.confPassword)
-                && Objects.equals(nickName, that.nickName) && Objects.equals(email, that.email);
+        return phone == that.phone &&
+                Objects.equals(firstname, that.firstname) &&
+                Objects.equals(lastname, that.lastname) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(confPassword, that.confPassword) &&
+                Objects.equals(nickname, that.nickname) &&
+                Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, login, password, confPassword, nickName, email, phoneNum);
+        return Objects.hash(firstname, lastname, login, password, confPassword, nickname, email, phone);
     }
 
     @Override
     public String toString() {
         return "UserRegDto{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
+                ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", confPassword='" + confPassword + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNum=" + phoneNum +
+                ", phoneNum=" + phone +
                 '}';
     }
 }

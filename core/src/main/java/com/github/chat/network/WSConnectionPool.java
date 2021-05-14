@@ -1,7 +1,6 @@
 package com.github.chat.network;
 
 import javax.websocket.Session;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;

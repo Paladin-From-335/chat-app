@@ -8,9 +8,9 @@ public class User {
 
     private long id;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
     private String email;
 
@@ -18,27 +18,30 @@ public class User {
 
     private String password;
 
-    private long phone;
+    private String phone;
+
+    private String nickname;
 
     private Role role;
 
-    public User() {
+    public User(int id, String firstname, String lastname, String email, String login, String nickname, String password, String phone) {
     }
 
-    public User(long id,  String firstName, String lastName, String email, String login, String password, long phone) {
+    public User(long id, String firstname, String lastname, String email, String login, String nickname, String password, String phone) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.login = login;
+        this.nickname = nickname;
         this.password = password;
         this.phone = phone;
     }
 
-    public User(long id, String firstName, String lastName, String email, String login, String password, long phone, Role role) {
+    public User(long id, String firstname, String lastname, String email, String login, String password, String phone, Role role) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.login = login;
         this.password = password;
@@ -55,19 +58,19 @@ public class User {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstname;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -94,12 +97,20 @@ public class User {
         this.password = password;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getNickName() {
+        return nickname;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickname = nickName;
     }
 
     public Role getRole() {
@@ -115,24 +126,26 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && phone == user.phone && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password);
+        return getId() == user.getId() && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getLogin(), user.getLogin()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getPhone(), user.getPhone()) && Objects.equals(getNickName(), user.getNickName()) && Objects.equals(getRole(), user.getRole());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, login, password, phone);
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getLogin(), getPassword(), getPhone(), getNickName(), getRole());
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
+                ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

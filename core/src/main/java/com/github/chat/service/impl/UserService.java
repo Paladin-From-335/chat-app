@@ -3,51 +3,40 @@ package com.github.chat.service.impl;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.entity.User;
-import com.github.chat.repository.IUsersRepo;
+import com.github.chat.repository.impl.UserRepo;
 import com.github.chat.service.IUsersService;
-
-import java.util.List;
 
 public class UserService implements IUsersService {
 
-    private final IUsersRepo iUsersRepo;
+    private final UserRepo userRepo;
 
-    public UserService(IUsersRepo iUsersRepo) {
-        this.iUsersRepo = iUsersRepo;
+
+    public UserService(UserRepo userRepo) {
+        this.userRepo = userRepo;
     }
 
     @Override
-    public User insert(UserRegDto userRegDto) {
-        return this.iUsersRepo.insert(userRegDto);
+    public User findById(long id) {
+        return this.userRepo.findById(id);
     }
 
     @Override
-    public User create(UserRegDto userRegDto) {
-        return null;
+    public User findByAuth(UserAuthDto authDto) {
+        return this.userRepo.findByAuthDto(authDto);
     }
 
     @Override
-    public List<User> findAll() {
-        return this.iUsersRepo.findAll();
+    public User insert(UserRegDto regDto) {
+        return this.userRepo.insert(regDto);
     }
 
     @Override
-    public User findByReg(UserRegDto userRegDto) {
-        return this.iUsersRepo.findByReg(userRegDto);
+    public void delete(UserRegDto regDto) {
+        this.userRepo.delete(regDto);
     }
 
     @Override
-    public User findByAuth(UserAuthDto userAuthDto) {
-        return this.iUsersRepo.findByAuth(userAuthDto);
-    }
-
-    @Override
-    public void update(User user) {
-        this.iUsersRepo.update(user);
-    }
-
-    @Override
-    public void delete(User user) {
-        this.iUsersRepo.delete(user);
+    public void update(UserRegDto regDto) {
+        this.userRepo.update(regDto);
     }
 }

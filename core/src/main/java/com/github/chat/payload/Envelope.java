@@ -20,8 +20,8 @@ public class Envelope {
         return topic;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
+    public void setTopic(String str) {
+        this.topic = Topic.getTopic(str);
     }
 
     public String getPayload() {
