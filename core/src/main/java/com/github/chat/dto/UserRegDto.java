@@ -1,6 +1,7 @@
 package com.github.chat.dto;
 
 import com.github.chat.entity.User;
+import com.github.chat.payload.Role;
 
 import java.util.Objects;
 
@@ -139,5 +140,20 @@ public class UserRegDto {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
+    }
+
+    public User toUser() {
+        return new User(
+                null,
+                this.firstname,
+                this.lastname,
+                this.login,
+                this.password,
+                this.confPassword,
+                this.nickname,
+                this.email,
+                this.phone,
+                Role.USER
+        );
     }
 }

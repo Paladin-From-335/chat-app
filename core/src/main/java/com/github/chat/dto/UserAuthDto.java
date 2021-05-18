@@ -1,6 +1,7 @@
 package com.github.chat.dto;
 
 import com.github.chat.entity.User;
+import com.github.chat.payload.Role;
 
 import java.util.Objects;
 
@@ -61,5 +62,20 @@ public class UserAuthDto {
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public User toUser() {
+        return new User(
+                null,
+                null,
+                null,
+                this.login,
+                this.password,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
     }
 }

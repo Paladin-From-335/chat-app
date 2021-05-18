@@ -1,5 +1,6 @@
 package com.github.chat.config;
 
+import org.apache.catalina.LifecycleException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,8 +12,8 @@ public class AppConfig {
 
         public static void tomcatStart(){
             try {
-                ServerConfig.tomcat().run();
-            } catch (ServletException e){
+                ServerConfig.start();
+            } catch (ServletException | LifecycleException e){
                 e.printStackTrace();
             }
         }

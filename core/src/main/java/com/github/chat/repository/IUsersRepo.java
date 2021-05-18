@@ -3,23 +3,23 @@ package com.github.chat.repository;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.entity.User;
+import org.hibernate.Session;
 
 import java.util.Collection;
 
 public interface IUsersRepo<T> {
 
-    Collection<T> findAll();
+    Collection<T> findAll(Session session);
 
-    User findByAuth(UserAuthDto userAuthorizationDto);
+    T findBy(String field, Object value, Session session);
 
-    User findByReg(UserRegDto userRegistrationDto);
+    Collection<T> findAllBy(String field, Object value, Session session);
 
-    User insert(UserRegDto userRegistrationDto);
+    void save(T entity, Session session);
 
-    User update(User user);
+    void update(T entity, Session session);
 
-    void delete(User user);
+    void delete(T entity, Session session);
 
-    void deleteAll();
 
 }

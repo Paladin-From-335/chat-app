@@ -1,68 +1,73 @@
 package com.github.chat.repository.impl;
 
-import com.github.chat.dto.UserAuthDto;
-import com.github.chat.dto.UserRegDto;
-import com.github.chat.entity.User;
-import com.github.chat.repository.UserRowMapper;
-import com.github.micro.orm.CustomJdbcTemplate;
+import com.github.chat.repository.IUsersRepo;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
-public class UserRepo {
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.Collection;
 
-    private final CustomJdbcTemplate jdbcTemplate;
+public class UserRepo<T> implements IUsersRepo<T> {
 
-    public UserRepo(CustomJdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    private final Class<T> clz;
+
+    public UserRepo(Class<T> clz) {
+        this.clz = clz;
     }
 
-    public User findByAuthDto(UserAuthDto userAuthorizationDto) {
-        return jdbcTemplate.findBy(
-                "SELECT * FROM user_table WHERE login = ? AND password = ?",
-                UserRowMapper.getCustomRowMapperUser(),
-                userAuthorizationDto.getLogin(),
-                userAuthorizationDto.getPassword()
-        );
+    @Override
+    public Collection<T> findAll(Session session) {
+        try (session) {
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<T> criteriaQuery = builder.createQuery(clz);
+            criteriaQuery.from(clz);
+            return session.createQuery(criteriaQuery).getResultList();
+        }
     }
 
-    public User findById(long id) {
-        return jdbcTemplate.findBy(
-                "SELECT * FROM user_table WHERE id = ?",
-                UserRowMapper.getCustomRowMapperUser(),
-                id
-        );
+    @Override
+    @SuppressWarnings("unchecked")
+    public T findBy(String field, Object value, Session session) {
+        try (session) {
+            Criteria criteria = session.createCriteria(clz);
+            return (T) criteria.add(Restrictions.eq(field, value)).uniqueResult();
+        }
     }
 
-    public User insert(UserRegDto userRegistrationDto) {
-        return jdbcTemplate.insert(
-                "INSERT INTO user_table (firstname, lastname, email, login, password, phone, nickname) VALUES(?, ?, ?, ?, ?, ?, ?)",
-                UserRowMapper.getCustomRowMapperUser(),
-                userRegistrationDto.getFirstname(),
-                userRegistrationDto.getLastname(),
-                userRegistrationDto.getEmail(),
-                userRegistrationDto.getLogin(),
-                userRegistrationDto.getPassword(),
-                userRegistrationDto.getPhone(),
-                userRegistrationDto.getNickname()
-        );
+    @Override
+    @SuppressWarnings("unchecked")
+    public Collection<T> findAllBy(String field, Object value, Session session) {
+        try (session) {
+            Criteria criteria = session.createCriteria(clz);
+            return (Collection<T>) criteria.add(Restrictions.eq(field, value)).uniqueResult();
+        }
     }
 
-    public void delete(UserRegDto userRegistrationDto) {
-        jdbcTemplate.delete(
-                "DELETE FROM user_table WHERE login = ?",
-                userRegistrationDto.getLogin()
-        );
+    @Override
+    public void save(T entity, Session session) {
+        try (session) {
+            Transaction transaction = session.beginTransaction();
+            session.save(entity);
+            transaction.commit();
+        }
     }
 
-    public void update(UserRegDto userRegistrationDto) {
-        jdbcTemplate.update(
-                "UPDATE user_table " +
-                        "SET firstname = ?, lastname = ?, email = ?, login = ?, password = ?, phone = ?" +
-                        "WHERE login = ?",
-                userRegistrationDto.getFirstname(),
-                userRegistrationDto.getLastname(),
-                userRegistrationDto.getEmail(),
-                userRegistrationDto.getLogin(),
-                userRegistrationDto.getPassword(),
-                userRegistrationDto.getPhone()
-        );
+    public void delete(T entity, Session session) {
+        try (session) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(entity);
+            transaction.commit();
+        }
+    }
+
+    public void update(T entity, Session session) {
+        try (session) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(entity);
+            transaction.commit();
+        }
     }
 }

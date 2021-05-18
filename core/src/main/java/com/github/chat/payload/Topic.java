@@ -1,12 +1,12 @@
 package com.github.chat.payload;
 
 public enum Topic {
-    auth("auth"),
+    authorization("authorization"),
     messages("messages"),
     connect("connect"),
     disconnect("disconnect");
 
-    private String value;
+    private final String value;
 
     Topic(String value) {
         this.value = value;

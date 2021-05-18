@@ -5,7 +5,7 @@ import com.github.chat.dto.UserRegDto;
 
 public interface IUsersController {
 
-    String authorize(UserAuthDto userAuthorizationDto);
+    String authorize(UserAuthDto userAuthDto);
 
-    void registration(UserRegDto userRegistrationDto);
+    void registration(UserRegDto userRegDto);
 }

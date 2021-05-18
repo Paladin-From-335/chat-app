@@ -6,53 +6,48 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import static com.github.chat.utils.DateUtils.addMinutes;
+import static com.github.chat.utils.DateUtils.getCurrentDate;
+
 public class PrivateToken implements Serializable {
 
-    private final long lifeTime = 1800000;
+    private final Date date = new Date();
 
-    private Long userId;
+    private final String login;
 
-    private String firstName;
+    private final Role role;
 
-    private String lastName;
+    private final Date expireIn;
 
-    private Date expireIn;
+    private final Date createdAt;
 
-    private Date createdAt;
-
-    public PrivateToken(Long userId, String firstName, String lastName, Date expireIn, Date createdAt) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public PrivateToken(String login, Role role, Date expireIn, Date createdAt) {
+        this.login = login;
+        this.role = role;
         this.expireIn = expireIn;
         this.createdAt = createdAt;
     }
 
-    public PrivateToken(User user, Date expireIn, Date createdAt){
-        this.userId = user.getId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
+    public PrivateToken(User user, Date expireIn, Date createdAt) {
+        this.login = user.getLogin();
+        this.role = user.getRole();
         this.expireIn = expireIn;
         this.createdAt = createdAt;
     }
 
-    public PrivateToken(User user){
-        this.userId = user.getId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.createdAt = new Date(System.currentTimeMillis());
-        this.expireIn = new Date(createdAt.getTime() + lifeTime);
-    }
-    public Long getId() {
-        return userId;
+    public PrivateToken(User user) {
+        this.login = user.getLogin();
+        this.role = user.getRole();
+        this.createdAt = getCurrentDate();
+        this.expireIn = addMinutes(date, 30);
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getLogin() {
+        return login;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Role getRole() {
+        return role;
     }
 
     public Date getExpireIn() {
@@ -68,20 +63,19 @@ public class PrivateToken implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PrivateToken privateToken = (PrivateToken) o;
-        return Objects.equals(userId, privateToken.userId) && Objects.equals(getFirstName(), privateToken.getFirstName()) && Objects.equals(getLastName(), privateToken.getLastName()) && Objects.equals(getExpireIn(), privateToken.getExpireIn()) && Objects.equals(getCreatedAt(), privateToken.getCreatedAt());
+        return Objects.equals(date, privateToken.date) && Objects.equals(getLogin(), privateToken.getLogin()) && Objects.equals(getRole(), privateToken.getRole()) && Objects.equals(getExpireIn(), privateToken.getExpireIn()) && Objects.equals(getCreatedAt(), privateToken.getCreatedAt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, getFirstName(), getLastName(), getExpireIn(), getCreatedAt());
+        return Objects.hash(date, getLogin(), getRole(), getExpireIn(), getCreatedAt());
     }
 
     @Override
     public String toString() {
         return "Token{" +
-                ", userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "login='" + login + '\'' +
+                ", role='" + role + '\'' +
                 ", expireIn=" + expireIn +
                 ", createdAt=" + createdAt +
                 '}';

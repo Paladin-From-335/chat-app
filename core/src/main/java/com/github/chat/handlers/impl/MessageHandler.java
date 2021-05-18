@@ -8,22 +8,22 @@ import com.github.chat.handlers.IMessageListener;
 
 import javax.websocket.Session;
 
-public class MessageHandler implements IMessageListener {
+//public class MessageHandler implements IMessageListener {
 
-    private final WSConnectionPool wsConnectionPool;
-
-    private final Broker broker;
-
-    public MessageHandler(WSConnectionPool wsConnectionPool, Broker broker) {
-        this.wsConnectionPool = wsConnectionPool;
-        this.broker = broker;
-    }
-
-    @Override
-    public void onMessage(Session session, Envelope env) {
-        if(Topic.auth == env.getTopic()) {
-            broker.broadcast(wsConnectionPool.getSessions(), env);
-        }
-
-    }
-}
+//    private final WSConnectionPool wsConnectionPool;
+//
+//    private final Broker broker;
+//
+//    public MessageHandler(WSConnectionPool wsConnectionPool, Broker broker) {
+//        this.wsConnectionPool = wsConnectionPool;
+//        this.broker = broker;
+//    }
+//
+//    @Override
+//    public void onMessage(Session session, Envelope env) {
+//        if(Topic.auth == env.getTopic()) {
+//            broker.broadcast(wsConnectionPool.getSessions(), env);
+//        }
+//
+//    }
+//}
