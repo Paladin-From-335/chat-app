@@ -4,9 +4,12 @@ import com.github.chat.controllers.UsersController;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.exceptions.BadRequest;
+import com.github.chat.exceptions.ExpiredTokenException;
+import com.github.chat.exceptions.ForbiddenException;
 import com.github.chat.exceptions.NotFound;
-import com.github.chat.service.IUsersService;
 import com.github.chat.utils.JsonHelper;
+import com.github.chat.utils.TokenProvider;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -63,7 +64,6 @@ public class UsersHandler extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("DOPIST");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "*");
         resp.setHeader("Access-Control-Allow-Headers", "*");
@@ -72,31 +72,42 @@ public class UsersHandler extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type!");
         } else {
             String url = req.getRequestURI();
-            System.out.println("Body:\n" + body);
-            System.out.println(url);
-            if (url.contains("/auth")) {
-                System.out.println("If AUTH");
-                UserAuthDto payload = JsonHelper.fromJson(body, UserAuthDto.class).orElseThrow(BadRequest::new);
-                String result = Optional.of(this.usersController.auth(payload)).orElseThrow(BadRequest::new);
-                resp.setContentType("application/json");
-                resp.setStatus(HttpServletResponse.SC_ACCEPTED);
-                ServletOutputStream out = resp.getOutputStream();
-                out.write(result.getBytes());
-                out.flush();
-                out.close();
-                return;
-            }
-            if (url.contains("/registration")) {
-                System.out.println("IF REGISTR");
-                log.info(url);
-                UserRegDto payload = JsonHelper.fromJson(body, UserRegDto.class).orElseThrow(BadRequest::new);
-                this.usersController.registration(payload);
-                resp.setStatus(HttpServletResponse.SC_ACCEPTED);
-            } else {
-                log.warn("BADREQUEST");
+            try (ServletOutputStream out = resp.getOutputStream()) {
+                switch (url) {
+                    case "/login/auth":
+                        UserAuthDto userAuthDto = JsonHelper.fromJson(body, UserAuthDto.class).orElseThrow(BadRequest::new);
+                        if (userAuthDto == null) {
+                            throw new BadRequest();
+                        }
+                        String result = Optional.of(this.usersController.auth(userAuthDto)).orElseThrow(BadRequest::new);
+                        resp.setContentType("application/json");
+                        resp.setStatus(HttpServletResponse.SC_ACCEPTED);
+                        out.write(result.getBytes());
+                        break;
+                    case "/login/registration":
+                        UserRegDto regDto = JsonHelper.fromJson(body, UserRegDto.class).orElseThrow(BadRequest::new);
+                        if (regDto == null) {
+                            throw new BadRequest();
+                        }
+                        System.out.println(body);
+                        this.usersController.registration(regDto);
+                        resp.setStatus(HttpServletResponse.SC_OK);
+                        break;
+                    default:
+                        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        break;
+                }
+            } catch (BadRequest e) {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            } catch (ForbiddenException e) {
+                resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+//            } catch (ConstraintViolationException e) {
+//                resp.setStatus(HttpServletResponse.SC_CONFLICT);
+            } catch (ExpiredTokenException e) {
+                resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            } catch (Throwable e) {
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
-
         }
     }
 }

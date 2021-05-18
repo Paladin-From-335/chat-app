@@ -22,9 +22,13 @@ public class UserRegDto {
 
     private String phone;
 
-    public UserRegDto(String firstName, String lastName, String login, String password, String confPassword, String email, String phone){}
+    public UserRegDto() {
+    }
 
-    public UserRegDto(String firstname, String lastname, String login, String nickname,  String password, String confPassword, String email, String phone){
+    public UserRegDto(String firstname, String lastName, String login, String password, String confPassword, String email, String phone) {
+    }
+
+    public UserRegDto(String firstname, String lastname, String login, String nickname, String password, String confPassword, String email, String phone) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.login = login;
@@ -35,7 +39,7 @@ public class UserRegDto {
         this.phone = phone;
     }
 
-    public UserRegDto(User user){
+    public UserRegDto(User user) {
         this.firstname = user.getFirstName();
         this.lastname = user.getLastName();
         this.login = user.getLogin();
@@ -46,19 +50,19 @@ public class UserRegDto {
         this.phone = user.getPhone();
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstname = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastname;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
@@ -78,16 +82,20 @@ public class UserRegDto {
         this.password = password;
     }
 
-    public String getNickName() { return nickname; }
-
-    public void setNickName(String nickName) { this.nickname = nickname; }
-
     public String getConfPassword() {
         return confPassword;
     }
 
     public void setConfPassword(String confPassword) {
         this.confPassword = confPassword;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -99,10 +107,10 @@ public class UserRegDto {
     }
 
     public String getPhone() {
-        return this.phone;
+        return phone;
     }
 
-    public void setPhoneNum(long phoneNum) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -111,14 +119,7 @@ public class UserRegDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserRegDto that = (UserRegDto) o;
-        return phone == that.phone &&
-                Objects.equals(firstname, that.firstname) &&
-                Objects.equals(lastname, that.lastname) &&
-                Objects.equals(login, that.login) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(confPassword, that.confPassword) &&
-                Objects.equals(nickname, that.nickname) &&
-                Objects.equals(email, that.email);
+        return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(confPassword, that.confPassword) && Objects.equals(nickname, that.nickname) && Objects.equals(email, that.email) && Objects.equals(phone, that.phone);
     }
 
     @Override
@@ -131,12 +132,12 @@ public class UserRegDto {
         return "UserRegDto{" +
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
-                ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", confPassword='" + confPassword + '\'' +
-                ", phoneNum=" + phone +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

@@ -33,15 +33,15 @@ public class UserRepo {
 
     public User insert(UserRegDto userRegistrationDto) {
         return jdbcTemplate.insert(
-                "INSERT INTO user_table (firstName, lastName, email, login, password, phone, nickname) VALUES(?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO user_table (firstname, lastname, email, login, password, phone, nickname) VALUES(?, ?, ?, ?, ?, ?, ?)",
                 UserRowMapper.getCustomRowMapperUser(),
-                userRegistrationDto.getFirstName(),
-                userRegistrationDto.getLastName(),
+                userRegistrationDto.getFirstname(),
+                userRegistrationDto.getLastname(),
                 userRegistrationDto.getEmail(),
                 userRegistrationDto.getLogin(),
                 userRegistrationDto.getPassword(),
                 userRegistrationDto.getPhone(),
-                userRegistrationDto.getNickName()
+                userRegistrationDto.getNickname()
         );
     }
 
@@ -55,10 +55,10 @@ public class UserRepo {
     public void update(UserRegDto userRegistrationDto) {
         jdbcTemplate.update(
                 "UPDATE user_table " +
-                        "SET firstName = ?, lastName = ?, email = ?, login = ?, password = ?, phone = ?" +
+                        "SET firstname = ?, lastname = ?, email = ?, login = ?, password = ?, phone = ?" +
                         "WHERE login = ?",
-                userRegistrationDto.getFirstName(),
-                userRegistrationDto.getLastName(),
+                userRegistrationDto.getFirstname(),
+                userRegistrationDto.getLastname(),
                 userRegistrationDto.getEmail(),
                 userRegistrationDto.getLogin(),
                 userRegistrationDto.getPassword(),

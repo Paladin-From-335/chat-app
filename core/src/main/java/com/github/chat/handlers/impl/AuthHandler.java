@@ -3,7 +3,7 @@ package com.github.chat.handlers.impl;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
 import com.github.chat.payload.Envelope;
-import com.github.chat.payload.Token;
+import com.github.chat.payload.PrivateToken;
 import com.github.chat.payload.Topic;
 import com.github.chat.handlers.IMessageListener;
 import com.github.chat.utils.TokenProvider;
@@ -24,7 +24,7 @@ public class AuthHandler implements IMessageListener {
     @Override
     public void onMessage(Session session, Envelope env) {
         if(Topic.auth == env.getTopic()) {
-            Token result = TokenProvider.decoding(env.getPayload());
+            PrivateToken result = TokenProvider.decode(env.getPayload());
             Long id = result.getId();
             this.wsConnectionPool.addSession(id, session);
         }

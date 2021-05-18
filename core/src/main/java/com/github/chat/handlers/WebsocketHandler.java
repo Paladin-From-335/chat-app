@@ -3,7 +3,7 @@ package com.github.chat.handlers;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
 import com.github.chat.payload.Envelope;
-import com.github.chat.payload.Token;
+import com.github.chat.payload.PrivateToken;
 import com.github.chat.utils.JsonHelper;
 import com.github.chat.utils.TokenProvider;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class WebsocketHandler {
             Envelope env = JsonHelper.fromJson(payload, Envelope.class).orElseThrow();
             switch (env.getTopic()) {
                 case auth:
-                    Token result = TokenProvider.decoding(env.getPayload());
+                    PrivateToken result = TokenProvider.decode(env.getPayload());
                     Long id = result.getId();
                     this.wsConnectionPool.addSession(id, session);
                     break;

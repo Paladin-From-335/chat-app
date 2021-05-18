@@ -1,56 +1,54 @@
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
-
-let logIn = {
-    login: username,
-    password: password
-};
-
 function authorization() {
-    axios.post("http://localhost:8081/login/auth", logIn)
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    let logIn = {
+        login: username,
+        password: password
+    };
+
+    axios.post("http://localhost:8081/login/auth", logIn, {
+        headers: {"Content-Type": "application/json"}
+    })
         .then((response) => {
-                if (response.status >= 200 && response.status < 300) {
+                if (response.status === 202) {
                     localStorage.setItem("token", response.data);
                     console.log(response.data);
                     document.location = "..\\html\\chat.html";
                 }
             }, (error) => {
                 console.log(error);
-                window.location = '..\\html\\NotFound.html';
+
             }
         )
 }
 
-
 function registration() {
-
-    let xhr = new XMLHttpRequest();
-
     const login = document.getElementById('username_reg').value;
     const firstname = document.getElementById('firstname').value;
     const lastname = document.getElementById('lastname').value;
     const password = document.getElementById('password_pass').value;
     const confPassword = document.getElementById('cpassword').value;
     const email = document.getElementById('email').value;
+    const nickname = document.getElementById('nickname').value;
+    const phone = document.getElementById('phone').value;
 
-    let postData = {
+    let regData = {
         firstname: firstname,
         lastname: lastname,
         email: email,
         login: login,
-        nickname: "Pupka",
         password: password,
+        phone: phone,
         confPassword: confPassword,
-        phone: "88005553535",
+        nickname: nickname
     };
 
-    axios.post("http://localhost:8081/login/registration", postData, {
-        headers: {
-            'Content-Type':'application/json'
-        }
+    axios.post("http://localhost:8081/login/registration", regData, {
+        headers: {"Content-Type": "application/json"}
     })
         .then((response) => {
-                if (response.status >= 200 && response.status < 300) {
+                if (response.status === 200) {
                     console.log("success");
                     document.location = "..\\html\\modal.html"
                 }

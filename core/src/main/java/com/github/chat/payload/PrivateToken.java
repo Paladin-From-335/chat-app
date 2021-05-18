@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Token implements Serializable {
+public class PrivateToken implements Serializable {
 
     private final long lifeTime = 1800000;
 
@@ -20,7 +20,7 @@ public class Token implements Serializable {
 
     private Date createdAt;
 
-    public Token(Long userId, String firstName, String lastName, Date expireIn, Date createdAt) {
+    public PrivateToken(Long userId, String firstName, String lastName, Date expireIn, Date createdAt) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,7 +28,7 @@ public class Token implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Token(User user, Date expireIn, Date createdAt){
+    public PrivateToken(User user, Date expireIn, Date createdAt){
         this.userId = user.getId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
@@ -36,7 +36,7 @@ public class Token implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Token(User user){
+    public PrivateToken(User user){
         this.userId = user.getId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
@@ -67,8 +67,8 @@ public class Token implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Token token = (Token) o;
-        return Objects.equals(userId, token.userId) && Objects.equals(getFirstName(), token.getFirstName()) && Objects.equals(getLastName(), token.getLastName()) && Objects.equals(getExpireIn(), token.getExpireIn()) && Objects.equals(getCreatedAt(), token.getCreatedAt());
+        PrivateToken privateToken = (PrivateToken) o;
+        return Objects.equals(userId, privateToken.userId) && Objects.equals(getFirstName(), privateToken.getFirstName()) && Objects.equals(getLastName(), privateToken.getLastName()) && Objects.equals(getExpireIn(), privateToken.getExpireIn()) && Objects.equals(getCreatedAt(), privateToken.getCreatedAt());
     }
 
     @Override

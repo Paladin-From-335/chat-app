@@ -9,25 +9,27 @@ import java.util.Optional;
 
 public class JsonHelper {
 
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     private static final Logger log = LoggerFactory.getLogger(JsonHelper.class);
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public static Optional<String> toJson(Object obj) {
+    public static Optional<String> toJson(Object object) {
         try {
-            return Optional.of(MAPPER.writeValueAsString(obj));
+            log.debug("Before call to method: {}", object);
+            return Optional.of(objectMapper.writeValueAsString(object));
         } catch (JsonProcessingException e) {
-            System.out.printf("Enter %s \n", e.getMessage());
+            log.error("Error: {}", e.getMessage());
         }
         return Optional.empty();
-
     }
 
-    public static <T> Optional<T> fromJson(String str, Class<T> cls) {
+    public static <T> Optional<T> fromJson(String str, Class<T> clz) {
         try {
-            return Optional.of(MAPPER.readValue(str, cls));
+            log.debug("Before call to method: {}", str);
+            return Optional.of(objectMapper.readValue(str, clz));
         } catch (JsonProcessingException e) {
-            System.out.printf("Enter %s \n", e.getMessage());
+            log.error(e.getMessage());
         }
         return Optional.empty();
     }

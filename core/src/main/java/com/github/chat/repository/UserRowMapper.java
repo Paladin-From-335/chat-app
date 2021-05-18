@@ -25,11 +25,11 @@ public class UserRowMapper {
     public static CustomRowMapper<UserRegDto> getCustomRowMapperReg() {
         if (customRowMapperReg == null) {
             customRowMapperReg = rs -> new UserRegDto(
-                    rs.getString("firstName"),
-                    rs.getString("lastName"),
+                    rs.getString("firstname"),
+                    rs.getString("lastname"),
                     rs.getString("login"),
                     rs.getString("password"),
-                    rs.getString("confirmPassword"),
+                    rs.getString("confirmPass"),
                     rs.getString("nickname"),
                     rs.getString("email"),
                     rs.getString("phone")
@@ -42,8 +42,8 @@ public class UserRowMapper {
         if (customRowMapperUser == null) {
             customRowMapperUser = rs -> new User(
                     rs.getInt("id"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
+                    rs.getString("firstname"),
+                    rs.getString("lastname"),
                     rs.getString("email"),
                     rs.getString("login"),
                     rs.getString("password"),
