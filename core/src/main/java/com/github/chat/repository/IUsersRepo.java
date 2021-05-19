@@ -1,8 +1,5 @@
 package com.github.chat.repository;
 
-import com.github.chat.dto.UserAuthDto;
-import com.github.chat.dto.UserRegDto;
-import com.github.chat.entity.User;
 import org.hibernate.Session;
 
 import java.util.Collection;

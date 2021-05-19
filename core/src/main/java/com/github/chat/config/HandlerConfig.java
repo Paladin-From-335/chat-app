@@ -8,7 +8,7 @@ import com.github.chat.network.WSConnectionPool;
 
 public class HandlerConfig {
 
-    private static final UsersHandler handler = new UsersHandler((UsersController) ControllerConfig.getUserController());
+    private static final UsersHandler handler = new UsersHandler(ControllerConfig.getUserController());
 
     public static UsersHandler getHandler() {
         return handler;

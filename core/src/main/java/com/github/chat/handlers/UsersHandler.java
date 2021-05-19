@@ -1,5 +1,6 @@
 package com.github.chat.handlers;
 
+import com.github.chat.controllers.IUsersController;
 import com.github.chat.controllers.UsersController;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
@@ -18,7 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,9 +26,9 @@ public class UsersHandler extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(UsersHandler.class);
 
-    private final UsersController usersController;
+    private final IUsersController usersController;
 
-    public UsersHandler(UsersController usersController) {
+    public UsersHandler(IUsersController usersController) {
         this.usersController = usersController;
     }
 
@@ -48,7 +48,7 @@ public class UsersHandler extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "*");
         resp.setHeader("Access-Control-Allow-Headers", "*");
-        resp.setStatus(204);
+        resp.setStatus(200);
     }
 
     @Override
@@ -88,6 +88,7 @@ public class UsersHandler extends HttpServlet {
                             throw new BadRequest();
                         }
                         System.out.println(body);
+                        System.out.println("HANDLER REG");
                         this.usersController.registration(regDto);
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;

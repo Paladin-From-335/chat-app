@@ -11,14 +11,15 @@ public class UserAuthDto {
 
     private String password;
 
-    public UserAuthDto(){}
+    public UserAuthDto() {
+    }
 
-    public UserAuthDto(String login, String password){
+    public UserAuthDto(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public UserAuthDto(User user){
+    public UserAuthDto(User user) {
         this.login = user.getLogin();
         this.password = user.getPassword();
     }

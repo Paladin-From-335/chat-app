@@ -22,9 +22,9 @@ public class UserRepo<T> implements IUsersRepo<T> {
     public Collection<T> findAll(Session session) {
         try (session) {
             CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<T> criteriaQuery = builder.createQuery(clz);
-            criteriaQuery.from(clz);
-            return session.createQuery(criteriaQuery).getResultList();
+            CriteriaQuery<T> criteria = builder.createQuery(clz);
+            criteria.from(clz);
+            return session.createQuery(criteria).getResultList();
         }
     }
 
@@ -42,32 +42,34 @@ public class UserRepo<T> implements IUsersRepo<T> {
     public Collection<T> findAllBy(String field, Object value, Session session) {
         try (session) {
             Criteria criteria = session.createCriteria(clz);
-            return (Collection<T>) criteria.add(Restrictions.eq(field, value)).uniqueResult();
+            return (Collection<T>) criteria.add(Restrictions.eq(field, value)).list();
         }
     }
 
     @Override
     public void save(T entity, Session session) {
         try (session) {
-            Transaction transaction = session.beginTransaction();
+            Transaction tx1 = session.beginTransaction();
             session.save(entity);
-            transaction.commit();
+            tx1.commit();
         }
     }
 
-    public void delete(T entity, Session session) {
-        try (session) {
-            Transaction transaction = session.beginTransaction();
-            session.delete(entity);
-            transaction.commit();
-        }
-    }
-
+    @Override
     public void update(T entity, Session session) {
         try (session) {
-            Transaction transaction = session.beginTransaction();
+            Transaction tx1 = session.beginTransaction();
+            session.update(entity);
+            tx1.commit();
+        }
+    }
+
+    @Override
+    public void delete(T entity, Session session) {
+        try (session) {
+            Transaction tx1 = session.beginTransaction();
             session.delete(entity);
-            transaction.commit();
+            tx1.commit();
         }
     }
 }

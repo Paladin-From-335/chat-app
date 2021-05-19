@@ -10,12 +10,12 @@ public class AppConfig {
 
     private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
 
-        public static void tomcatStart(){
-            try {
-                ServerConfig.start();
-            } catch (ServletException | LifecycleException e){
-                e.printStackTrace();
-            }
+    public static void tomcatStart() {
+        try {
+            ServerConfig.start();
+        } catch (ServletException | LifecycleException e) {
+            e.printStackTrace();
         }
     }
+}
 

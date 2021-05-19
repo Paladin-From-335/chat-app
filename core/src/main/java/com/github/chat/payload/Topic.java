@@ -17,8 +17,8 @@ public enum Topic {
     }
 
     public static Topic getTopic(String str) {
-        for (Topic t: values()) {
-            if(t.getValue().equals(str)) {
+        for (Topic t : values()) {
+            if (t.getValue().equals(str)) {
                 return t;
             }
         }

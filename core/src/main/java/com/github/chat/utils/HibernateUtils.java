@@ -19,7 +19,7 @@ public class HibernateUtils {
     private static final Logger log = LoggerFactory.getLogger(HibernateUtils.class);
 
     public static SessionFactory getSessionFactory() {
-        if(sessionFactory == null) {
+        if (sessionFactory == null) {
             try (InputStream inputStream = HibernateUtils.class.getResourceAsStream("/hibernate.properties")) {
                 Configuration configuration = new Configuration().addInputStream(inputStream).configure();
                 configuration.addAnnotatedClass(User.class);

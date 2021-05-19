@@ -4,7 +4,6 @@ import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.entity.User;
 import com.github.chat.exceptions.InternalServerError;
-import com.github.chat.exceptions.UserAlreadyExistException;
 import com.github.chat.payload.Envelope;
 import com.github.chat.payload.PrivateToken;
 import com.github.chat.service.impl.UserService;
@@ -13,7 +12,7 @@ import com.github.chat.utils.TokenProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UsersController implements IUsersController{
+public class UsersController implements IUsersController {
 
     private static final Logger log = LoggerFactory.getLogger(UsersController.class);
 

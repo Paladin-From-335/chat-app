@@ -29,7 +29,7 @@ public class Broker {
         try {
             session.getBasicRemote().sendText(JsonHelper.toJson(payload).orElseThrow(IOException::new));
         } catch (IOException e) {
-            log.warn("Enter{}: "+ e.getMessage());
+            log.warn("Enter{}: " + e.getMessage());
         }
     }
 
