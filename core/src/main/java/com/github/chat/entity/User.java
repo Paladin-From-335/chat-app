@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user_table", schema = "public")
+@Table(name = "user_table", schema = "public", catalog = "d5ld3iihtli9rs")
 public class User {
 
     @Id
@@ -115,9 +115,9 @@ public class User {
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
-                ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
+                ", nickname='" + nickname + '\'' +
                 ", role=" + role +
                 '}';
     }

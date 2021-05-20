@@ -20,7 +20,7 @@ public class HibernateUtils {
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
-            try (InputStream inputStream = HibernateUtils.class.getResourceAsStream("/hibernate.properties")) {
+            try (InputStream inputStream = HibernateUtils.class.getResourceAsStream("/hibernate.cfg.xml")) {
                 Configuration configuration = new Configuration().addInputStream(inputStream).configure();
                 configuration.addAnnotatedClass(User.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());

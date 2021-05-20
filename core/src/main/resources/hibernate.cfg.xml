@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:postgresql://ec2-54-220-195-236.eu-west-1.compute.amazonaws.com:5432/d5ld3iihtli9rs
+        </property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.username">uiyrzmstjervuo</property>
+        <property name="connection.password">9b754da9ddb760dde3a282088e34b012387dceb771d23916ae1a22921057b32f</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping class="com.github.chat.entity.User"/>
+    </session-factory>
+</hibernate-configuration>

@@ -14,7 +14,7 @@ public class AppConfig {
         try {
             ServerConfig.start();
         } catch (ServletException | LifecycleException e) {
-            e.printStackTrace();
+            log.warn(e.getMessage());
         }
     }
 }

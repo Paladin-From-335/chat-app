@@ -1,7 +1,6 @@
 package com.github.chat.handlers;
 
 import com.github.chat.controllers.IUsersController;
-import com.github.chat.controllers.UsersController;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.exceptions.BadRequest;
@@ -48,7 +47,7 @@ public class UsersHandler extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "*");
         resp.setHeader("Access-Control-Allow-Headers", "*");
-        resp.setStatus(200);
+        resp.setStatus(204);
     }
 
     @Override
@@ -87,8 +86,7 @@ public class UsersHandler extends HttpServlet {
                         if (regDto == null) {
                             throw new BadRequest();
                         }
-                        System.out.println(body);
-                        System.out.println("HANDLER REG");
+                        System.out.println(regDto);
                         this.usersController.registration(regDto);
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;
@@ -98,15 +96,21 @@ public class UsersHandler extends HttpServlet {
                 }
             } catch (BadRequest e) {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            } catch (ForbiddenException e) {
-                resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            } catch (ConstraintViolationException e) {
-                resp.setStatus(HttpServletResponse.SC_CONFLICT);
+                System.out.println(e.getMessage() + " 400");
             } catch (ExpiredTokenException e) {
                 resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                System.out.println(e.getMessage() + " 401");
+            } catch (ForbiddenException e) {
+                resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                System.out.println(e.getMessage() + " 403");
+            } catch (ConstraintViolationException e) {
+                resp.setStatus(HttpServletResponse.SC_CONFLICT);
+                System.out.println(e.getMessage() + " 409");
             } catch (Throwable e) {
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                System.out.println(e.getMessage() + " 500");
             }
+
         }
     }
 }

@@ -144,7 +144,7 @@ public class UserRegDto {
 
     public User toUser() {
         return new User(
-                null,
+                17L,
                 this.firstname,
                 this.lastname,
                 this.login,

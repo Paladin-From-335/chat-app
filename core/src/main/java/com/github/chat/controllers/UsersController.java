@@ -6,6 +6,7 @@ import com.github.chat.entity.User;
 import com.github.chat.exceptions.InternalServerError;
 import com.github.chat.payload.Envelope;
 import com.github.chat.payload.PrivateToken;
+import com.github.chat.service.IUsersService;
 import com.github.chat.service.impl.UserService;
 import com.github.chat.utils.JsonHelper;
 import com.github.chat.utils.TokenProvider;
@@ -16,9 +17,9 @@ public class UsersController implements IUsersController {
 
     private static final Logger log = LoggerFactory.getLogger(UsersController.class);
 
-    private final UserService userService;
+    private final IUsersService userService;
 
-    public UsersController(UserService userService) {
+    public UsersController(IUsersService userService) {
         this.userService = userService;
     }
 
@@ -33,9 +34,6 @@ public class UsersController implements IUsersController {
 
     @Override
     public void registration(UserRegDto userRegDto) {
-//        if (this.userService.findByEmail(userRegDto.getEmail()) != null) {
-//            throw new UserAlreadyExistException();
-//        }
         userService.insert(userRegDto.toUser());
     }
 }
