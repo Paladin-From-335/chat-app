@@ -4,7 +4,7 @@ import org.hibernate.Session;
 
 import java.util.Collection;
 
-public interface IUsersRepo<T> {
+public interface IRepository<T> {
 
     Collection<T> findAll(Session session);
 

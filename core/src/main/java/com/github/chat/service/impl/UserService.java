@@ -1,10 +1,7 @@
 package com.github.chat.service.impl;
 
-import com.github.chat.dto.UserAuthDto;
-import com.github.chat.dto.UserRegDto;
 import com.github.chat.entity.User;
-import com.github.chat.repository.IUsersRepo;
-import com.github.chat.repository.impl.UserRepo;
+import com.github.chat.repository.IRepository;
 import com.github.chat.service.IUsersService;
 import com.github.chat.utils.HibernateUtils;
 
@@ -12,40 +9,40 @@ import java.util.Collection;
 
 public class UserService implements IUsersService {
 
-    private final IUsersRepo<User> iUsersRepo;
+    private final IRepository<User> iRepository;
 
-    public UserService(IUsersRepo<User> iUsersRepo) {
-        this.iUsersRepo = iUsersRepo;
+    public UserService(IRepository<User> iRepository) {
+        this.iRepository = iRepository;
     }
 
 
     @Override
     public Collection<User> findAll() {
-        return this.iUsersRepo.findAll(HibernateUtils.getSession());
+        return this.iRepository.findAll(HibernateUtils.getSession());
     }
 
     @Override
-    public User findById(Long id) {
-        return this.iUsersRepo.findBy("id", id, HibernateUtils.getSession());
+    public User findById(Long user_id) {
+        return this.iRepository.findBy("user_id", user_id, HibernateUtils.getSession());
     }
 
     @Override
     public User findByLogin(String login) {
-        return this.iUsersRepo.findBy("login", login, HibernateUtils.getSession());
+        return this.iRepository.findBy("login", login, HibernateUtils.getSession());
     }
 
     @Override
     public User findByEmail(String email) {
-        return this.iUsersRepo.findBy("email", email, HibernateUtils.getSession());
+        return this.iRepository.findBy("email", email, HibernateUtils.getSession());
     }
 
     @Override
     public void insert(User user) {
-        this.iUsersRepo.save(user, HibernateUtils.getSession());
+        this.iRepository.save(user, HibernateUtils.getSession());
     }
 
     @Override
     public void update(User user) {
-        this.iUsersRepo.update(user, HibernateUtils.getSession());
+        this.iRepository.update(user, HibernateUtils.getSession());
     }
 }

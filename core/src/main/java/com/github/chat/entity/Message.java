@@ -1,31 +1,65 @@
 package com.github.chat.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.Objects;
 
+@Entity
+@Table(name = "message_table", schema = "public", catalog = "d5ld3iihtli9rs")
 public class Message {
 
-    private final String message;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "message_id")
+    private Long message_id;
 
-    private final String nickname;
+    @Column(name = "room_id")
+    private Long room_id;
 
-    private final String hours;
+    @Column(name = "message")
+    private String message;
 
-    private final String days;
+    @Column(name = "nickname")
+    private String nickname;
 
-    public Message(String message, String nickname, Date date) {
+    @Column(name = "hours")
+    private String hours;
+
+    @Column(name = "days")
+    private String days;
+
+    public Message(Long message_id, Long room_id, String message, String nickname, String hours, String days) {
+        this.message_id = message_id;
+        this.room_id = room_id;
         this.message = message;
         this.nickname = nickname;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-        this.hours = simpleDateFormat.format(date);
-        simpleDateFormat.applyLocalizedPattern("dd/MM/yyyy");
-        this.days = simpleDateFormat.format(date);
+        this.hours = hours;
+        this.days = days;
+    }
+
+    public Message() {
+
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message1 = (Message) o;
+        return Objects.equals(message_id, message1.message_id) && Objects.equals(room_id, message1.room_id) && Objects.equals(message, message1.message) && Objects.equals(nickname, message1.nickname) && Objects.equals(hours, message1.hours) && Objects.equals(days, message1.days);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(message_id, room_id, message, nickname, hours, days);
     }
 
     @Override
     public String toString() {
         return "Message{" +
-                "message='" + message + '\'' +
+                "message_id=" + message_id +
+                ", room_id=" + room_id +
+                ", message='" + message + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", hours='" + hours + '\'' +
                 ", days='" + days + '\'' +

@@ -1,6 +1,6 @@
 package com.github.chat.repository.impl;
 
-import com.github.chat.repository.IUsersRepo;
+import com.github.chat.repository.IRepository;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,11 +10,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.Collection;
 
-public class UserRepo<T> implements IUsersRepo<T> {
+public class Repository<T> implements IRepository<T> {
 
     private final Class<T> clz;
 
-    public UserRepo(Class<T> clz) {
+    public Repository(Class<T> clz) {
         this.clz = clz;
     }
 

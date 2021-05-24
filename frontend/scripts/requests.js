@@ -49,7 +49,8 @@ function registration() {
     })
         .then((response) => {
                 if (response.status === 200) {
-                    console.log("success");
+                    console.log(response.status)
+                    alert("Success")
                     document.location = "..\\html\\modal.html"
                 }
             }, (error) => {

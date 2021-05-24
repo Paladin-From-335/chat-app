@@ -3,10 +3,7 @@ package com.github.chat.handlers;
 import com.github.chat.controllers.IUsersController;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
-import com.github.chat.exceptions.BadRequest;
-import com.github.chat.exceptions.ExpiredTokenException;
-import com.github.chat.exceptions.ForbiddenException;
-import com.github.chat.exceptions.NotFound;
+import com.github.chat.exceptions.*;
 import com.github.chat.utils.JsonHelper;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
@@ -74,7 +71,7 @@ public class UsersHandler extends HttpServlet {
                     case "/login/auth":
                         UserAuthDto userAuthDto = JsonHelper.fromJson(body, UserAuthDto.class).orElseThrow(BadRequest::new);
                         if (userAuthDto == null) {
-                            throw new BadRequest();
+                            throw new NullPointerException();
                         }
                         String result = Optional.of(this.usersController.authorize(userAuthDto)).orElseThrow(BadRequest::new);
                         resp.setContentType("application/json");
@@ -86,7 +83,6 @@ public class UsersHandler extends HttpServlet {
                         if (regDto == null) {
                             throw new BadRequest();
                         }
-                        System.out.println(regDto);
                         this.usersController.registration(regDto);
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;
@@ -94,7 +90,7 @@ public class UsersHandler extends HttpServlet {
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;
                 }
-            } catch (BadRequest e) {
+            } catch (BadRequest | UserAlreadyExistException e) {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 System.out.println(e.getMessage() + " 400");
             } catch (ExpiredTokenException e) {

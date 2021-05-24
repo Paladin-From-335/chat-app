@@ -11,8 +11,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    @Column(name = "user_id")
+    private long user_id;
 
     @Column(name = "firstname")
     private String firstname;
@@ -35,11 +35,10 @@ public class User {
     @Column(name = "nickname", unique = true)
     private String nickname;
 
-
     private Role role;
 
-    public User(Long id, String firstname, String lastname, String login, String password, String confPassword, String nickname, String email, String phone, Role role) {
-            this.id = id;
+    public User(Long user_id, String firstname, String lastname, String login, String password, String confPassword, String nickname, String email, String phone, Role role) {
+            this.user_id = user_id;
             this.firstname = firstname;
             this.lastname = lastname;
             this.email = email;
@@ -50,12 +49,10 @@ public class User {
             this.role = role;
         }
 
-    public User() {
+    public User() {}
 
-    }
-
-    public long getId() {
-        return id;
+    public long getUser_id() {
+        return user_id;
     }
 
     public String getFirstName() {
@@ -99,18 +96,18 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(nickname, user.nickname) && role == user.role;
+        return user_id == user.user_id && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(nickname, user.nickname) && role == user.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname, email, login, password, phone, nickname, role);
+        return Objects.hash(user_id, firstname, lastname, email, login, password, phone, nickname, role);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "user_id=" + user_id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
