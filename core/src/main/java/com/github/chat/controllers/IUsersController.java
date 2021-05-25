@@ -8,4 +8,6 @@ public interface IUsersController {
     String authorize(UserAuthDto userAuthDto);
 
     void registration(UserRegDto userRegDto);
+
+    
 }

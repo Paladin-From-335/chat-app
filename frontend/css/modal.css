@@ -52,6 +52,11 @@ body {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+
+.form-toggle:hover {
+background-color: lightslategrey;
+}
+
 .form-toggle:before, .form-toggle:after {
   content: '';
   display: block;
@@ -145,10 +150,20 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.form-group button:hover {
+  background-color: black;
+}
+
 .two .form-group button {
   background: #FFFFFF;
   color: lightblue;
 }
+
+.two .form-group button:hover {
+  background-color: lightslategrey;
+}
+
 .form-group .form-remember {
   font-size: 12px;
   font-weight: 400;
@@ -165,6 +180,11 @@ body {
   font-size: 12px;
   text-decoration: none;
 }
+
+.form-group .form-recovery:hover {
+  color: black;
+}
+
 .form-panel {
   padding: 60px calc(5% + 60px) 60px 60px;
   box-sizing: border-box;

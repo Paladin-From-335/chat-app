@@ -12,7 +12,7 @@ public class AppConfig {
 
     public static void tomcatStart() {
         try {
-            ServerConfig.start();
+            ServerConfig.start().run();
         } catch (ServletException | LifecycleException e) {
             log.warn(e.getMessage());
         }
