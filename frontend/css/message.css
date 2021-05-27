@@ -1,0 +1,8 @@
+.messageDiv{
+    background-color: rgb(57,136,195);
+    min-width: 200px;
+    max-width: auto;
+    height: 60px;
+    border: 1px solid blue;
+    margin: 25px;
+}
