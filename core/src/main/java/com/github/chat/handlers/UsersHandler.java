@@ -50,8 +50,8 @@ public class UsersHandler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, NullPointerException {
         ServletOutputStream out = resp.getOutputStream();
-        String result = Optional.of(this.usersController.authorize(new UserAuthDto())).orElseThrow(BadRequest::new);
-        out.write(result.getBytes());
+//        String result = Optional.of(this.usersController.authorize(new UserAuthDto())).orElseThrow(BadRequest::new);
+//        out.write(result.getBytes());
         out.flush();
         out.close();
     }

@@ -23,7 +23,7 @@
 //
 //    @Override
 //    public void onMessage(Session session, Envelope env) {
-//        if(Topic.auth == env.getTopic()) {
+//        if(Topic.authorization == envWS.getTopic()) {
 //            PrivateToken result = TokenProvider.decode(env.getPayload());
 //            String login = result.getLogin();
 //            this.wsConnectionPool.addSession(login, session);
