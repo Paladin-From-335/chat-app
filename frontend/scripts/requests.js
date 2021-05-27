@@ -12,9 +12,10 @@ function authorization() {
     })
         .then((response) => {
                 if (response.status === 202) {
-                    localStorage.setItem("token", response.data);
+                    sessionStorage.setItem("token", response.data);
                     console.log(response.data);
                     document.location = "..\\html\\chat.html";
+                    console.log(response.token)
                 }
             }, (error) => {
                 console.log(error);

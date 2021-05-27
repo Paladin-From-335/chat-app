@@ -50,3 +50,5 @@ window.addEventListener('keypress', (e) => {
         textarea.value = '';
     }
 });
+
+console.log(sessionStorage.getItem("token"))

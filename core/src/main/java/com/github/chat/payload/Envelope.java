@@ -4,24 +4,32 @@ import java.util.Objects;
 
 public class Envelope {
 
-    private Role role;
+    private String payload;
 
-    private String token;
+    private Topic topic;
 
     public Envelope() {
     }
 
-    public Envelope(Role role, String token) {
-        this.role = role;
-        this.token = token;
+    public Envelope(String payload, Topic topic) {
+        this.payload = payload;
+        this.topic = topic;
     }
 
-    public Role getRole() {
-        return role;
+    public String getPayload() {
+        return payload;
     }
 
-    public String getToken() {
-        return token;
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     @Override
@@ -29,19 +37,19 @@ public class Envelope {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Envelope envelope = (Envelope) o;
-        return getRole() == envelope.getRole() && Objects.equals(getToken(), envelope.getToken());
+        return Objects.equals(payload, envelope.payload) && topic == envelope.topic;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRole(), getToken());
+        return Objects.hash(payload, topic);
     }
 
     @Override
     public String toString() {
         return "Envelope{" +
-                "role=" + role +
-                ", token='" + token + '\'' +
+                "payload='" + payload + '\'' +
+                ", topic=" + topic +
                 '}';
     }
 }

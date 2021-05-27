@@ -2,6 +2,8 @@ package com.github.chat.dto;
 
 import com.github.chat.entity.User;
 import com.github.chat.payload.Role;
+import com.github.chat.payload.Status;
+import com.github.chat.utils.SaltProvider;
 
 import java.util.Objects;
 
@@ -23,10 +25,11 @@ public class UserRegDto {
 
     private String phone;
 
-    public UserRegDto() {
-    }
+    private String salt;
 
-    public UserRegDto(String firstname, String lastName, String login, String password, String confPassword, String email, String phone) {
+    private String hashpassword;
+
+    public UserRegDto() {
     }
 
     public UserRegDto(String firstname, String lastname, String login, String nickname, String password, String confPassword, String email, String phone) {
@@ -41,12 +44,12 @@ public class UserRegDto {
     }
 
     public UserRegDto(User user) {
-        this.firstname = user.getFirstName();
-        this.lastname = user.getLastName();
+        this.firstname = user.getFirstname();
+        this.lastname = user.getLastname();
         this.login = user.getLogin();
         this.password = user.getPassword();
         this.confPassword = user.getPassword();
-        this.nickname = user.getNickName();
+        this.nickname = user.getNickname();
         this.email = user.getEmail();
         this.phone = user.getPhone();
     }
@@ -87,10 +90,6 @@ public class UserRegDto {
         return confPassword;
     }
 
-    public void setConfPassword(String confPassword) {
-        this.confPassword = confPassword;
-    }
-
     public String getNickname() {
         return nickname;
     }
@@ -113,6 +112,22 @@ public class UserRegDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getHashpassword() {
+        return hashpassword;
+    }
+
+    public void setHashpassword(String hashpassword) {
+        this.hashpassword = hashpassword;
     }
 
     @Override
@@ -144,16 +159,16 @@ public class UserRegDto {
 
     public User toUser() {
         return new User(
-                17L,
+                1L,
                 this.firstname,
                 this.lastname,
                 this.login,
                 this.password,
-                this.confPassword,
                 this.nickname,
                 this.email,
                 this.phone,
-                Role.USER
+                Role.USER,
+                Status.OFFLINE
         );
     }
 }

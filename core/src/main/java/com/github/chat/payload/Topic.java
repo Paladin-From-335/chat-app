@@ -1,10 +1,10 @@
 package com.github.chat.payload;
 
 public enum Topic {
-    authorization("authorization"),
-    messages("messages"),
-    connect("connect"),
-    disconnect("disconnect");
+    AUTHORIZATION("AUTHORIZATION"),
+    MESSAGES("MESSAGES"),
+    CONNECT("CONNECT"),
+    DISCONNECT("DISCONNECT");
 
     private final String value;
 

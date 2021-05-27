@@ -1,6 +1,7 @@
 package com.github.chat.entity;
 
 import com.github.chat.payload.Role;
+import com.github.chat.payload.Status;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -35,31 +36,47 @@ public class User {
     @Column(name = "nickname", unique = true)
     private String nickname;
 
+    @Column(name = "role")
     private Role role;
 
-    public User(Long user_id, String firstname, String lastname, String login, String password, String confPassword, String nickname, String email, String phone, Role role) {
-            this.user_id = user_id;
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.email = email;
-            this.login = login;
-            this.password = password;
-            this.phone = phone;
-            this.nickname = nickname;
-            this.role = role;
-        }
+    @Column(name = "status")
+    private Status status;
 
-    public User() {}
+    public User(
+            Long user_id,
+            String firstname,
+            String lastname,
+            String login,
+            String password,
+            String nickname,
+            String email,
+            String phone,
+            Role role,
+            Status status) {
+        this.user_id = user_id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.phone = phone;
+        this.nickname = nickname;
+        this.role = role;
+        this.status = status;
+    }
+
+    public User() {
+    }
 
     public long getUser_id() {
         return user_id;
     }
 
-    public String getFirstName() {
+    public String getFirstname() {
         return firstname;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastname;
     }
 
@@ -83,7 +100,7 @@ public class User {
         return phone;
     }
 
-    public String getNickName() {
+    public String getNickname() {
         return nickname;
     }
 
@@ -91,17 +108,25 @@ public class User {
         return role;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return user_id == user.user_id && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(nickname, user.nickname) && role == user.role;
+        return user_id == user.user_id && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(nickname, user.nickname) && role == user.role && status == user.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, firstname, lastname, email, login, password, phone, nickname, role);
+        return Objects.hash(user_id, firstname, lastname, email, login, password, phone, nickname, role, status);
     }
 
     @Override
@@ -116,6 +141,7 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", role=" + role +
+                ", status=" + status +
                 '}';
     }
 }

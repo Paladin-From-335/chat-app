@@ -13,7 +13,7 @@ public class WSConnectionPool {
         this.sessions.put(login, session);
     }
 
-    public void removeSession(String login, Session session) {
+    public void removeSession(String login) {
         this.sessions.remove(login);
     }
 

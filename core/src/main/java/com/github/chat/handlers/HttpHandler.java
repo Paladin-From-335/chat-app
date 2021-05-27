@@ -18,13 +18,13 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class UsersHandler extends HttpServlet {
+public class HttpHandler extends HttpServlet {
 
-    private static final Logger log = LoggerFactory.getLogger(UsersHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(HttpHandler.class);
 
     private final IUsersController usersController;
 
-    public UsersHandler(IUsersController usersController) {
+    public HttpHandler(IUsersController usersController) {
         this.usersController = usersController;
     }
 
@@ -50,8 +50,8 @@ public class UsersHandler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, NullPointerException {
         ServletOutputStream out = resp.getOutputStream();
-        String result = Optional.of(this.usersController.authorize(new UserAuthDto())).orElseThrow(BadRequest::new);
-        out.write(result.getBytes());
+//        String result = Optional.of(this.usersController.authorize(new UserAuthDto())).orElseThrow(BadRequest::new);
+//        out.write(result.getBytes());
         out.flush();
         out.close();
     }
