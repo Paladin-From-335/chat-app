@@ -9,5 +9,4 @@ public class HttpHandlerConfig {
     public static HttpHandler getHandler() {
         return handler;
     }
-
     }

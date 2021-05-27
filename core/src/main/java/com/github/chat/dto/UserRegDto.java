@@ -6,7 +6,6 @@ import com.github.chat.payload.Status;
 import com.github.chat.utils.SaltProvider;
 
 import java.util.Objects;
-
 public class UserRegDto {
 
     private String firstname;

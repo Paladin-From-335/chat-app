@@ -22,7 +22,6 @@ import javax.websocket.server.ServerEndpointConfig;
 import java.io.File;
 import java.util.List;
 import java.util.function.Consumer;
-
 public class ServerConfig {
 
     private static final Logger log = LoggerFactory.getLogger(ServerConfig.class);
@@ -43,6 +42,7 @@ public class ServerConfig {
         ctx.addApplicationListener(WsContextListener.class.getName());
         return new ServerRunner(tomcat, ctx, List.of(websocketHandler));
     }
+
     private static Consumer<Context> websocketHandler = ctx -> {
         WebsocketHandler handler = new WebsocketHandler(new WSConnectionPool(), new Broker());
         ServerContainer scon = (ServerContainer) ctx.getServletContext().getAttribute(ServerContainer.class.getName());
