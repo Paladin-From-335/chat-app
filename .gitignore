@@ -13,12 +13,11 @@ build/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-
 *.iws
 *.iml
 *.ipr
 out/
-.idea/*
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

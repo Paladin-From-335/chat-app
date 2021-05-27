@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="ign">
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="WS">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +70,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.github.chat.exceptions" />
       <recent name="com.github.chat.handlers" />
+      <recent name="com.github.chat.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\goods\Desktop\github\chat-app\core\src\main\resources" />
@@ -124,10 +125,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BackendRun" />
         <item itemvalue="JAR Application.embeddedTomcatSample-jar-with-dependencies.jar" />
         <item itemvalue="Docker.core/docker-compose.yaml.postgres-server: Compose Deployment" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.BackendRun" />
         <item itemvalue="Application.BackendRun" />
       </list>
     </recent_temporary>
@@ -150,7 +151,8 @@
       <workItem from="1621335673180" duration="49650000" />
       <workItem from="1621599608851" duration="76032000" />
       <workItem from="1622103954312" duration="1196000" />
-      <workItem from="1622105299138" duration="862000" />
+      <workItem from="1622105299138" duration="5198000" />
+      <workItem from="1622116183764" duration="1222000" />
     </task>
     <task id="LOCAL-00001" summary="Test-commit">
       <created>1620845129136</created>
@@ -236,7 +238,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622104564432</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ign">
+      <created>1622106183727</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1622106183727</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ign">
+      <created>1622106232635</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1622106232635</updated>
+    </task>
+    <task id="LOCAL-00015" summary="WS">
+      <created>1622110502838</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1622110502838</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +287,8 @@
     <MESSAGE value="Refactor" />
     <MESSAGE value="ing" />
     <MESSAGE value="ign" />
-    <option name="LAST_COMMIT_MESSAGE" value="ign" />
+    <MESSAGE value="WS" />
+    <option name="LAST_COMMIT_MESSAGE" value="WS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
