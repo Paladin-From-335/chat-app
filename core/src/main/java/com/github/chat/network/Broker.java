@@ -1,6 +1,7 @@
 package com.github.chat.network;
 
 import com.github.chat.payload.Envelope;
+import com.github.chat.payload.EnvelopeWS;
 import com.github.chat.utils.JsonHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,7 @@ public class Broker {
 
     private static final Logger log = LoggerFactory.getLogger(Broker.class);
 
-    public void broadcast(List<Session> sessions, Envelope payload) {
+    public void broadcast(List<Session> sessions, EnvelopeWS payload) {
         String str = JsonHelper.toJson(payload).orElseThrow();
 
         sessions.forEach(session -> {

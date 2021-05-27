@@ -1,14 +1,17 @@
 package com.github.chat.config;
 
-import com.github.chat.handlers.HttpHandler;
 import com.github.chat.handlers.WebsocketHandler;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
+import com.github.chat.utils.ServerRunner;
+import com.github.chat.handlers.HttpHandler;
+import com.github.chat.handlers.WebsocketHandler;
 import com.github.chat.utils.ServerRunner;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.tomcat.websocket.server.WsContextListener;
+import org.apache.tomcat.websocket.server.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +27,6 @@ public class ServerConfig {
 
     private static final Logger log = LoggerFactory.getLogger(ServerConfig.class);
 
-
     public static ServerRunner start() throws ServletException, LifecycleException {
         Tomcat tomcat = new Tomcat();
 
@@ -36,12 +38,12 @@ public class ServerConfig {
         tomcat.getHost().setAppBase(".");
         File f = new File("frontend");
         Context ctx = tomcat.addWebapp("", f.getAbsolutePath());
-        tomcat.addServlet("", "UserHandler", HttpHandlerConfig.getHandler()).setAsyncSupported(true);
+        tomcat.addServlet("", "UserHandler", HandlerConfig.getHandler()).setAsyncSupported(true);
         ctx.addServletMappingDecoded("/*", "UserHandler");
         ctx.addApplicationListener(WsContextListener.class.getName());
         return new ServerRunner(tomcat, ctx, List.of(websocketHandler));
     }
-    private static final Consumer<Context> websocketHandler = ctx -> {
+    private static Consumer<Context> websocketHandler = ctx -> {
         WebsocketHandler handler = new WebsocketHandler(new WSConnectionPool(), new Broker());
         ServerContainer scon = (ServerContainer) ctx.getServletContext().getAttribute(ServerContainer.class.getName());
         try {
