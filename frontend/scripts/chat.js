@@ -34,7 +34,7 @@ document.getElementById('button').addEventListener('click', (event) => {
     if(!textarea){
         printMessage(textarea.target.value);
     }
-    textarea.target.value = "";
+    textarea.value = "";
 
 });
 
