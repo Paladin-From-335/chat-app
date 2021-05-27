@@ -15,10 +15,6 @@ public class HandlerConfig {
         return handler;
     }
 
-//        public static UsersHandler usersHandlers() {
-//        return new UsersHandler(ControllerConfig.usersController());
-//    }
-
     public static WebsocketHandler websocketHandler() {
         return new WebsocketHandler(new WSConnectionPool(), new Broker());
     }
