@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="gitignore">
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="handlers">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/HandlerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/HandlerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +61,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects/practice-tasks-dev-education" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -76,8 +74,8 @@
       <recent name="com.github.chat.exceptions" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\goods\Desktop\github\chat-app\core\src\main\resources" />
       <recent name="C:\Users\goods\Desktop\github\chat-app" />
+      <recent name="C:\Users\goods\Desktop\github\chat-app\core\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.github.chat.utils" />
@@ -104,6 +102,17 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="core" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,7 +163,7 @@
       <workItem from="1621599608851" duration="76032000" />
       <workItem from="1622103954312" duration="1196000" />
       <workItem from="1622105299138" duration="5198000" />
-      <workItem from="1622116183764" duration="2179000" />
+      <workItem from="1622116183764" duration="3333000" />
     </task>
     <task id="LOCAL-00001" summary="Test-commit">
       <created>1620845129136</created>
@@ -275,7 +284,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622117887028</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="handlers">
+      <created>1622118868034</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1622118868034</updated>
+    </task>
+    <task id="LOCAL-00019" summary="handlers">
+      <created>1622118902480</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622118902480</updated>
+    </task>
+    <task id="LOCAL-00020" summary="handlers">
+      <created>1622119564029</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622119564029</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +335,8 @@
     <MESSAGE value="WS" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+    <MESSAGE value="handlers" />
+    <option name="LAST_COMMIT_MESSAGE" value="handlers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
