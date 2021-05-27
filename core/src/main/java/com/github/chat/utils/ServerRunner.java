@@ -29,10 +29,9 @@ public class ServerRunner {
         try {
             this.tomcat.start();
             listeners.forEach(lst -> lst.accept(this.ctx));
-
             this.tomcat.getServer().await();
         } catch (LifecycleException e) {
-            e.printStackTrace();
+            log.warn(e.getMessage());
         }
     }
 }

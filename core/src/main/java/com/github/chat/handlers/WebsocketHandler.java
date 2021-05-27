@@ -29,10 +29,6 @@ public class WebsocketHandler {
         this.wsConnectionPool = wsConnectionPool;
         this.broker = broker;
     }
-    @OnOpen
-    public void onOpen() {
-        System.out.println("Connection opened...");
-    }
 
     @OnMessage
     public void messages(Session session, String payload) {
@@ -62,15 +58,5 @@ public class WebsocketHandler {
             //TODO: single send to user about error
             log.warn("Enter {}", e.getMessage());
         }
-    }
-
-    @OnClose
-    public void onClose() {
-        System.out.println("CLOSED... Bye-bye!");
-    }
-
-    @OnError
-    public void onError() {
-        System.out.println("Some error");
     }
 }

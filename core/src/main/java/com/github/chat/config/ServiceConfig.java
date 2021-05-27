@@ -9,8 +9,6 @@ public class ServiceConfig {
 
     private static final IUsersService userService = new UserService(RepositoryConfig.getUsersRepository());
 
-
-
     private static final IMessageService messageService = new MessageService(RepositoryConfig.getMessageRepository());
 
     public static IUsersService getUserService() {

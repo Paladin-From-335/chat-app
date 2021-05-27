@@ -23,4 +23,8 @@ public class WSHandlerConfig {
     public static WebsocketHandler getWebsocketHandler() {
         return websocketHandler;
     }
+
+    public static WebsocketHandler websocketHandler() {
+        return new WebsocketHandler(new WSConnectionPool(), new Broker());
+    }
 }
