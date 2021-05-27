@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user_table", schema = "public", catalog = "d5ld3iihtli9rs")
+@Table(name = "user_table", schema = "public", catalog = "d4p4rtluej9295")
 public class User {
 
     @Id
@@ -115,6 +115,8 @@ public class User {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -13,9 +13,10 @@ function authorization() {
         .then((response) => {
                 if (response.status === 202) {
                     sessionStorage.setItem("token", response.data);
-                    console.log(response.data);
                     document.location = "..\\html\\chat.html";
-                    console.log(response.token)
+                    console.log(response.token);
+                    const ws = new WebSocket("ws://localhost:8081/chat");
+                    const auth = JSON.stringify({"topic":"AUTHORIZATION", "payload":response.token});
                 }
             }, (error) => {
                 console.log(error);

@@ -4,11 +4,12 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:postgresql://ec2-54-220-195-236.eu-west-1.compute.amazonaws.com:5432/d5ld3iihtli9rs
+        <property name="connection.url">
+            jdbc:postgresql://ec2-54-229-68-88.eu-west-1.compute.amazonaws.com:5432/d4p4rtluej9295
         </property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.username">uiyrzmstjervuo</property>
-        <property name="connection.password">9b754da9ddb760dde3a282088e34b012387dceb771d23916ae1a22921057b32f</property>
+        <property name="connection.username">fdjqsxjfwsmdlx</property>
+        <property name="connection.password">ea2cfd26e7df0e2c70a7ea420a89b1c44975fb2ac42d2a620b3081479682fb9a</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.github.chat.entity.User"/>
     </session-factory>

@@ -10,4 +10,4 @@ public class HttpHandlerConfig {
         return handler;
     }
 
-    }
+}

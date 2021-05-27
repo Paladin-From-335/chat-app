@@ -11,7 +11,8 @@ import com.github.chat.utils.PrivateTokenProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.websocket.*;
+import javax.websocket.OnMessage;
+import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint("/chat")
@@ -40,7 +41,7 @@ public class WebsocketHandler {
             String message = envelope.getPayload();
             switch (envelope.getTopic()) {
                 case AUTHORIZATION:
-                    this.wsConnectionPool.addSession(login,session);
+                    this.wsConnectionPool.addSession(login, session);
                     broker.broadcast(wsConnectionPool.getSessions(), envelope);
                     break;
                 case MESSAGES:
@@ -48,8 +49,8 @@ public class WebsocketHandler {
                     this.broker.broadcast(this.wsConnectionPool.getSessions(), envelope);
                     break;
                 case DISCONNECT:
-                  wsConnectionPool.removeSession(login);
-                  wsConnectionPool.getSession(login).close();
+                    wsConnectionPool.removeSession(login);
+                    wsConnectionPool.getSession(login).close();
                     break;
                 default:
                     break;

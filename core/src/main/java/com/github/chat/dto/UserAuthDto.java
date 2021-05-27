@@ -1,7 +1,6 @@
 package com.github.chat.dto;
 
 import com.github.chat.entity.User;
-import com.github.chat.payload.Role;
 
 import java.util.Objects;
 

@@ -37,7 +37,7 @@ public class PropsLoader {
         }
     }
 
-    public Map<String , String> getProperties() {
+    public Map<String, String> getProperties() {
         return properties;
     }
 }

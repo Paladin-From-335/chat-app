@@ -4,14 +4,10 @@ import com.github.chat.handlers.WebsocketHandler;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
 import com.github.chat.utils.ServerRunner;
-import com.github.chat.handlers.HttpHandler;
-import com.github.chat.handlers.WebsocketHandler;
-import com.github.chat.utils.ServerRunner;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.tomcat.websocket.server.WsContextListener;
-import org.apache.tomcat.websocket.server.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,6 +39,7 @@ public class ServerConfig {
         ctx.addApplicationListener(WsContextListener.class.getName());
         return new ServerRunner(tomcat, ctx, List.of(websocketHandler));
     }
+
     private static Consumer<Context> websocketHandler = ctx -> {
         WebsocketHandler handler = new WebsocketHandler(new WSConnectionPool(), new Broker());
         ServerContainer scon = (ServerContainer) ctx.getServletContext().getAttribute(ServerContainer.class.getName());

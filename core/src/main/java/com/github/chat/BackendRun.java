@@ -1,6 +1,5 @@
 package com.github.chat;
 
-import com.github.chat.config.AppConfig;
 import com.github.chat.config.ServerConfig;
 import org.apache.catalina.LifecycleException;
 import org.slf4j.Logger;

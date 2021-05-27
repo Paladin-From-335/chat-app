@@ -6,6 +6,6 @@ import javax.websocket.Session;
 
 public interface IMessageListener {
 
-        void onMessage(Session session, Envelope env);
+    void onMessage(Session session, Envelope env);
 
-    }
+}

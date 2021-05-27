@@ -35,5 +35,6 @@ out/
 !*/src/main/*
 !*/src/test/*
 /node_modules/*
+node_modules/
 /core/target/*
 /frontend/node_modules/*
