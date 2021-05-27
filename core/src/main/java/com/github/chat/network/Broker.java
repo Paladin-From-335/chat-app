@@ -15,7 +15,6 @@ public class Broker {
 
     public void broadcast(List<Session> sessions, Envelope payload) {
         String str = JsonHelper.toJson(payload).orElseThrow();
-
         sessions.forEach(session -> {
             try {
                 session.getBasicRemote().sendText(str);

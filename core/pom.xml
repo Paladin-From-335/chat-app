@@ -145,6 +145,11 @@
             <version>3.9.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
 
     </dependencies>
     <build>

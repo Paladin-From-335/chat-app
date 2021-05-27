@@ -38,8 +38,8 @@ public class ServerConfig {
         tomcat.getHost().setAppBase(".");
         File f = new File("frontend");
         Context ctx = tomcat.addWebapp("", f.getAbsolutePath());
-        tomcat.addServlet("", "UserHandler", HandlerConfig.getHandler()).setAsyncSupported(true);
-        ctx.addServletMappingDecoded("/*", "UserHandler");
+        tomcat.addServlet("", "HttpHandler", HttpHandlerConfig.getHandler()).setAsyncSupported(true);
+        ctx.addServletMappingDecoded("/*", "HttpHandler");
         ctx.addApplicationListener(WsContextListener.class.getName());
         return new ServerRunner(tomcat, ctx, List.of(websocketHandler));
     }
