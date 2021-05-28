@@ -167,7 +167,9 @@ public class UserRegDto {
                 this.email,
                 this.phone,
                 Role.USER,
-                Status.OFFLINE
+                Status.OFFLINE,
+                this.hashpassword,
+                this.salt
         );
     }
 }

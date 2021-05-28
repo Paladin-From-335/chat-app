@@ -10,6 +10,8 @@ public interface IUsersService {
 
     User findById(Long id);
 
+//    findByEmail
+
     User findByLogin(String login);
 
     User findByEmail(String email);

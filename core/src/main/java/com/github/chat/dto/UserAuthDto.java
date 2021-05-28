@@ -13,6 +13,10 @@ public class UserAuthDto {
     public UserAuthDto() {
     }
 
+    public UserAuthDto(String login) {
+        this.login = login;
+    }
+
     public UserAuthDto(String login, String password) {
         this.login = login;
         this.password = password;
@@ -24,7 +28,8 @@ public class UserAuthDto {
     }
 
     public UserAuthDto(UserRegDto userRegDto) {
-
+        this.login = userRegDto.getLogin();
+        this.password = userRegDto.getPassword();
     }
 
     public String getLogin() {

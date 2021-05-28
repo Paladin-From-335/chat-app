@@ -4,35 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="gitignore (again)">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="fixed db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/BackendRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/BackendRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/HttpHandlerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/HttpHandlerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/ServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/IUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/IUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/impl/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/impl/UsersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserAuthDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserAuthDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserRegDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserRegDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/MainRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/MainRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/RoomMembers.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/RoomMembers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/IMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/IMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketDispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/AuthHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/AuthHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/MessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/IRoomMemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/IRoomMemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/PropsLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/PropsLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/RegForEmail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/hibernate.properties" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/hibernate.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/BackendRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/BackendRun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/AppConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/AppConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/ServerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/ServerConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/IUsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/IUsersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserAuthDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserAuthDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserRegDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserRegDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/html/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/scripts/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/requests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +121,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="embeddedTomcatSample-jar-with-dependencies.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/core/target/embeddedTomcatSample-jar-with-dependencies.jar" />
       <method v="2" />
@@ -179,7 +181,7 @@
       <workItem from="1622103954312" duration="1196000" />
       <workItem from="1622105299138" duration="5198000" />
       <workItem from="1622116183764" duration="8788000" />
-      <workItem from="1622132016337" duration="3918000" />
+      <workItem from="1622132016337" duration="18766000" />
     </task>
     <task id="LOCAL-00001" summary="Test-commit">
       <created>1620845129136</created>
@@ -328,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622119898583</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fixed db">
+      <created>1622150474979</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1622150474979</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,7 +369,8 @@
     <MESSAGE value="gitignore" />
     <MESSAGE value="handlers" />
     <MESSAGE value="gitignore (again)" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore (again)" />
+    <MESSAGE value="fixed db" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed db" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

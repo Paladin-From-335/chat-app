@@ -13,6 +13,7 @@ import com.github.chat.service.IUsersService;
 import com.github.chat.utils.JsonHelper;
 import com.github.chat.utils.PrivateTokenProvider;
 import com.github.chat.utils.PublicTokenProvider;
+import com.github.chat.utils.SaltProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +30,8 @@ public class UsersController implements IUsersController {
     @Override
     public String authorize(UserAuthDto userAuthDto) {
         User user = this.userService.findByLogin(userAuthDto.getLogin());
-        if (userAuthDto.getPassword().equals(user.getPassword())) {
+        String checkHash = SaltProvider.encrypt(userAuthDto.getPassword() + user.getSalt());
+        if (user.getHashpassword().equals(checkHash)) {
             PrivateToken token = new PrivateToken(user);
             PublicToken publicToken = new PublicToken(user.getRole(), user.getNickname());
             String encodedTokens = PublicTokenProvider.publicEncode(publicToken) + "." + PrivateTokenProvider.encode(token);
@@ -41,11 +43,14 @@ public class UsersController implements IUsersController {
     }
 
     @Override
-    public void registration(UserRegDto userRegDto) {
-        if (this.userService.findByEmail(userRegDto.getEmail()) == null) {
-            userService.insert(userRegDto.toUser());
+    public void registration(UserRegDto payload) {
+        if (this.userService.findByEmail(payload.getLogin()) != null) {
+            throw new UserAlreadyExistException();
         }
-        throw new UserAlreadyExistException();
+        payload.setSalt(SaltProvider.getRandomSalt());
+        String hashpassword = payload.getPassword() + payload.getSalt();
+        payload.setHashpassword(SaltProvider.encrypt(hashpassword));
+        this.userService.insert(payload.toUser());
 
     }
 }

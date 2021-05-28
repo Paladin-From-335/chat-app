@@ -13,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long user_id;
+    private Long user_id;
 
     @Column(name = "firstname")
     private String firstname;
@@ -42,6 +42,12 @@ public class User {
     @Column(name = "status")
     private Status status;
 
+    @Column(name = "hashpassword")
+    private String hashpassword;
+
+    @Column(name = "salt")
+    private String salt;
+
     public User(
             Long user_id,
             String firstname,
@@ -68,7 +74,22 @@ public class User {
     public User() {
     }
 
-    public long getUser_id() {
+    public User(Long user_id, String firstname, String lastname, String login, String password, String nickname, String email, String phone, Role role, Status status, String hashpassword, String salt) {
+        this.user_id = user_id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.phone = phone;
+        this.nickname = nickname;
+        this.role = role;
+        this.status = status;
+        this.hashpassword = hashpassword;
+        this.salt = salt;
+    }
+
+    public Long getUser_id() {
         return user_id;
     }
 
@@ -116,7 +137,21 @@ public class User {
         this.status = status;
     }
 
+    public String getHashpassword() {
+        return hashpassword;
+    }
 
+    public void setHashpassword(String hashpassword) {
+        this.hashpassword = hashpassword;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
     @Override
     public boolean equals(Object o) {
