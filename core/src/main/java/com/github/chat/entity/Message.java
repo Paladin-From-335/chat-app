@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "message_table", schema = "public", catalog = "d5ld3iihtli9rs")
+@Table(name = "message_table", schema = "public", catalog = "d4p4rtluej9295")
 public class Message {
 
     @Id
@@ -39,7 +39,6 @@ public class Message {
     public Message() {
 
     }
-
 
     @Override
     public boolean equals(Object o) {

@@ -3,9 +3,9 @@ package com.github.chat.dto;
 import com.github.chat.entity.User;
 import com.github.chat.payload.Role;
 import com.github.chat.payload.Status;
-import com.github.chat.utils.SaltProvider;
 
 import java.util.Objects;
+
 public class UserRegDto {
 
     private String firstname;
@@ -167,7 +167,9 @@ public class UserRegDto {
                 this.email,
                 this.phone,
                 Role.USER,
-                Status.OFFLINE
+                Status.OFFLINE,
+                this.hashpassword,
+                this.salt
         );
     }
 }

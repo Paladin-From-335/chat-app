@@ -3,7 +3,7 @@ package com.github.chat.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "main_room_table", schema = "public", catalog = "d5ld3iihtli9rs")
+@Table(name = "main_room_table", schema = "public", catalog = "d4p4rtluej9295")
 public class MainRoom {
 
     @Id
