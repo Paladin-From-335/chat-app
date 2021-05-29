@@ -1,10 +1,10 @@
 package com.github.chat.handlers.impl;
 
-import com.github.chat.handlers.IMessageListener;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
 import com.github.chat.payload.Envelope;
 import com.github.chat.payload.Topic;
+import com.github.chat.handlers.IMessageListener;
 
 import javax.websocket.Session;
 

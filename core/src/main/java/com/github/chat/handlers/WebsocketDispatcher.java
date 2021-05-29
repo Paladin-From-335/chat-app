@@ -1,7 +1,6 @@
 package com.github.chat.handlers;
 
 import com.github.chat.payload.Envelope;
-
 import javax.websocket.Session;
 import java.util.ArrayList;
 import java.util.List;

@@ -18,7 +18,6 @@ import javax.websocket.server.ServerEndpointConfig;
 import java.io.File;
 import java.util.List;
 import java.util.function.Consumer;
-
 public class ServerConfig {
 
     private static final Logger log = LoggerFactory.getLogger(ServerConfig.class);

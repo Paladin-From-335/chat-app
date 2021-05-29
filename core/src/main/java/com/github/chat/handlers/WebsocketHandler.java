@@ -56,7 +56,6 @@ public class WebsocketHandler {
                     break;
             }
         } catch (Throwable e) {
-            //TODO: single send to user about error
             log.warn("Enter {}", e.getMessage());
         }
     }

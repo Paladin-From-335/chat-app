@@ -20,4 +20,3 @@ public interface IUsersService {
 
     void update(User user);
 }
-

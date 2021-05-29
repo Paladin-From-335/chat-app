@@ -10,12 +10,11 @@ import com.github.chat.payload.PrivateToken;
 import com.github.chat.payload.PublicToken;
 import com.github.chat.payload.Status;
 import com.github.chat.service.IUsersService;
-import com.github.chat.utils.JsonHelper;
-import com.github.chat.utils.PrivateTokenProvider;
-import com.github.chat.utils.PublicTokenProvider;
-import com.github.chat.utils.SaltProvider;
+import com.github.chat.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class UsersController implements IUsersController {
 
@@ -43,13 +42,14 @@ public class UsersController implements IUsersController {
     }
 
     @Override
-    public void registration(UserRegDto payload) {
+    public void registration(UserRegDto payload) throws IOException {
         if (this.userService.findByEmail(payload.getLogin()) != null) {
             throw new UserAlreadyExistException();
         }
         payload.setSalt(SaltProvider.getRandomSalt());
         String hashpassword = payload.getPassword() + payload.getSalt();
         payload.setHashpassword(SaltProvider.encrypt(hashpassword));
+        SendEmail.regEmail(payload.getEmail(), "http://localhost:8081/chat/auth");
         this.userService.insert(payload.toUser());
 
     }
