@@ -47,10 +47,13 @@ public class WebsocketHandler {
                     this.broker.broadcast(this.wsConnectionPool.getSessions(), envelope);
 //                    messageController.saveMessage(result.getLogin(), envelope.getPayload());
                     break;
-//                case DISCONNECT:
-//                    wsConnectionPool.removeSession(nickname);
-//                    wsConnectionPool.getSession(nickname).close();
-//                    break;
+                case DISCONNECT:
+                    PrivateToken discoResult = PrivateTokenProvider.decode(envelope.getPayload());
+                    PrivateTokenProvider.checkToken(discoResult);
+                    nickname = discoResult.getNickname();
+                    wsConnectionPool.removeSession(nickname);
+                    wsConnectionPool.getSession(nickname).close();
+                    break;
                 default:
                     break;
             }

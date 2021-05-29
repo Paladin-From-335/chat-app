@@ -13,15 +13,18 @@ public class PrivateToken implements Serializable {
 
     private final Date date = new Date();
 
-    private final String login;
+    private String login;
 
-    private final String nickname;
+    private String nickname;
 
-    private final Role role;
+    private Role role;
 
-    private final Date expireIn;
+    private Date expireIn;
 
-    private final Date createdAt;
+    private Date createdAt;
+
+    public PrivateToken() {
+    }
 
     public PrivateToken(String login, String nickname, Role role, Date expireIn, Date createdAt) {
         this.login = login;
@@ -54,6 +57,7 @@ public class PrivateToken implements Serializable {
     public String getNickname() {
         return nickname;
     }
+
     public Role getRole() {
         return role;
     }

@@ -31,6 +31,7 @@ ws.onmessage = function processMessage(value) {
     if (jsonData.value != null) {
         let div = document.createElement('div');
         let message = jsonData.value;
+        div.className = "messageDiv";
         div.appendChild(message);
         form.appendChild(div);
     }
@@ -47,5 +48,7 @@ document.getElementById('button').addEventListener('click', (event) => {
 
 
 ws.onclose = () => setStatus('You are offline');
+
+console.log(sessionStorage.getItem("token"))
 
 

@@ -6,13 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
-import java.io.IOException;
 
 public class BackendRun {
 
     private static final Logger log = LoggerFactory.getLogger(BackendRun.class);
 
-    public static void main(String[] args) throws ServletException, LifecycleException, IOException {
+    public static void main(String[] args) throws ServletException, LifecycleException {
 
         ServerConfig.start().run();
     }
