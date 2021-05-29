@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cc5adf4-45ce-48e1-af8d-24bcd79b70a3" name="Default Changelist" comment="chatting, ws, small fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/BackendRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/BackendRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/config/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/PrivateToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/PrivateToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/PrivateTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/PrivateTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/SendEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/SendEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/hibernate.properties" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/hibernate.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/BackendRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/BackendRun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/AppConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
-    </list>
+    <list default="true" id="3cc5adf4-45ce-48e1-af8d-24bcd79b70a3" name="Default Changelist" comment="websocket" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +99,17 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="core" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -340,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622313045659</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="websocket">
+      <created>1622323204538</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1622323204538</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +382,8 @@
     <MESSAGE value="hash + salt 4 password" />
     <MESSAGE value="refactor css" />
     <MESSAGE value="chatting, ws, small fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="chatting, ws, small fix" />
+    <MESSAGE value="websocket" />
+    <option name="LAST_COMMIT_MESSAGE" value="websocket" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
