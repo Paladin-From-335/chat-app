@@ -23,3 +23,17 @@ $(document).ready(function() {
     }, 200);
   });
 });
+
+
+$('#form-recovery').click(function() {
+  $('#forgot_password').toggleClass('visible');
+  $('#opacity_back').toggleClass('opacity_back');
+});
+$('#close_btn').click(function() {
+  $('#forgot_password').toggleClass('visible');
+  $('#opacity_back').toggleClass('opacity_back');
+});
+$('#opacity_back').click(function() {
+  $('#forgot_password').toggleClass('visible');
+  $('#opacity_back').toggleClass('opacity_back');
+});

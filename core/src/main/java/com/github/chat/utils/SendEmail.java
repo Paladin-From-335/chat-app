@@ -1,6 +1,8 @@
 package com.github.chat.utils;
 
 import com.github.chat.controllers.impl.UsersController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -11,7 +13,7 @@ import java.util.Properties;
 
 public class SendEmail {
 
-//    private static final Logger log = (Logger) LoggerFactory.getLogger(RegForEmail.class);
+    private static final Logger log = LoggerFactory.getLogger(SendEmail.class);
 
     public static void dispatchEmail(String emailRecipient, String text, String token) throws IOException {
         Properties props = new Properties();

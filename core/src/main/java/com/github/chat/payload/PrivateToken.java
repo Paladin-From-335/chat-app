@@ -11,17 +11,17 @@ import static com.github.chat.utils.DateUtils.getCurrentDate;
 
 public class PrivateToken implements Serializable {
 
-    private  Date date = new Date();
+    private final Date date = new Date();
 
-    private  String login;
+    private String login;
 
-    private  String nickname;
+    private String nickname;
 
-    private  Role role;
+    private Role role;
 
-    private  Date expireIn;
+    private Date expireIn;
 
-    private  Date createdAt;
+    private Date createdAt;
 
     public PrivateToken() {
     }
@@ -57,6 +57,7 @@ public class PrivateToken implements Serializable {
     public String getNickname() {
         return nickname;
     }
+
     public Role getRole() {
         return role;
     }

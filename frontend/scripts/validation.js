@@ -12,13 +12,15 @@ firstname.addEventListener('input', (e) => {
     const regex = /^[A-Za-z-]/;
     let checkFName = regex.test(e.target.value);
     if (!checkFName){
+        firstname.style.borderStyle = "5px"
         firstname.style.borderColor = 'red';
-        firstname.style.boxShadow = '0 0 5px 5px red';
         button.disabled = true;
         button.style.backgroundColor = 'rgba(114,174,219,0.5)'
-    } else {
-        firstname.style.borderColor = 'none';
-        firstname.style.boxShadow = 'none';
+    }
+    if(checkFName){
+        firstname.style.border = 'none';
+        button.disabled = false;
+        button.style.backgroundColor = 'white'
     }
     console.log(checkFName);
 })
