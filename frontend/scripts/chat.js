@@ -9,44 +9,43 @@ function setStatus(value) {
     status.innerHTML = value;
 }
 
-function printMessage(value) {
-    const messageContainer = document.createElement('div');
-    messageContainer.className = "messageDiv";
-    messageContainer.innerHTML = value;
-    messages.appendChild(messageContainer);
-
-}
-
-form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    ws.send(textarea.value);
-    textarea.value = '';
-})
-
+// function printMessage(value) {
+//     const messageContainer = document.createElement('div');
+//     messageContainer.className = "messageDiv";
+//     messageContainer.innerHTML = value;
+//     messages.appendChild(messageContainer);
+//
+// }
+//
+// form.addEventListener('submit', e => {
+//     e.preventDefault();
+// let stringMessage = textarea.value.toString();
+//     ws.send(stringMessage);
+//     // textarea.value = '';
+// })
 ws.onopen = () => setStatus('You are online');
 
-ws.onclose = () => setStatus('You are offline');
 
-ws.onmessage = res => printMessage(res.data);
-// ws.onmessage = res => console.log(res.data);
+ws.onmessage = function processMessage(value) {
+    let jsonData = JSON.parse(value.data);
+    if (jsonData.value != null) {
+        let div = document.createElement('div');
+        let message = jsonData.value;
+        div.appendChild(message);
+        form.appendChild(div);
+    }
+}
+
+function sendMsg() {
+    ws.send(JSON.stringify({payload:textarea.value, topic:"MESSAGES"}));
+    textarea.value = '';
+}
 
 document.getElementById('button').addEventListener('click', (event) => {
-    if (!textarea) {
-        printMessage(textarea.target.value);
-    }
-    // textarea.value = "";
+    sendMsg();
 });
 
 
-// window.addEventListener('keypress', (e) => {
-//     if (e.key === "Enter") {
-//         if (!textarea) {
-//             printMessage(textarea.value);
-//         }
-//         e.preventDefault();
-//     }
-// });
+ws.onclose = () => setStatus('You are offline');
 
 
-console.log(sessionStorage.getItem("token"))

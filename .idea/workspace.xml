@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3cc5adf4-45ce-48e1-af8d-24bcd79b70a3" name="Default Changelist" comment="hash + salt 4 password">
+    <list default="true" id="3cc5adf4-45ce-48e1-af8d-24bcd79b70a3" name="Default Changelist" comment="refactor css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/chat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/PrivateToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/PrivateToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/RegForEmail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/BackendRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/BackendRun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/ServerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/config/ServerConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/payload/Envelope.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/payload/Envelope.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/html/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/requests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622218040512</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="refactor css">
+      <created>1622293613016</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1622293613016</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +366,8 @@
     <MESSAGE value="gitignore (again)" />
     <MESSAGE value="fixed db" />
     <MESSAGE value="hash + salt 4 password" />
-    <option name="LAST_COMMIT_MESSAGE" value="hash + salt 4 password" />
+    <MESSAGE value="refactor css" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor css" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

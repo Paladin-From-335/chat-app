@@ -34,24 +34,23 @@ public class WebsocketHandler {
     @OnMessage
     public void messages(Session session, String payload) {
         try {
-            Envelope envelope = JsonHelper.fromJson(payload, Envelope.class).get();
-            PrivateToken result = PrivateTokenProvider.decode(envelope.getPayload());
-            PrivateTokenProvider.checkToken(result);
-            String login = result.getLogin();
-            String message = envelope.getPayload();
+            Envelope envelope = JsonHelper.fromJson(payload, Envelope.class).orElseThrow();
             switch (envelope.getTopic()) {
                 case AUTHORIZATION:
-                    this.wsConnectionPool.addSession(login, session);
+                    PrivateToken result = PrivateTokenProvider.decode(envelope.getPayload());
+                    PrivateTokenProvider.checkToken(result);
+                    String nickname = result.getNickname();
+                    this.wsConnectionPool.addSession(nickname, session);
                     broker.broadcast(wsConnectionPool.getSessions(), envelope);
                     break;
                 case MESSAGES:
-                    messageController.saveMessage(login, message);
                     this.broker.broadcast(this.wsConnectionPool.getSessions(), envelope);
+//                    messageController.saveMessage(result.getLogin(), envelope.getPayload());
                     break;
-                case DISCONNECT:
-                    wsConnectionPool.removeSession(login);
-                    wsConnectionPool.getSession(login).close();
-                    break;
+//                case DISCONNECT:
+//                    wsConnectionPool.removeSession(nickname);
+//                    wsConnectionPool.getSession(nickname).close();
+//                    break;
                 default:
                     break;
             }
