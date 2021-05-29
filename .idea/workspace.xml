@@ -4,24 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="fixed db">
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/SecretKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/IUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/IUsersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/impl/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/impl/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserAuthDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserAuthDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserRegDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/dto/UserRegDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/MainRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/MainRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/RoomMembers.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/RoomMembers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/IUsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/IUsersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserAuthDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserAuthDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserRegDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/dto/UserRegDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/com/github/chat/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/com/github/chat/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/HttpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/IMessageListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketDispatcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/AuthHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/DisconnectHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/impl/MessageHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Envelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Envelope.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/Topic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/SecretCodeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/SecretCodeProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/chat.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/html/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/scripts/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/requests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/scripts/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TestBranch" />
+        <entry key="$PROJECT_DIR$" value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -121,15 +121,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,10 +152,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BackendRun" />
+        <item itemvalue="Application.BackendRun" />
         <item itemvalue="JAR Application.embeddedTomcatSample-jar-with-dependencies.jar" />
         <item itemvalue="Docker.core/docker-compose.yaml.postgres-server: Compose Deployment" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.BackendRun" />
       </list>
     </recent_temporary>
   </component>
@@ -371,16 +369,6 @@
     <MESSAGE value="gitignore (again)" />
     <MESSAGE value="fixed db" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed db" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

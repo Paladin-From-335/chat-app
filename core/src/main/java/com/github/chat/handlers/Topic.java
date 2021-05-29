@@ -1,4 +1,4 @@
-package com.github.chat.payload;
+package com.github.chat.handlers;
 
 public enum Topic {
     AUTHORIZATION("AUTHORIZATION"),

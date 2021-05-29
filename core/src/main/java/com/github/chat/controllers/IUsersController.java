@@ -12,6 +12,6 @@ public interface IUsersController {
 
     void registration(UserRegDto userRegDto) throws IOException;
 
-    void forgotReq(ForgotDto forgotDto) throws IOException;
+    String forgotReq(ForgotDto forgotDto) throws IOException;
 
 }

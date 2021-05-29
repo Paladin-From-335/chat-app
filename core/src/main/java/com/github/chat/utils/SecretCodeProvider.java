@@ -5,7 +5,7 @@ import java.util.Base64;
 
 public class SecretCodeProvider {
 
-    public static String getSecretCote() {
+    public static String getSecretCode() {
         SecureRandom random = new SecureRandom();
         byte[] bytes = new byte[8];
         random.nextBytes(bytes);

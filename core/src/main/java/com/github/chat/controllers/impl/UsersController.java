@@ -15,9 +15,10 @@ import com.github.chat.service.IUsersService;
 import com.github.chat.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
+
 
 import static com.github.chat.utils.ConstantEmail.forgotText;
 import static com.github.chat.utils.ConstantEmail.regText;
@@ -27,6 +28,8 @@ public class UsersController implements IUsersController {
     private static final Logger log = LoggerFactory.getLogger(UsersController.class);
 
     private final IUsersService userService;
+
+    private HashMap<String, String> secretKey;
 
     public UsersController(IUsersService userService) {
         this.userService = userService;
@@ -59,18 +62,18 @@ public class UsersController implements IUsersController {
     }
 
     @Override
-    public void forgotReq(ForgotDto forgotDto) throws IOException {
+    public String forgotReq(ForgotDto forgotDto) throws IOException {
         User user = this.userService.findByEmail(forgotDto.getEmail());
-        Map<String, String> secretsKay = new HashMap<>();
         if (user != null) {
-            String secretCode = SecretCodeProvider.getSecretCote();
-            SendEmail.dispatchEmail(forgotDto.getEmail(), forgotText, secretCode);
-            secretsKay.put(secretCode, forgotDto.getEmail());
-           if(secretsKay.containsKey(secretCode) && secretsKay.containsValue(forgotDto.getEmail())) {
-               String checkHash = SaltProvider.encrypt(forgotDto.getPassword() + user.getSalt());
-               forgotDto.setHashpassword(checkHash);
-               this.userService.update(forgotDto.toUser());
-           }
+            String secureCode = SecretCodeProvider.getSecretCode();
+            SendEmail.dispatchEmail(forgotDto.getEmail(), forgotText, secureCode);
+            secretKey.put(secureCode, forgotDto.getEmail());
+            if (secretKey.containsKey(secureCode) && secretKey.containsValue(forgotDto.getEmail())) {
+                String checkHash = SaltProvider.encrypt(forgotDto.getPassword() + user.getSalt());
+                forgotDto.setHashpassword(checkHash);
+                this.userService.update(forgotDto.toUser());
+            }
+            return secureCode;
         } else {
             throw new BadRequest();
         }
