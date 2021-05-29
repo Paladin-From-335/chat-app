@@ -3,10 +3,8 @@ package com.github.chat.handlers.impl;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
 import com.github.chat.payload.Envelope;
-import com.github.chat.payload.PrivateToken;
 import com.github.chat.payload.Topic;
 import com.github.chat.handlers.IMessageListener;
-import com.github.chat.utils.PrivateTokenProvider;
 
 import javax.websocket.Session;
 
@@ -24,11 +22,6 @@ public class MessageHandler implements IMessageListener {
     @Override
     public void onMessage(Session session, Envelope env) {
         if (Topic.AUTHORIZATION == env.getTopic()) {
-            PrivateToken result = PrivateTokenProvider.decode(env.getPayload());
-            PrivateTokenProvider.checkToken(result);
-            String login = result.getLogin();
-            String message = env.getPayload();
-            this.wsConnectionPool.addSession(login,session);
             broker.broadcast(wsConnectionPool.getSessions(), env);
         }
     }

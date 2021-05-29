@@ -13,11 +13,14 @@ build/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+.idea/*
+.idea/workspace.xml
+
 *.iws
 *.iml
 *.ipr
 out/
-.idea/*
+
 
 ### NetBeans ###
 /nbproject/private/
@@ -28,12 +31,10 @@ out/
 
 ### VS Code ###
 .vscode/
-/.gitignore
-
 
 !*/src/main/*
 !*/src/test/*
 /node_modules/*
-/core/target
-/frontend/node_modules
-/micro-orm/target
+node_modules/
+/core/target/*
+/frontend/node_modules/*

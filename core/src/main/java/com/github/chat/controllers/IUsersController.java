@@ -11,5 +11,5 @@ public interface IUsersController {
 
     void registration(UserRegDto userRegDto) throws IOException;
 
-    
+
 }
