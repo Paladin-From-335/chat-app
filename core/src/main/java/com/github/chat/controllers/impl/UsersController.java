@@ -42,7 +42,6 @@ public class UsersController implements IUsersController {
             String encodedTokens = PublicTokenProvider.publicEncode(publicToken) + "." + PrivateTokenProvider.encode(token);
             user.setStatus(Status.ONLINE);
             return JsonHelper.toJson(encodedTokens).orElseThrow(InternalServerError::new);
-
         }
         throw new NullPointerException();
     }
@@ -57,7 +56,6 @@ public class UsersController implements IUsersController {
         payload.setHashpassword(SaltProvider.encrypt(hashpassword));
         SendEmail.dispatchEmail(payload.getEmail(), regText, "http://localhost:8081/chat");
         this.userService.insert(payload.toUser());
-
     }
 
     @Override
