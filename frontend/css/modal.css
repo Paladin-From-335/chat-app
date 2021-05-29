@@ -431,7 +431,6 @@ body {
 
 #forgot_password.visible {
     top: 200px;
-    opacity: 1;
 }
 
 #opacity_back {
