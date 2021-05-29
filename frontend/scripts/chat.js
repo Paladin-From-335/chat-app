@@ -28,8 +28,8 @@ ws.onopen = () => setStatus('You are online');
 
 ws.onclose = () => setStatus('You are offline');
 
-// ws.onmessage = res => printMessage(res.data);
-ws.onmessage = res => console.log(res.data);
+ws.onmessage = res => printMessage(res.data);
+// ws.onmessage = res => console.log(res.data);
 
 document.getElementById('button').addEventListener('click', (event) => {
     if (!textarea) {
@@ -47,5 +47,6 @@ document.getElementById('button').addEventListener('click', (event) => {
 //         e.preventDefault();
 //     }
 // });
+
 
 console.log(sessionStorage.getItem("token"))
