@@ -13,7 +13,7 @@ public class SendEmail {
 
 //    private static final Logger log = (Logger) LoggerFactory.getLogger(RegForEmail.class);
 
-    public static void regEmail(String emailRecipient, String token) throws IOException {
+    public static void dispatchEmail(String emailRecipient, String text, String token) throws IOException {
         Properties props = new Properties();
         props.load(UsersController.class.getClassLoader().getResourceAsStream("email.properties"));
         String email = props.getProperty("email");
@@ -29,7 +29,7 @@ public class SendEmail {
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(emailRecipient,false));
             msg.setSubject("Hello new user");
-            msg.setText("Follow the link for verification " + token);
+            msg.setText(text + token);
             msg.setSentDate(new Date());
             Transport.send(msg);
             System.out.println("Message sent.");

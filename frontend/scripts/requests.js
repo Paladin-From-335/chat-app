@@ -16,7 +16,7 @@ function authorization() {
                     document.location = "..\\html\\chat.html";
                     console.log(response.token);
                     // const ws = new WebSocket("ws://localhost:8081/chat");
-                    const auth = JSON.stringify({"topic":"AUTHORIZATION", "payload":response.token});
+                    const auth = JSON.stringify({"topic": "AUTHORIZATION", "payload": response.token});
                 }
             }, (error) => {
                 console.log(error);
@@ -60,4 +60,38 @@ function registration() {
             }
         )
 
+}
+
+function sendEmailForRecovery() {
+    const email = document.getElementById('email_for_recovery').value;
+    let data = {
+        email: email
+    }
+    axios.post("http://localhost:8081/login/auth", data, {
+        headers: {"Content-Type": "application/json"}
+    })
+        .then((response) => {
+            if (response.status === 200) {
+                alert("Check your email")
+            } else {
+                alert("Wrong email")
+            }
+        });
+}
+
+function sendSecretCode() {
+    const secret_code = document.getElementById('secret_code').value;
+    let data = {
+        secret_code: secret_code
+    }
+    axios.post("http://localhost:8081/login/auth", data, {
+        headers: {"Content-Type": "application/json"}
+    })
+        .then((response) => {
+            if (response.status === 200) {
+                document.location = "..\\html\\modal.html"
+            } else {
+                alert("Wrong code, try again")
+            }
+        });
 }

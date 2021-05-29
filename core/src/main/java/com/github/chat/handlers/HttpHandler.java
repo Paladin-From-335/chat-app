@@ -1,6 +1,7 @@
 package com.github.chat.handlers;
 
 import com.github.chat.controllers.IUsersController;
+import com.github.chat.dto.ForgotDto;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.exceptions.*;
@@ -86,6 +87,14 @@ public class HttpHandler extends HttpServlet {
                         this.usersController.registration(regDto);
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;
+                    case "/login/recovery":
+                        ForgotDto forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
+                        if (forgotDto == null) {
+                            throw new BadRequest();
+                        }
+                        this.usersController.forgotReq(forgotDto);
+                        resp.setStatus(HttpServletResponse.SC_OK);
+                        break;
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;
@@ -109,4 +118,6 @@ public class HttpHandler extends HttpServlet {
 
         }
     }
+
+
 }

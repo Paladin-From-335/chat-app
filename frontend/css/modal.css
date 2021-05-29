@@ -135,12 +135,18 @@ body {
     font-weight: 500;
     line-height: inherit;
     -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
+    transition: all .3s ease-in-out 0s;
 }
 
 
-.form-group input:focus {
+.auth_input:focus {
     color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 2px 2px lightskyblue;
+    background-color: rgb(216, 215, 232);
+}
+
+.form-group input:hover {
+    box-shadow: 0 0 2px 2px lightskyblue;
 }
 
 .form-group input::placeholder {
@@ -169,6 +175,7 @@ body {
     line-height: inherit;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all .3s ease-in-out 0s;
 }
 
 .form-group button:hover {
@@ -179,6 +186,7 @@ body {
 .two .form-group button {
     background: #FFFFFF;
     color: lightblue;
+    transition: all .5s ease-in-out 0s;
 }
 
 .two .form-group button:hover {
@@ -187,27 +195,17 @@ body {
     box-shadow: 0 0 5px 5px #95b3d5;
 }
 
-.form-group .form-remember {
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0;
-    text-transform: none;
-}
-
-.form-group .form-remember input[type='checkbox'] {
-    display: inline-block;
-    width: auto;
-    margin: 0 10px 0 0;
-}
-
 .form-group .form-recovery {
     color: lightblue;
     font-size: 12px;
     text-decoration: none;
+    transition: all .5s ease-in-out 0s;
 }
 
 .form-group .form-recovery:hover {
-    color: black;
+    color: dodgerblue;
+    font-weight: bolder;
+    font-size: 14px;
 }
 
 .form-panel {
@@ -338,11 +336,15 @@ body {
 
 }
 
-.form-group .registration_input::placeholder{
+.form-group .registration_input::placeholder {
     color: white;
 }
 
-#wat{
+.form-group .registration_input:hover, .form-group .registration_input:focus {
+    box-shadow: 0 0 2px 2px white;
+}
+
+#wat {
     margin-top: 2000px;
     color: red;
     font-size: 50px;
@@ -350,6 +352,119 @@ body {
     text-align: center;
     font-family: cursive;
 }
-.wat{
+
+.wat {
     text-decoration: none;
+}
+
+#form-recovery {
+    cursor: pointer;
+}
+
+#forgot_password {
+    position: absolute;
+    border-radius: 5px;
+    background-color: white;
+    width: 20%;
+    height: 300px;
+    top: -999px;
+    z-index: 9999999999999999999999;
+    transition: all 0.5s ease-in-out;
+    left: 40%;
+    display: grid;
+    grid-template-rows: 60px 120px 100px;
+}
+
+#forgot_password div{
+    width: 70%;
+    margin: 0 auto 0 auto;
+}
+#forgot_password div input {
+    outline: none;
+    display: block;
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: inherit;
+    font-weight: 500;
+    line-height: inherit;
+    -webkit-transition: 0.3s ease;
+    transition: all .3s ease-in-out 0s;
+    font-size: 15px;
+}
+
+#forgot_password div button{
+    position: relative;
+    margin: 10px 20%;
+    outline: none;
+    background: lightblue;
+    width: 60%;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 30px;
+    height: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .3s ease-in-out 0s;
+}
+#forgot_password div button:hover{
+    background-color: #7198ce;
+    box-shadow: 0 0 5px 5px #ced5e3;
+}
+
+#forgot_password div input:focus{
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 2px 2px lightskyblue;
+    background-color: rgb(216, 215, 232);
+}
+#forgot_password div input:hover{
+    box-shadow: 0 0 2px 2px lightskyblue;
+}
+
+#forgot_password.visible {
+    top: 200px;
+}
+
+#opacity_back {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: -2000px;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    z-index: 88888888888;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+}
+
+#opacity_back.opacity_back {
+    top: 0;
+}
+
+#close_btn{
+    width: 30px;
+    height: 30px;
+    background-color: lightskyblue;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    margin-left: calc(100% - 30px);
+    border-radius: 5px;
+    cursor: pointer;
+}
+#close_btn:hover{
+    color: #d0b4b4;
+    background-color: #4985de;
+    transform: rotateZ(180deg);
 }

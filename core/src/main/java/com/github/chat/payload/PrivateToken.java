@@ -11,18 +11,24 @@ import static com.github.chat.utils.DateUtils.getCurrentDate;
 
 public class PrivateToken implements Serializable {
 
-    private final Date date = new Date();
+    private  Date date = new Date();
 
-    private final String login;
+    private  String login;
 
-    private final Role role;
+    private  String nickname;
 
-    private final Date expireIn;
+    private  Role role;
 
-    private final Date createdAt;
+    private  Date expireIn;
 
-    public PrivateToken(String login, Role role, Date expireIn, Date createdAt) {
+    private  Date createdAt;
+
+    public PrivateToken() {
+    }
+
+    public PrivateToken(String login, String nickname, Role role, Date expireIn, Date createdAt) {
         this.login = login;
+        this.nickname = nickname;
         this.role = role;
         this.expireIn = expireIn;
         this.createdAt = createdAt;
@@ -30,6 +36,7 @@ public class PrivateToken implements Serializable {
 
     public PrivateToken(User user, Date expireIn, Date createdAt) {
         this.login = user.getLogin();
+        this.nickname = user.getNickname();
         this.role = user.getRole();
         this.expireIn = expireIn;
         this.createdAt = createdAt;
@@ -37,6 +44,7 @@ public class PrivateToken implements Serializable {
 
     public PrivateToken(User user) {
         this.login = user.getLogin();
+        this.nickname = user.getNickname();
         this.role = user.getRole();
         this.createdAt = getCurrentDate();
         this.expireIn = addMinutes(date, 30);
@@ -46,6 +54,9 @@ public class PrivateToken implements Serializable {
         return login;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
     public Role getRole() {
         return role;
     }
@@ -62,20 +73,21 @@ public class PrivateToken implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PrivateToken privateToken = (PrivateToken) o;
-        return Objects.equals(date, privateToken.date) && Objects.equals(getLogin(), privateToken.getLogin()) && Objects.equals(getRole(), privateToken.getRole()) && Objects.equals(getExpireIn(), privateToken.getExpireIn()) && Objects.equals(getCreatedAt(), privateToken.getCreatedAt());
+        PrivateToken token = (PrivateToken) o;
+        return Objects.equals(login, token.login) && Objects.equals(nickname, token.nickname) && role == token.role && Objects.equals(expireIn, token.expireIn) && Objects.equals(createdAt, token.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, getLogin(), getRole(), getExpireIn(), getCreatedAt());
+        return Objects.hash(login, nickname, role, expireIn, createdAt);
     }
 
     @Override
     public String toString() {
-        return "Token{" +
+        return "PrivateToken{" +
                 "login='" + login + '\'' +
-                ", role='" + role + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", role=" + role +
                 ", expireIn=" + expireIn +
                 ", createdAt=" + createdAt +
                 '}';
