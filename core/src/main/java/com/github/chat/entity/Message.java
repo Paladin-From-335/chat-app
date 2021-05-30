@@ -32,9 +32,7 @@ public class Message {
         this.message_date = message_date;
     }
 
-    public Message() {
-
-    }
+    public Message() {}
 
     public Long getMessage_id() {
         return message_id;

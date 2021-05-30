@@ -10,5 +10,5 @@ public interface IMessageService {
 
     List<Message> findAllByRoom(Long roomId);
 
-    void save(String login, String message);
+    void save(String nickname, String message);
 }

@@ -468,3 +468,9 @@ body {
     background-color: #4985de;
     transform: rotateZ(180deg);
 }
+
+.registr_button.hover {
+    background-color: #7198ce;
+    color: white;
+    box-shadow: 0 0 5px 5px #95b3d5;
+}

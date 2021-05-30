@@ -1,3 +1,12 @@
+const login = document.getElementById('username_reg');
+const firstname = document.getElementById('firstname');
+const lastname = document.getElementById('lastname');
+const password = document.getElementById('password_pass');
+const cpassword = document.getElementById('cpassword');
+const phone = document.getElementById('phone');
+const nickname = document.getElementById('nickname');
+const email = document.getElementById('email');
+
 function authorization() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -60,6 +69,25 @@ function registration() {
             }
         )
 
+}
+function isValidInput(){
+    const regexLogin = /^[A-Za-z\d]{0,50}\S$/;
+    const regexFNLN = /^[a-zA-Z-' ]+[a-zA-Z]\S$/;
+    const regexPhone = /[^+][0-9]{0,13}\S$/;
+    const regexNick = /^[A-Za-z\d]{0,50}\S$/;
+    const regexEmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{1,6}\S$/
+    let checkLogin = regexLogin.test(login.value);
+    let checkFName = regexFNLN.test(firstname.value);
+    let checkLName = regexFNLN.test(lastname.value);
+    let checkPhone = regexPhone.test(phone.value);
+    let checkNick = regexNick.test(nickname.value);
+    let checkEmail = regexEmail.test(email.value);
+    if (!checkLogin || !checkFName || !checkLName || !checkPhone || !checkNick || !checkEmail || password.value !== cpassword.value) {
+        alert("Invalid data.\n firstname and lastname must contain only letters\n login and nickname must contain only letters and digits\n phone number example: '+XXXXXXXXXXXXX'\n email example: 'email@example.com'\n password and confirm password must be the same")
+    } else{
+        alert('SUCCESS');
+        registration();
+    }
 }
 
 function sendEmailForRecovery() {

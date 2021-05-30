@@ -2,10 +2,14 @@ package com.github.chat.handlers;
 
 import com.github.chat.controllers.IUsersController;
 import com.github.chat.dto.ForgotDto;
+import com.github.chat.dto.RoomCreateDto;
 import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
+import com.github.chat.entity.Room;
 import com.github.chat.exceptions.*;
+import com.github.chat.payload.PrivateToken;
 import com.github.chat.utils.JsonHelper;
+import com.github.chat.utils.PrivateTokenProvider;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -120,7 +124,6 @@ public class HttpHandler extends HttpServlet {
                             this.usersController.updatePassword(forgotDto);
                             resp.setStatus(HttpServletResponse.SC_OK);
                         break;
-
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;

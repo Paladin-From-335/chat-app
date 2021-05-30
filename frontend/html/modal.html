@@ -74,7 +74,7 @@
                            placeholder="Y O U R   E M A I L"/>
                 </div>
                 <div class="form-group">
-                    <button id="reg_button" type="button" onclick="registration()">Register</button>
+                    <button id="reg_button" type="button" onclick="isValidInput()">Register</button>
                 </div>
             </form>
         </div>
@@ -90,13 +90,12 @@
     </div>
     <div>
         <input type="text" id="secret_code" placeholder="S E C R E T   C O D E">
-        <button onclick="sendSecretCode()">confirm</button>
+        <button id="reg_btn" class="registr_button" onclick="sendSecretCode()">confirm</button>
     </div>
 </div>
 
 <a href="#" class="wat"><h1 id="wat">А шо ты тут делаешь?</h1></a>
 
-<script src="../scripts/validation.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="../scripts/modal_anim.js"></script>
