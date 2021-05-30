@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,8 @@ public class HttpHandler extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(HttpHandler.class);
 
     private final IUsersController usersController;
+
+    private Map<String, String> secretCodeMap;
 
     public HttpHandler(IUsersController usersController) {
         this.usersController = usersController;
@@ -92,9 +95,21 @@ public class HttpHandler extends HttpServlet {
                         if (forgotDto == null) {
                             throw new BadRequest();
                         }
-                        this.usersController.forgotReq(forgotDto);
+                        this.secretCodeMap.put(this.usersController.forgotReq(forgotDto), forgotDto.getEmail());
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;
+                    case "/login/recovery/code":
+                        forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
+                        System.out.println("Secret code rec: " + this.secretCodeMap.get(forgotDto.getEmail()));
+                        if (forgotDto == null) {
+                            throw new BadRequest();
+                        }
+                        if (this.secretCodeMap.get(forgotDto.getEmail())
+                                .equals(forgotDto.getSecureCode())) {
+                            resp.setStatus(HttpServletResponse.SC_OK);
+                        } else {
+                            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        }
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;

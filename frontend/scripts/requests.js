@@ -67,7 +67,7 @@ function sendEmailForRecovery() {
     let data = {
         email: email
     }
-    axios.post("http://localhost:8081/login/auth", data, {
+    axios.post("http://localhost:8081/login/recovery", data, {
         headers: {"Content-Type": "application/json"}
     })
         .then((response) => {
@@ -80,14 +80,15 @@ function sendEmailForRecovery() {
 }
 
 function sendSecretCode() {
-    const secret_code = document.getElementById('secret_code').value;
+    const secureCode = document.getElementById('secret_code').value;
     let data = {
-        secret_code: secret_code
+        secureCode: secureCode
     }
-    axios.post("http://localhost:8081/login/auth", data, {
+    axios.post("http://localhost:8081/login/recovery/code", data, {
         headers: {"Content-Type": "application/json"}
     })
         .then((response) => {
+            console.log(response.status)
             if (response.status === 200) {
                 document.location = "..\\html\\modal.html"
             } else {

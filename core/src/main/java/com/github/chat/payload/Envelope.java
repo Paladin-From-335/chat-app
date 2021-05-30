@@ -1,5 +1,7 @@
 package com.github.chat.payload;
 
+import com.github.chat.handlers.Topic;
+
 import java.util.Objects;
 
 public class Envelope {

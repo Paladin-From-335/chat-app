@@ -199,7 +199,7 @@
       <workItem from="1622105299138" duration="5198000" />
       <workItem from="1622116183764" duration="8788000" />
       <workItem from="1622132016337" duration="18766000" />
-      <workItem from="1622325417266" duration="9080000" />
+      <workItem from="1622325417266" duration="9587000" />
     </task>
     <task id="LOCAL-00001" summary="Test-commit">
       <created>1620845129136</created>
@@ -355,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622150474979</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added repositories.&#10;Fixed registration.&#10;Added chat-history.">
+      <created>1622334897739</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1622334897739</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +395,8 @@
     <MESSAGE value="handlers" />
     <MESSAGE value="gitignore (again)" />
     <MESSAGE value="fixed db" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed db" />
+    <MESSAGE value="Added repositories.&#10;Fixed registration.&#10;Added chat-history." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added repositories.&#10;Fixed registration.&#10;Added chat-history." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
