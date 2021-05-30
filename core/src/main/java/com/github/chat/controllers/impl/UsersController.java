@@ -51,7 +51,7 @@ public class UsersController implements IUsersController {
 
     @Override
     public void registration(UserRegDto payload) throws IOException {
-        if (this.userService.findByEmail(payload.getLogin()) != null) {
+        if (this.userService.findByLogin(payload.getLogin()) != null) {
             throw new UserAlreadyExistException();
         }
         payload.setSalt(SaltProvider.getRandomSalt());

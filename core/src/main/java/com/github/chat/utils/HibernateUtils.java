@@ -1,5 +1,6 @@
 package com.github.chat.utils;
 
+import com.github.chat.entity.Message;
 import com.github.chat.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +24,7 @@ public class HibernateUtils {
             try (InputStream inputStream = HibernateUtils.class.getResourceAsStream("/hibernate.cfg.xml")) {
                 Configuration configuration = new Configuration().addInputStream(inputStream).configure();
                 configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Message.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
             } catch (IOException e) {

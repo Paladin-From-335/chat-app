@@ -2,14 +2,13 @@ package com.github.chat.service;
 
 import com.github.chat.entity.Message;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface IMessageService {
 
-    Collection<Message> findAllByRoom(Long room_id);
+    List<Message> findAll();
 
-    void insert(Message message);
+    List<Message> findAllByRoom(Long roomId);
 
-    void update(Message message);
-
+    void save(String login, String message);
 }

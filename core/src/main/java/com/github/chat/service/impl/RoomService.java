@@ -1,32 +1,31 @@
 package com.github.chat.service.impl;
 
 import com.github.chat.entity.Room;
-import com.github.chat.repository.IRepository;
+import com.github.chat.repository.IRoomRepository;
 import com.github.chat.service.IRoomService;
-import com.github.chat.utils.HibernateUtils;
 
-import java.util.Collection;
+import java.util.List;
 
 public class RoomService implements IRoomService {
 
-    private final IRepository<Room> iRepository;
+    private final IRoomRepository repository;
 
-    public RoomService(IRepository<Room> iRepository) {
-        this.iRepository = iRepository;
+    public RoomService(IRoomRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public Collection<Room> findAll() {
-        return this.iRepository.findAll(HibernateUtils.getSession());
+    public List<Room> findAll() {
+        return repository.findAll();
     }
 
     @Override
     public void insert(Room room) {
-        this.iRepository.save(room, HibernateUtils.getSession());
+        repository.save(room);
     }
 
     @Override
     public void update(Room room) {
-        this.iRepository.update(room, HibernateUtils.getSession());
+        repository.update(room);
     }
 }

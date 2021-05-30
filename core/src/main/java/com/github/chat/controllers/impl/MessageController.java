@@ -1,13 +1,12 @@
 package com.github.chat.controllers.impl;
 
 import com.github.chat.controllers.IMessageController;
+import com.github.chat.entity.Message;
 import com.github.chat.service.IMessageService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class MessageController implements IMessageController {
-
-    private static final Logger log = LoggerFactory.getLogger(MessageController.class);
 
     private final IMessageService messageService;
 
@@ -16,12 +15,13 @@ public class MessageController implements IMessageController {
     }
 
     @Override
-    public void saveMessage(String nickname, String message) {
-
+    public List<Message> findAll() {
+        return this.messageService.findAll();
     }
 
     @Override
-    public void updateMessage(String nickname, String message) {
-
+    public List<Message> findAllByRoom(Long roomId) {
+        return this.messageService.findAllByRoom(roomId);
     }
+
 }
