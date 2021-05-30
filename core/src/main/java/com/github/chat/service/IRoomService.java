@@ -3,10 +3,11 @@ package com.github.chat.service;
 import com.github.chat.entity.Room;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface IRoomService {
 
-    Collection<Room> findAll();
+    List<Room> findAll();
 
     void insert(Room room);
 

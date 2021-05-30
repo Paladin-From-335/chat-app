@@ -1,21 +1,34 @@
 package com.github.chat.config;
 
-import com.github.chat.entity.Message;
-import com.github.chat.entity.User;
-import com.github.chat.repository.IRepository;
-import com.github.chat.repository.impl.Repository;
+import com.github.chat.repository.IMessageRepository;
+import com.github.chat.repository.IRoomMemberRepository;
+import com.github.chat.repository.IRoomRepository;
+import com.github.chat.repository.IUserRepository;
+import com.github.chat.repository.impl.MessageRepository;
+import com.github.chat.repository.impl.RoomMemberRepository;
+import com.github.chat.repository.impl.RoomRepository;
+import com.github.chat.repository.impl.UserRepository;
 
 public class RepositoryConfig {
 
-    private static final IRepository<User> usersRepository = new Repository<>(User.class);
+    private static final IUserRepository usersRepository = new UserRepository();
+    private static final IMessageRepository messageRepository = new MessageRepository();
+    private static final IRoomRepository roomRepository = new RoomRepository();
+    private static final IRoomMemberRepository roomMemberRepository = new RoomMemberRepository();
 
-    private static final IRepository<Message> messageRepository = new Repository<>(Message.class);
+    public static IUserRepository getUsersRepository() {
+        return usersRepository;
+    }
 
-    public static IRepository<Message> getMessageRepository() {
+    public static IMessageRepository getMessageRepository() {
         return messageRepository;
     }
 
-    public static IRepository<User> getUsersRepository() {
-        return usersRepository;
+    public static IRoomRepository getRoomRepository() {
+        return roomRepository;
+    }
+
+    public static IRoomMemberRepository getRoomMemberRepository() {
+        return roomMemberRepository;
     }
 }

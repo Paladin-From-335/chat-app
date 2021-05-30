@@ -1,8 +1,12 @@
 package com.github.chat.controllers;
 
+import com.github.chat.entity.Message;
+
+import java.util.List;
+
 public interface IMessageController {
 
-    void saveMessage(String nickname, String message);
+    List<Message> findAll();
 
-    void updateMessage(String nickname, String message);
+    List<Message> findAllByRoom(Long roomId);
 }

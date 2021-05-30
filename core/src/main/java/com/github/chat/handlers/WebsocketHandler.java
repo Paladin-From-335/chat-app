@@ -1,11 +1,13 @@
 package com.github.chat.handlers;
 
 import com.github.chat.config.ControllerConfig;
+import com.github.chat.config.ServiceConfig;
 import com.github.chat.controllers.IMessageController;
 import com.github.chat.network.Broker;
 import com.github.chat.network.WSConnectionPool;
 import com.github.chat.payload.Envelope;
 import com.github.chat.payload.PrivateToken;
+import com.github.chat.service.IMessageService;
 import com.github.chat.utils.JsonHelper;
 import com.github.chat.utils.PrivateTokenProvider;
 import org.slf4j.Logger;
@@ -24,7 +26,9 @@ public class WebsocketHandler {
 
     private final WSConnectionPool wsConnectionPool;
 
-    private final IMessageController messageController = ControllerConfig.getMessageController();
+    private final IMessageService messageService = ServiceConfig.getMessageService();
+
+    private String nickname = "";
 
     public WebsocketHandler(WSConnectionPool wsConnectionPool, Broker broker) {
         this.wsConnectionPool = wsConnectionPool;
@@ -39,13 +43,13 @@ public class WebsocketHandler {
                 case AUTHORIZATION:
                     PrivateToken result = PrivateTokenProvider.decode(envelope.getPayload());
                     PrivateTokenProvider.checkToken(result);
-                    String nickname = result.getNickname();
+                    nickname = result.getNickname();
                     this.wsConnectionPool.addSession(nickname, session);
                     broker.broadcast(wsConnectionPool.getSessions(), envelope);
                     break;
                 case MESSAGES:
                     this.broker.broadcast(this.wsConnectionPool.getSessions(), envelope);
-//                    messageController.saveMessage(result.getLogin(), envelope.getPayload());
+                    messageService.save(nickname, envelope.getPayload());
                     break;
                 case DISCONNECT:
                     PrivateToken discoResult = PrivateTokenProvider.decode(envelope.getPayload());

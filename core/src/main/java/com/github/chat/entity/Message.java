@@ -1,6 +1,7 @@
 package com.github.chat.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
@@ -21,23 +22,58 @@ public class Message {
     @Column(name = "nickname")
     private String nickname;
 
-    @Column(name = "hours")
-    private String hours;
+    @Column(name = "message_date")
+    private Timestamp message_date;
 
-    @Column(name = "days")
-    private String days;
-
-    public Message(Long message_id, Long room_id, String message, String nickname, String hours, String days) {
-        this.message_id = message_id;
+    public Message(Long room_id, String message, String nickname, Timestamp message_date) {
         this.room_id = room_id;
         this.message = message;
         this.nickname = nickname;
-        this.hours = hours;
-        this.days = days;
+        this.message_date = message_date;
     }
 
     public Message() {
 
+    }
+
+    public Long getMessage_id() {
+        return message_id;
+    }
+
+    public void setMessage_id(Long message_id) {
+        this.message_id = message_id;
+    }
+
+    public Long getRoom_id() {
+        return room_id;
+    }
+
+    public void setRoom_id(Long room_id) {
+        this.room_id = room_id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Timestamp getMessage_date() {
+        return message_date;
+    }
+
+    public void setMessage_date(Timestamp message_date) {
+        this.message_date = message_date;
     }
 
     @Override
@@ -45,12 +81,12 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message1 = (Message) o;
-        return Objects.equals(message_id, message1.message_id) && Objects.equals(room_id, message1.room_id) && Objects.equals(message, message1.message) && Objects.equals(nickname, message1.nickname) && Objects.equals(hours, message1.hours) && Objects.equals(days, message1.days);
+        return Objects.equals(message_id, message1.message_id) && Objects.equals(room_id, message1.room_id) && Objects.equals(message, message1.message) && Objects.equals(nickname, message1.nickname) && Objects.equals(message_date, message1.message_date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(message_id, room_id, message, nickname, hours, days);
+        return Objects.hash(message_id, room_id, message, nickname, message_date);
     }
 
     @Override
@@ -60,8 +96,7 @@ public class Message {
                 ", room_id=" + room_id +
                 ", message='" + message + '\'' +
                 ", nickname='" + nickname + '\'' +
-                ", hours='" + hours + '\'' +
-                ", days='" + days + '\'' +
+                ", message_date=" + message_date +
                 '}';
     }
 }

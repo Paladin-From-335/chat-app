@@ -1,48 +1,48 @@
 package com.github.chat.service.impl;
 
 import com.github.chat.entity.User;
-import com.github.chat.repository.IRepository;
+import com.github.chat.repository.IUserRepository;
+import com.github.chat.repository.impl.UserRepository;
 import com.github.chat.service.IUsersService;
 import com.github.chat.utils.HibernateUtils;
 
-import java.util.Collection;
+import java.util.List;
 
 public class UserService implements IUsersService {
 
-    private final IRepository<User> iRepository;
+    private final IUserRepository userRepository;
 
-    public UserService(IRepository<User> iRepository) {
-        this.iRepository = iRepository;
-    }
-
-
-    @Override
-    public Collection<User> findAll() {
-        return this.iRepository.findAll(HibernateUtils.getSession());
+    public UserService(IUserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public User findById(Long user_id) {
-        return this.iRepository.findBy("user_id", user_id, HibernateUtils.getSession());
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User findById(Long userId) {
+        return userRepository.findOne(userId);
     }
 
     @Override
     public User findByLogin(String login) {
-        return this.iRepository.findBy("login", login, HibernateUtils.getSession());
+        return userRepository.findOneByLogin(login);
     }
 
     @Override
     public User findByEmail(String email) {
-        return this.iRepository.findBy("email", email, HibernateUtils.getSession());
+        return userRepository.findOneByEmail(email);
     }
 
     @Override
     public void insert(User user) {
-        this.iRepository.save(user, HibernateUtils.getSession());
+        userRepository.save(user);
     }
 
     @Override
     public void update(User user) {
-        this.iRepository.update(user, HibernateUtils.getSession());
+        userRepository.update(user);
     }
 }
