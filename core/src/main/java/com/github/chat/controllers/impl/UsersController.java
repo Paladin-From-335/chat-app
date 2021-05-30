@@ -8,6 +8,7 @@ import com.github.chat.entity.User;
 import com.github.chat.exceptions.BadRequest;
 import com.github.chat.exceptions.InternalServerError;
 import com.github.chat.exceptions.UserAlreadyExistException;
+import com.github.chat.exceptions.ValidationFieldException;
 import com.github.chat.payload.PrivateToken;
 import com.github.chat.payload.PublicToken;
 import com.github.chat.payload.Status;
@@ -18,7 +19,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.github.chat.utils.ConstantEmail.forgotText;
 import static com.github.chat.utils.ConstantEmail.regText;
@@ -29,8 +31,20 @@ public class UsersController implements IUsersController {
 
     private final IUsersService userService;
 
-   private final String secureCode = SecretCodeProvider.getSecretCode();
+    private final String secureCode = SecretCodeProvider.getSecretCode();
 
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static final Pattern VALID_PHONE_NUMBER_REGEX =
+            Pattern.compile("^\\+?3?8?(\\d{10})$", Pattern.CASE_INSENSITIVE);
+
+    public static final Pattern VALID_NAME_REGEX =
+            Pattern.compile("[a-zA-z]+([ '-][a-zA-Z]+)*",
+                    Pattern.CASE_INSENSITIVE);
+
+    public static final Pattern VALID_NICKNAME_REGEX =
+            Pattern.compile("^[a-zA-Z0-9]+([_-]?[a-zA-Z0-9])*$", Pattern.CASE_INSENSITIVE);
 
     private HashMap<String, String> secretKey;
 
@@ -54,6 +68,26 @@ public class UsersController implements IUsersController {
 
     @Override
     public void registration(UserRegDto payload) throws IOException {
+
+        if (!isValidLastName(payload.getLastname())) {
+            throw new ValidationFieldException("Last name incorrect format!");
+        }
+        if (!isValidFirstName(payload.getFirstname())) {
+            throw new ValidationFieldException("First name incorrect format!");
+        }
+
+        if (!isValidEmail(payload.getEmail())) {
+            throw new ValidationFieldException("Email incorrect format!");
+        }
+
+        if (!isValidNickname(payload.getNickname())) {
+            throw new ValidationFieldException("Nickname incorrect format!");
+        }
+
+        if (!isValidPhone(payload.getPhone())) {
+            throw new ValidationFieldException("Phone incorrect format!");
+        }
+
         if (this.userService.findByLogin(payload.getLogin()) != null) {
             throw new UserAlreadyExistException();
         }
@@ -74,6 +108,31 @@ public class UsersController implements IUsersController {
         } else {
             throw new BadRequest();
         }
+    }
+
+    private boolean isValidFirstName(String firstName) {
+        Matcher matcher = VALID_NAME_REGEX.matcher(firstName);
+        return matcher.find();
+    }
+
+    private boolean isValidLastName(String lastName) {
+        Matcher matcher = VALID_NAME_REGEX.matcher(lastName);
+        return matcher.find();
+    }
+
+    private boolean isValidPhone(String phone) {
+        Matcher matcher = VALID_PHONE_NUMBER_REGEX.matcher(phone);
+        return matcher.find();
+    }
+
+    private boolean isValidEmail(String email) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
+    }
+
+    private boolean isValidNickname(String nickname) {
+        Matcher matcher = VALID_NICKNAME_REGEX.matcher(nickname);
+        return matcher.find();
     }
 
     public boolean isValidCode(ForgotDto forgotDto) {
