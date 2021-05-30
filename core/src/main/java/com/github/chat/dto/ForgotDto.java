@@ -2,6 +2,8 @@ package com.github.chat.dto;
 
 import com.github.chat.entity.User;
 
+import java.util.Objects;
+
 public class ForgotDto {
 
     private String email;
@@ -12,9 +14,9 @@ public class ForgotDto {
 
     private String secureCode;
 
-    private String salt;
-
     private String hashpassword;
+
+    private String salt;
 
     public ForgotDto() {
     }
@@ -27,22 +29,6 @@ public class ForgotDto {
         this.email = email;
         this.password = password;
         this.confPassword = confPassword;
-    }
-
-    public ForgotDto(String email, String password, String confPassword, String secureCode, String salt, String hashpassword) {
-        this.email = email;
-        this.password = password;
-        this.confPassword = confPassword;
-        this.secureCode = secureCode;
-        this.salt = salt;
-        this.hashpassword = hashpassword;
-    }
-
-    public ForgotDto(User user) {
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.hashpassword = user.getHashpassword();
-        this.salt = user.getSalt();
     }
 
     public String getEmail() {
@@ -77,14 +63,6 @@ public class ForgotDto {
         this.secureCode = secureCode;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     public String getHashpassword() {
         return hashpassword;
     }
@@ -93,31 +71,48 @@ public class ForgotDto {
         this.hashpassword = hashpassword;
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ForgotDto forgotDto = (ForgotDto) o;
+        return Objects.equals(email, forgotDto.email) && Objects.equals(password, forgotDto.password) && Objects.equals(confPassword, forgotDto.confPassword) && Objects.equals(secureCode, forgotDto.secureCode) && Objects.equals(hashpassword, forgotDto.hashpassword) && Objects.equals(salt, forgotDto.salt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password, confPassword, secureCode, hashpassword, salt);
+    }
+
     @Override
     public String toString() {
         return "ForgotDto{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", confPassword='" + confPassword + '\'' +
-                ", secureCode='" + secureCode + '\'' +
-                ", salt='" + salt + '\'' +
-                ", hashpassword='" + hashpassword + '\'' +
                 '}';
     }
 
-    public User toUser() {
-        return new User(
-                null,
-                null,
-                null,
-                this.password,
-                null,
-                null,
-                null,
-                null,
-                null,
-                this.hashpassword,
-                null
-        );
+        public User toUser() {
+            return new User(
+                    null,
+                    null,
+                    null,
+                    null,
+                    this.password,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+        }
     }
-}

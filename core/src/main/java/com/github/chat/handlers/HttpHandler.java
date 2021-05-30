@@ -26,6 +26,8 @@ public class HttpHandler extends HttpServlet {
 
     private final IUsersController usersController;
 
+    private boolean isRightSecretCode = false;
+
     private Map<String, String> secretCodeMap;
 
     public HttpHandler(IUsersController usersController) {
@@ -110,6 +112,15 @@ public class HttpHandler extends HttpServlet {
                         } else {
                             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         }
+                    case "/login/recovery/change" :
+                        forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
+                        if(forgotDto == null) {
+                            throw new BadRequest();
+                        }
+                            this.usersController.updatePassword(forgotDto);
+                            resp.setStatus(HttpServletResponse.SC_OK);
+                        break;
+
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;

@@ -90,9 +90,36 @@ function sendSecretCode() {
         .then((response) => {
             console.log(response.status)
             if (response.status === 200) {
-                document.location = "..\\html\\modal.html"
+                console.log(response.status)
+                document.location = "..\\html\\changePass.html"
             } else {
                 alert("Wrong code, try again")
+                console.log(response.status)
             }
+            console.log(response.status)
         });
+}
+
+function sendNewPassword() {
+    const email = document.getElementById('email_for_recovery').value;
+    const newPassword = document.getElementById('new_password').value;
+    const confNewPass = document.getElementById('confirm_new_password').value;
+
+    let data = {
+        email: email,
+        password: newPassword,
+        confPass:confNewPass
+    }
+
+    axios.post("http://localhost:8081/login/recovery/change", data, {
+        headers: {"Content-Type": "application/json"}
+    })
+        .then((response) => {
+            if(response.status === 200) {
+                alert("Your password has been changed")
+                document.location = "..\\html\\modal.html"
+            } else {
+                alert("Wrong email")
+            }
+        })
 }

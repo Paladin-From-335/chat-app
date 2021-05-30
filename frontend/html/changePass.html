@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/changePass.css">
+</head>
+<body>
+<div id="change_password">
+    <span id="close_password">✖</span>
+    <div>
+        <input type="text" id="email_for_recovery" placeholder="E M A I L">
+        <input type="password" id="new_password" placeholder="N E W   P A S S W O R D">
+        <input type="password" id="confirm_new_password" placeholder="C O N F I R M   P A S S W O R D">
+        <button id="change_password_button" onclick="sendNewPassword()">confirm</button>
+    </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../scripts/requests.js"></script>
+<script src="../scripts/changePass.js"></script>
+</body>
+</html>

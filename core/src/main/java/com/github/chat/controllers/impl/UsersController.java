@@ -29,6 +29,9 @@ public class UsersController implements IUsersController {
 
     private final IUsersService userService;
 
+   private final String secureCode = SecretCodeProvider.getSecretCode();
+
+
     private HashMap<String, String> secretKey;
 
     public UsersController(IUsersService userService) {
@@ -65,17 +68,30 @@ public class UsersController implements IUsersController {
     public String forgotReq(ForgotDto forgotDto) throws IOException {
         User user = this.userService.findByEmail(forgotDto.getEmail());
         if (user != null) {
-            String secureCode = SecretCodeProvider.getSecretCode();
             SendEmail.dispatchEmail(forgotDto.getEmail(), forgotText, secureCode);
-            secretKey.put(secureCode, forgotDto.getEmail());
-            if (secretKey.containsKey(secureCode) && secretKey.containsValue(forgotDto.getEmail())) {
-                String checkHash = SaltProvider.encrypt(forgotDto.getPassword() + user.getSalt());
-                forgotDto.setHashpassword(checkHash);
-                this.userService.update(forgotDto.toUser());
-            }
+            secretKey.put(forgotDto.getEmail(), secureCode);
             return secureCode;
         } else {
             throw new BadRequest();
+        }
+    }
+
+    public boolean isValidCode(ForgotDto forgotDto) {
+        if(forgotDto.getSecureCode().equals(secretKey.get(forgotDto.getEmail()))){
+            return true;
+        }
+        else {
+            throw new BadRequest();
+        }
+    }
+
+    @Override
+    public void updatePassword(ForgotDto forgotDto) {
+        User user = this.userService.findByEmail(forgotDto.getEmail());
+        if(isValidCode(forgotDto)){
+            user.setPassword(forgotDto.getPassword());
+            System.out.println("NEW PASS SUKA: " + user.getPassword());
+            this.userService.insert(user);
         }
     }
 }

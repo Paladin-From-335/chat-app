@@ -74,7 +74,8 @@ public class User {
     public User() {
     }
 
-    public User(String firstname, String lastname, String login, String password, String nickname, String email, String phone, Role role, Status status, String hashpassword, String salt) {
+    public User(Long user_id,String firstname, String lastname, String login, String password, String nickname, String email, String phone, Role role, Status status, String hashpassword, String salt) {
+        this.user_id = user_id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
