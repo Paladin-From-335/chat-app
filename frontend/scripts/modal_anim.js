@@ -37,3 +37,4 @@ $('#opacity_back').click(function() {
   $('#forgot_password').toggleClass('visible');
   $('#opacity_back').toggleClass('opacity_back');
 });
+

@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="Regex front">
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="front">
+      <change afterPath="$PROJECT_DIR$/frontend/scripts/chat_anim.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Envelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Envelope.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/chat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/message.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/message.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/html/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/chat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/html/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/scripts/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/requests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/modal_anim.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/modal_anim.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -350,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622412861907</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="front">
+      <created>1622431311992</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1622431311992</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +395,8 @@
     <MESSAGE value="Added repositories.&#10;Fixed registration.&#10;Added chat-history." />
     <MESSAGE value="Recovery pass (not working)" />
     <MESSAGE value="Regex front" />
-    <option name="LAST_COMMIT_MESSAGE" value="Regex front" />
+    <MESSAGE value="front" />
+    <option name="LAST_COMMIT_MESSAGE" value="front" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
