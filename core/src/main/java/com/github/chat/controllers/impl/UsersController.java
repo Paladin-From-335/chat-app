@@ -117,10 +117,16 @@ public class UsersController implements IUsersController {
     @Override
     public void updatePassword(ForgotDto forgotDto) {
         User user = this.userService.findByEmail(forgotDto.getEmail());
-        if(forgotDto.getEmail().equals(user.getEmail())) {
+        if(user != null) {
+            forgotDto.setSalt(SaltProvider.getRandomSalt());
+            String hashpassword = forgotDto.getPassword() + forgotDto.getSalt();
+            forgotDto.setHashpassword(SaltProvider.encrypt(hashpassword));
             user.setPassword(forgotDto.getPassword());
+            user.setHashpassword(forgotDto.getHashpassword());
+            user.setSalt(forgotDto.getSalt());
             this.userService.update(user);
         }
+        throw new BadRequest();
     }
 
     @Override

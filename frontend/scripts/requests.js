@@ -112,6 +112,7 @@ function sendEmailForRecovery() {
         .then((response) => {
             if (response.status === 200) {
                 alert("Check your email")
+                document.location = "..\\html\\changePass.html";
             } else {
                 alert("Wrong email")
             }
@@ -121,15 +122,14 @@ function sendEmailForRecovery() {
 function sendNewPassword() {
     const email = document.getElementById('email_for_recovery').value;
     const newPassword = document.getElementById('new_password').value;
-    const confNewPass = document.getElementById('confirm_new_password').value;
+
 
     let data = {
         email: email,
         password: newPassword,
-        confPass: confNewPass
     }
 
-    axios.post("http://localhost:8081/login/recovery/change", data, {
+    axios.post("http://localhost:8081/login/recovery/code", data, {
         headers: {"Content-Type": "application/json"}
     })
         .then((response) => {

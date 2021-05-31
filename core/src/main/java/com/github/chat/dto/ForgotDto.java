@@ -8,8 +8,6 @@ public class ForgotDto {
 
     private String password;
 
-    private String confPassword;
-
     private String secureCode;
 
     private String salt;
@@ -23,21 +21,14 @@ public class ForgotDto {
         this.email = email;
     }
 
-    public ForgotDto(String email, String secureCode) {
-        this.email = email;
-        this.secureCode = secureCode;
-    }
-
-    public ForgotDto(String email, String password, String confPassword) {
+    public ForgotDto(String email, String password) {
         this.email = email;
         this.password = password;
-        this.confPassword = confPassword;
     }
 
-    public ForgotDto(String email, String password, String confPassword, String secureCode, String salt, String hashpassword) {
+    public ForgotDto(String email, String password, String secureCode, String salt, String hashpassword) {
         this.email = email;
         this.password = password;
-        this.confPassword = confPassword;
         this.secureCode = secureCode;
         this.salt = salt;
         this.hashpassword = hashpassword;
@@ -64,14 +55,6 @@ public class ForgotDto {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getConfPassword() {
-        return confPassword;
-    }
-
-    public void setConfPassword(String confPassword) {
-        this.confPassword = confPassword;
     }
 
     public String getSecureCode() {
@@ -103,7 +86,6 @@ public class ForgotDto {
         return "ForgotDto{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", confPassword='" + confPassword + '\'' +
                 ", secureCode='" + secureCode + '\'' +
                 ", salt='" + salt + '\'' +
                 ", hashpassword='" + hashpassword + '\'' +
@@ -113,18 +95,18 @@ public class ForgotDto {
     public User toUser() {
         return new User(
                 null,
-                null,
-                null,
-                null,
-                null,
+                toUser().getFirstname(),
+                toUser().getLastname(),
+                toUser().getEmail(),
+                toUser().getLogin(),
                 this.password,
-                null,
-                null,
-                null,
-                null,
-                null,
+                toUser().getPhone(),
+                toUser().getNickname(),
+                toUser().getRole(),
+                toUser().getStatus(),
                 this.hashpassword,
-                null
+                this.salt,
+                toUser().getVerification()
         );
     }
 }
