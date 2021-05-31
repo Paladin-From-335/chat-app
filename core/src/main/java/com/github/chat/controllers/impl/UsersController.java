@@ -6,11 +6,13 @@ import com.github.chat.dto.UserAuthDto;
 import com.github.chat.dto.UserRegDto;
 import com.github.chat.entity.User;
 import com.github.chat.exceptions.BadRequest;
+import com.github.chat.exceptions.ForbiddenException;
 import com.github.chat.exceptions.InternalServerError;
 import com.github.chat.exceptions.UserAlreadyExistException;
 import com.github.chat.payload.PrivateToken;
 import com.github.chat.payload.PublicToken;
 import com.github.chat.payload.Status;
+import com.github.chat.payload.Verification;
 import com.github.chat.service.IUsersService;
 import com.github.chat.utils.*;
 import org.slf4j.Logger;
@@ -38,15 +40,20 @@ public class UsersController implements IUsersController {
     @Override
     public String authorize(UserAuthDto userAuthDto) {
         User user = this.userService.findByLogin(userAuthDto.getLogin());
-        String checkHash = SaltProvider.encrypt(userAuthDto.getPassword() + user.getSalt());
-        if (user.getHashpassword().equals(checkHash)) {
-            PrivateToken token = new PrivateToken(user);
-            PublicToken publicToken = new PublicToken(user.getRole(), user.getNickname());
-            String encodedTokens = PublicTokenProvider.publicEncode(publicToken) + "." + PrivateTokenProvider.encode(token);
-            user.setStatus(Status.ONLINE);
-            return JsonHelper.toJson(encodedTokens).orElseThrow(InternalServerError::new);
+        if (user.getVerification().equals(Verification.unverified)) {
+            throw new ForbiddenException();
         }
-        throw new NullPointerException();
+        if (user.getVerification().equals(Verification.verified)) {
+            String checkHash = SaltProvider.encrypt(userAuthDto.getPassword() + user.getSalt());
+            if (user.getHashpassword().equals(checkHash)) {
+                PrivateToken token = new PrivateToken(user);
+                PublicToken publicToken = new PublicToken(user.getRole(), user.getNickname());
+                String encodedTokens = PublicTokenProvider.publicEncode(publicToken) + "." + PrivateTokenProvider.encode(token);
+                user.setStatus(Status.ONLINE);
+                return JsonHelper.toJson(encodedTokens).orElseThrow(InternalServerError::new);
+            }
+        }
+            throw new NullPointerException();
     }
 
     @Override
@@ -57,7 +64,7 @@ public class UsersController implements IUsersController {
         payload.setSalt(SaltProvider.getRandomSalt());
         String hashpassword = payload.getPassword() + payload.getSalt();
         payload.setHashpassword(SaltProvider.encrypt(hashpassword));
-        SendEmail.dispatchEmail(payload.getEmail(), regText, "http://localhost:8081/chat");
+        SendEmail.dispatchEmail(payload.getEmail(), regText, "http://localhost:8081/login/verification");
         this.userService.insert(payload.toUser());
     }
 
@@ -78,4 +85,17 @@ public class UsersController implements IUsersController {
             throw new BadRequest();
         }
     }
+
+    @Override
+    public void verificationEmail(UserRegDto userRegDto) {
+        User user = this.userService.findByEmail(userRegDto.getEmail());
+        if(userRegDto.getEmail().equals(user.getEmail())) {
+           user.setVerification(Verification.verified);
+            this.userService.update(user);
+
+        }
+        throw new NullPointerException();
+    }
+
+
 }

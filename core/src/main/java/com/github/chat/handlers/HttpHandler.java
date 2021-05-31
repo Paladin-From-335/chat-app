@@ -26,10 +26,11 @@ public class HttpHandler extends HttpServlet {
 
     private final IUsersController usersController;
 
-    private Map<String, String> secretCodeMap;
+    private final Map<String, String> secretCodeMap;
 
     public HttpHandler(IUsersController usersController) {
         this.usersController = usersController;
+        secretCodeMap = null;
     }
 
     @Override
@@ -101,6 +102,7 @@ public class HttpHandler extends HttpServlet {
                     case "/login/recovery/code":
                         forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
                         System.out.println("Secret code rec: " + this.secretCodeMap.get(forgotDto.getEmail()));
+                        System.out.println(forgotDto.getSecureCode());
                         if (forgotDto == null) {
                             throw new BadRequest();
                         }
@@ -110,6 +112,14 @@ public class HttpHandler extends HttpServlet {
                         } else {
                             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         }
+                        break;
+                    case "/login/verification" :
+                        UserRegDto regVer = JsonHelper.fromJson(body, UserRegDto.class).orElseThrow(BadRequest::new);
+                        if (regVer == null) {
+                            throw new BadRequest();
+                        }
+                        this.usersController.verificationEmail(regVer);
+                        resp.setStatus(HttpServletResponse.SC_OK);
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;

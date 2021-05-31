@@ -14,4 +14,6 @@ public interface IUsersController {
 
     String forgotReq(ForgotDto forgotDto) throws IOException;
 
+    void verificationEmail(UserRegDto userRegDto);
+
 }

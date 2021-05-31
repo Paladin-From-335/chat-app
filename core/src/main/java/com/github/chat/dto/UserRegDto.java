@@ -1,6 +1,7 @@
 package com.github.chat.dto;
 
 import com.github.chat.entity.User;
+import com.github.chat.payload.Verification;
 import com.github.chat.payload.Role;
 import com.github.chat.payload.Status;
 
@@ -28,10 +29,14 @@ public class UserRegDto {
 
     private String hashpassword;
 
+    private String verification;
+
     public UserRegDto() {
     }
 
-    public UserRegDto(String firstname, String lastname, String login, String nickname, String password, String confPassword, String email, String phone) {
+    public UserRegDto(String firstname, String lastname, String login, String password,
+                      String confPassword, String nickname, String email, String phone,
+                      String salt, String hashpassword) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.login = login;
@@ -40,17 +45,19 @@ public class UserRegDto {
         this.nickname = nickname;
         this.email = email;
         this.phone = phone;
+        this.salt = salt;
+        this.hashpassword = hashpassword;
     }
 
     public UserRegDto(User user) {
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
+        this.email = user.getEmail();
         this.login = user.getLogin();
         this.password = user.getPassword();
         this.confPassword = user.getPassword();
-        this.nickname = user.getNickname();
-        this.email = user.getEmail();
         this.phone = user.getPhone();
+        this.nickname = user.getNickname();
     }
 
     public String getFirstname() {
@@ -129,6 +136,14 @@ public class UserRegDto {
         this.hashpassword = hashpassword;
     }
 
+    public String getVerification() {
+        return verification;
+    }
+
+    public void setVerification(String verification) {
+        this.verification = verification;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -147,28 +162,30 @@ public class UserRegDto {
         return "UserRegDto{" +
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", confPassword='" + confPassword + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", nickname='" + nickname + '\'' +
                 '}';
     }
 
     public User toUser() {
         return new User(
+                1L,
                 this.firstname,
                 this.lastname,
+                this.email,
                 this.login,
                 this.password,
-                this.nickname,
-                this.email,
                 this.phone,
+                this.nickname,
                 Role.USER,
                 Status.OFFLINE,
                 this.hashpassword,
-                this.salt
+                this.salt,
+                Verification.unverified
         );
     }
 }

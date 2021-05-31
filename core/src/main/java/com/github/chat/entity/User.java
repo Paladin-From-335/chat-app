@@ -1,5 +1,6 @@
 package com.github.chat.entity;
 
+import com.github.chat.payload.Verification;
 import com.github.chat.payload.Role;
 import com.github.chat.payload.Status;
 
@@ -48,6 +49,12 @@ public class User {
     @Column(name = "salt")
     private String salt;
 
+    @Column(name = "verification")
+    private Verification verification;
+
+    public User() {
+    }
+
     public User(
             Long user_id,
             String firstname,
@@ -71,10 +78,10 @@ public class User {
         this.status = status;
     }
 
-    public User() {
-    }
-
-    public User(String firstname, String lastname, String login, String password, String nickname, String email, String phone, Role role, Status status, String hashpassword, String salt) {
+    public User(Long user_id, String firstname, String lastname, String email, String login,
+                String password, String phone, String nickname, Role role, Status status,
+                String hashpassword, String salt, Verification verification) {
+        this.user_id = user_id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -86,6 +93,7 @@ public class User {
         this.status = status;
         this.hashpassword = hashpassword;
         this.salt = salt;
+        this.verification = verification;
     }
 
     public Long getUser_id() {
@@ -156,17 +164,32 @@ public class User {
         this.password = password;
     }
 
+    public Verification getVerification() {
+        return verification;
+    }
+
+    public void setVerification(Verification verification) {
+        this.verification = verification;
+    }
+
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return user_id == user.user_id && Objects.equals(firstname, user.firstname) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(nickname, user.nickname) && role == user.role && status == user.status;
+        return Objects.equals(user_id, user.user_id) && Objects.equals(firstname, user.firstname)
+                && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email)
+                && Objects.equals(login, user.login) && Objects.equals(password, user.password)
+                && Objects.equals(phone, user.phone) && Objects.equals(nickname, user.nickname)
+                && role == user.role && status == user.status && Objects.equals(hashpassword, user.hashpassword)
+                && Objects.equals(salt, user.salt) && verification == user.verification;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, firstname, lastname, email, login, password, phone, nickname, role, status);
+        return Objects.hash(user_id, firstname, lastname, email, login, password, phone,
+                nickname, role, status, hashpassword, salt, verification);
     }
 
     @Override
@@ -182,6 +205,9 @@ public class User {
                 ", nickname='" + nickname + '\'' +
                 ", role=" + role +
                 ", status=" + status +
+                ", hashpassword='" + hashpassword + '\'' +
+                ", salt='" + salt + '\'' +
+                ", verification=" + verification +
                 '}';
     }
 }

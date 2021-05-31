@@ -110,6 +110,8 @@ public class ForgotDto {
                 null,
                 null,
                 null,
+                null,
+                null,
                 this.password,
                 null,
                 null,
