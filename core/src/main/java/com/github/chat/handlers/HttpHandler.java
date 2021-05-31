@@ -96,22 +96,16 @@ public class HttpHandler extends HttpServlet {
                         if (forgotDto == null) {
                             throw new BadRequest();
                         }
-
-                        this.secretCodeMap.put(this.usersController.forgotReq(forgotDto), forgotDto.getEmail());
+                        this.usersController.letterPost(forgotDto);
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;
                     case "/login/recovery/code":
-                        forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
-                        log.info("Secret code rec: " + this.secretCodeMap.get(forgotDto.getEmail()));
-                        if (forgotDto == null) {
+                        ForgotDto forgotDto1 = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
+                        if (forgotDto1 == null) {
                             throw new BadRequest();
                         }
-                        if (this.secretCodeMap.get(forgotDto.getEmail())
-                                .equals(forgotDto.getSecureCode())) {
+                        this.usersController.updatePassword(forgotDto1);
                             resp.setStatus(HttpServletResponse.SC_OK);
-                        } else {
-                            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                        }
                         break;
                     case "/login/verification" :
                         UserRegDto regVer = JsonHelper.fromJson(body, UserRegDto.class).orElseThrow(BadRequest::new);
@@ -120,13 +114,6 @@ public class HttpHandler extends HttpServlet {
                         }
                         this.usersController.verificationEmail(regVer);
                         resp.setStatus(HttpServletResponse.SC_OK);
-                    case "/login/recovery/change" :
-                        forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
-                        if(forgotDto == null) {
-                            throw new BadRequest();
-                        }
-                            this.usersController.updatePassword(forgotDto);
-                            resp.setStatus(HttpServletResponse.SC_OK);
                         break;
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

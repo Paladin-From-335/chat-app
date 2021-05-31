@@ -12,9 +12,9 @@ public interface IUsersController {
 
     void registration(UserRegDto userRegDto) throws IOException;
 
-    String forgotReq(ForgotDto forgotDto) throws IOException;
-
     void verificationEmail(UserRegDto userRegDto);
+
+    void letterPost(ForgotDto forgotDto) throws IOException;
 
     void updatePassword(ForgotDto forgotDto);
 

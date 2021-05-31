@@ -48,8 +48,6 @@ public class UsersController implements IUsersController {
     public static final Pattern VALID_NICKNAME_REGEX =
             Pattern.compile("^[a-zA-Z0-9]+([_-]?[a-zA-Z0-9])*$", Pattern.CASE_INSENSITIVE);
 
-    private HashMap<String, String> secretKey;
-
     public UsersController(IUsersService userService) {
         this.userService = userService;
     }
@@ -106,20 +104,22 @@ public class UsersController implements IUsersController {
     }
 
     @Override
-    public String forgotReq(ForgotDto forgotDto) throws IOException {
+    public void letterPost(ForgotDto forgotDto) throws IOException {
         User user = this.userService.findByEmail(forgotDto.getEmail());
         if (user != null) {
             String secureCode = SecretCodeProvider.getSecretCode();
             SendEmail.dispatchEmail(forgotDto.getEmail(), forgotText, secureCode);
-            secretKey.put(secureCode, forgotDto.getEmail());
-            if (secretKey.containsKey(secureCode) && secretKey.containsValue(forgotDto.getEmail())) {
-                String checkHash = SaltProvider.encrypt(forgotDto.getPassword() + user.getSalt());
-                forgotDto.setHashpassword(checkHash);
-                this.userService.update(forgotDto.toUser());
-            }
-            return secureCode;
         } else {
             throw new BadRequest();
+        }
+    }
+
+    @Override
+    public void updatePassword(ForgotDto forgotDto) {
+        User user = this.userService.findByEmail(forgotDto.getEmail());
+        if(forgotDto.getEmail().equals(user.getEmail())) {
+            user.setPassword(forgotDto.getPassword());
+            this.userService.update(user);
         }
     }
 
@@ -159,22 +159,4 @@ public class UsersController implements IUsersController {
         return matcher.find();
     }
 
-    public boolean isValidCode(ForgotDto forgotDto) {
-        if(forgotDto.getSecureCode().equals(secretKey.get(forgotDto.getEmail()))){
-            return true;
-        }
-        else {
-            throw new BadRequest();
-        }
-    }
-
-    @Override
-    public void updatePassword(ForgotDto forgotDto) {
-        User user = this.userService.findByEmail(forgotDto.getEmail());
-        if(isValidCode(forgotDto)){
-            user.setPassword(forgotDto.getPassword());
-            System.out.println("NEW PASS: " + user.getPassword());
-            this.userService.update(user);
-        }
-    }
 }
