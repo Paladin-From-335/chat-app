@@ -173,7 +173,7 @@ public class UsersController implements IUsersController {
         User user = this.userService.findByEmail(forgotDto.getEmail());
         if(isValidCode(forgotDto)){
             user.setPassword(forgotDto.getPassword());
-            System.out.println("NEW PASS SUKA: " + user.getPassword());
+            System.out.println("NEW PASS: " + user.getPassword());
             this.userService.update(user);
         }
     }
