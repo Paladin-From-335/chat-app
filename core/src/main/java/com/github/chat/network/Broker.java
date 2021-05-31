@@ -32,4 +32,14 @@ public class Broker {
         }
     }
 
+    public void send(List<Session> sessions, Envelope payload) {
+        try {
+            for (Session session : sessions) {
+                session.getBasicRemote().sendText(JsonHelper.toJson(payload).orElseThrow(IOException::new));
+            }
+        } catch (IOException e) {
+            log.warn("Enter{}: " + e.getMessage());
+        }
+    }
+
 }

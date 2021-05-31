@@ -53,6 +53,7 @@ public class WebsocketHandler {
                 case MESSAGES:
                     this.broker.broadcast(this.wsConnectionPool.getSessions(), envelope);
                     messageService.save(nickname, envelope.getPayload());
+                    this.broker.send(this.wsConnectionPool.getSessions(), envelope);
                     break;
                 case DISCONNECT:
                     PrivateToken discoResult = PrivateTokenProvider.decode(envelope.getPayload());
