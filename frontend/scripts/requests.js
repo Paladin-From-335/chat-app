@@ -20,15 +20,11 @@ function authorization() {
         headers: {"Content-Type": "application/json"}
     })
         .then((response) => {
-            console.log(response.status);
                 if (response.status === 202) {
                     sessionStorage.setItem("token", response.data);
                     document.location = "..\\html\\chat.html";
                     console.log(response.token);
-                    // const ws = new WebSocket("ws://localhost:8081/chat");
                     const auth = JSON.stringify({"topic": "AUTHORIZATION", "payload": response.token});
-                } else {
-                    console.log(response.status);
                 }
             }, (error) => {
                 console.log(error);
@@ -73,7 +69,8 @@ function registration() {
         )
 
 }
-function isValidInput(){
+
+function isValidInput() {
     const regexLogin = /^[A-Za-z\d]{0,50}\S$/;
     const regexFNLN = /^[a-zA-Z-' ]+[a-zA-Z]\S$/;
     const regexPhone = /[^+][0-9]{0,13}\S$/;
@@ -85,10 +82,21 @@ function isValidInput(){
     let checkPhone = regexPhone.test(phone.value);
     let checkNick = regexNick.test(nickname.value);
     let checkEmail = regexEmail.test(email.value);
-    if (!checkLogin || !checkFName || !checkLName || !checkPhone || !checkNick || !checkEmail || password.value !== cpassword.value) {
-        alert("Invalid data.\n firstname and lastname must contain only letters\n login and nickname must contain only letters and digits\n phone number example: '+XXXXXXXXXXXXX'\n email example: 'email@example.com'\n password and confirm password must be the same")
-    } else{
-        alert('SUCCESS');
+    if (!checkLogin || !checkNick) {
+        alert('Invalid data: \nlogin and nickname must contain only letters and digits!')
+    }
+    if (!checkFName || !checkLName) {
+        alert("Invalid data: \nfirstname and lastname must contain only letters!")
+    }
+    if (!checkPhone) {
+        alert("Invalid data: \nphone number example: '+XXXXXXXXXXXXX'!");
+    }
+    if (!checkEmail) {
+        alert("Invalid data: \nemail example: 'email@example.com'!")
+    }
+    if (password.value !== cpassword.value) {
+        alert("Invalid data: \npassword and confirm password must be the same!")
+    }else if(checkLogin && checkFName && checkLName && checkPhone && checkNick && checkEmail && password.value === cpassword.value){
         registration();
     }
 }
@@ -110,29 +118,6 @@ function sendEmailForRecovery() {
         });
 }
 
-function sendSecretCode() {
-    const secureCode = document.getElementById('secret_code').value;
-    const email = document.getElementById('email_for_recovery').value;
-    let data = {
-        email: email,
-        secureCode: secureCode
-    }
-    axios.post("http://localhost:8081/login/recovery/code", data, {
-        headers: {"Content-Type": "application/json"}
-    })
-        .then((response) => {
-            console.log(response.status)
-            if (response.status === 200) {
-                console.log(response.status)
-                document.location = "..\\html\\changePass.html"
-            } else {
-                alert("Wrong code, try again")
-                console.log(response.status)
-            }
-            console.log(response.status)
-        });
-}
-
 function sendNewPassword() {
     const email = document.getElementById('email_for_recovery').value;
     const newPassword = document.getElementById('new_password').value;
@@ -141,14 +126,14 @@ function sendNewPassword() {
     let data = {
         email: email,
         password: newPassword,
-        confPass:confNewPass
+        confPass: confNewPass
     }
 
     axios.post("http://localhost:8081/login/recovery/change", data, {
         headers: {"Content-Type": "application/json"}
     })
         .then((response) => {
-            if(response.status === 200) {
+            if (response.status === 200) {
                 alert("Your password has been changed")
                 document.location = "..\\html\\modal.html"
             } else {

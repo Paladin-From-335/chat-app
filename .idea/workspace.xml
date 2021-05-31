@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="ForgotNew">
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="Regex front">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/IUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/IUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/impl/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/controllers/impl/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/HttpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/message.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/message.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/html/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/html/modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/requests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +68,6 @@
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -333,19 +336,19 @@
       <option name="project" value="LOCAL" />
       <updated>1622334897739</updated>
     </task>
-    <task id="LOCAL-00024" summary="Forgot">
-      <created>1622423469619</created>
+    <task id="LOCAL-00024" summary="Recovery pass (not working)">
+      <created>1622387990312</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1622423469619</updated>
+      <updated>1622387990312</updated>
     </task>
-    <task id="LOCAL-00025" summary="ForgotNew">
-      <created>1622425670148</created>
+    <task id="LOCAL-00025" summary="Regex front">
+      <created>1622412861907</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1622425670148</updated>
+      <updated>1622412861907</updated>
     </task>
     <option name="localTasksCounter" value="26" />
     <servers />
@@ -381,14 +384,17 @@
     <MESSAGE value="gitignore (again)" />
     <MESSAGE value="fixed db" />
     <MESSAGE value="Added repositories.&#10;Fixed registration.&#10;Added chat-history." />
-    <MESSAGE value="Verification" />
-    <MESSAGE value="Forgot" />
-    <MESSAGE value="ForgotNew" />
-    <option name="LAST_COMMIT_MESSAGE" value="ForgotNew" />
+    <MESSAGE value="Recovery pass (not working)" />
+    <MESSAGE value="Regex front" />
+    <option name="LAST_COMMIT_MESSAGE" value="Regex front" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/core/src/main/java/com/github/chat/service/impl/UserService.java</url>
           <line>40</line>

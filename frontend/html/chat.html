@@ -13,30 +13,45 @@
 <body>
 <div class="chat_wrapper">
     <div id="dialogs">
+        <header class="dialogs__headers"><span>Dialog list</span>
+            <button>Create chat</button>
+        </header>
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+
         </ul>
     </div>
 
     <div class="chat_dialogs_template">
         <header class="header">
-            <span id="chatname" class="header_content">Chatname</span>
-            <span id="status" class="header_content">You are offline</span>
+            <div>
+                <span id="chatname" class="header_content">GLOBAL CHAT</span>
+                <span id="status" class="header_content">You are offline</span>
+            </div>
+
+            <span id="exit">✖</span>
         </header>
         <div id="messages"></div>
         <form id="form">
             <div class="write_area">
                 <textarea id="textarea"></textarea>
-               <div class="btnWrp"> <button type="button" id="button">➤</button> </div>
+                <div class="btnWrp">
+                    <button type="button" id="button">➤</button>
+                </div>
             </div>
         </form>
     </div>
 
 </div>
 
+<div id="create_room">
+    <header>
+        <span id="creating_phrase">Creating chat</span>
+        <span id="close_creating">✖</span></header>
+    <div>
+        <input type="text" id="room_input" placeholder="Enter chatname">
+        <div id="user_list">User <input type="checkbox"></div>
+    </div>
+</div>
 
 <script src="../scripts/chat.js"></script>
 </body>
