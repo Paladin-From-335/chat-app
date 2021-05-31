@@ -1,3 +1,12 @@
+const login = document.getElementById('username_reg');
+const firstname = document.getElementById('firstname');
+const lastname = document.getElementById('lastname');
+const password = document.getElementById('password_pass');
+const cpassword = document.getElementById('cpassword');
+const phone = document.getElementById('phone');
+const nickname = document.getElementById('nickname');
+const email = document.getElementById('email');
+
 function authorization() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -64,6 +73,25 @@ function registration() {
         )
 
 }
+function isValidInput(){
+    const regexLogin = /^[A-Za-z\d]{0,50}\S$/;
+    const regexFNLN = /^[a-zA-Z-' ]+[a-zA-Z]\S$/;
+    const regexPhone = /[^+][0-9]{0,13}\S$/;
+    const regexNick = /^[A-Za-z\d]{0,50}\S$/;
+    const regexEmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{1,6}\S$/
+    let checkLogin = regexLogin.test(login.value);
+    let checkFName = regexFNLN.test(firstname.value);
+    let checkLName = regexFNLN.test(lastname.value);
+    let checkPhone = regexPhone.test(phone.value);
+    let checkNick = regexNick.test(nickname.value);
+    let checkEmail = regexEmail.test(email.value);
+    if (!checkLogin || !checkFName || !checkLName || !checkPhone || !checkNick || !checkEmail || password.value !== cpassword.value) {
+        alert("Invalid data.\n firstname and lastname must contain only letters\n login and nickname must contain only letters and digits\n phone number example: '+XXXXXXXXXXXXX'\n email example: 'email@example.com'\n password and confirm password must be the same")
+    } else{
+        alert('SUCCESS');
+        registration();
+    }
+}
 
 function sendEmailForRecovery() {
     const email = document.getElementById('email_for_recovery').value;
@@ -93,9 +121,36 @@ function sendSecretCode() {
         .then((response) => {
             console.log(response.status)
             if (response.status === 200) {
-                document.location = "..\\html\\modal.html"
+                console.log(response.status)
+                document.location = "..\\html\\changePass.html"
             } else {
                 alert("Wrong code, try again")
+                console.log(response.status)
             }
+            console.log(response.status)
         });
+}
+
+function sendNewPassword() {
+    const email = document.getElementById('email_for_recovery').value;
+    const newPassword = document.getElementById('new_password').value;
+    const confNewPass = document.getElementById('confirm_new_password').value;
+
+    let data = {
+        email: email,
+        password: newPassword,
+        confPass:confNewPass
+    }
+
+    axios.post("http://localhost:8081/login/recovery/change", data, {
+        headers: {"Content-Type": "application/json"}
+    })
+        .then((response) => {
+            if(response.status === 200) {
+                alert("Your password has been changed")
+                document.location = "..\\html\\modal.html"
+            } else {
+                alert("Wrong email")
+            }
+        })
 }

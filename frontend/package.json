@@ -10,6 +10,7 @@
       "resolved": "https://registry.npmjs.org/async/-/async-2.6.3.tgz",
       "version": "2.6.3"
     },
+    "axios": "^0.21.1",
     "basic-auth": {
       "integrity": "sha1-RSIe5Cn37h5QNb4/UVM/HN/SmIQ=",
       "resolved": "https://registry.npmjs.org/basic-auth/-/basic-auth-1.1.0.tgz",

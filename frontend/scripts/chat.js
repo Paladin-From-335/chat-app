@@ -9,14 +9,6 @@ function setStatus(value) {
     status.innerHTML = value;
 }
 
-// function printMessage(value) {
-//     const messageContainer = document.createElement('div');
-//     messageContainer.className = "messageDiv";
-//     messageContainer.innerHTML = value;
-//     messages.appendChild(messageContainer);
-//
-// }
-//
 // form.addEventListener('submit', e => {
 //     e.preventDefault();
 // let stringMessage = textarea.value.toString();
@@ -26,15 +18,22 @@ function setStatus(value) {
 ws.onopen = () => setStatus('You are online');
 
 
-ws.onmessage = function processMessage(value) {
-    let jsonData = JSON.parse(value.data);
-    if (jsonData.value != null) {
-        let div = document.createElement('div');
-        let message = jsonData.value;
-        div.className = "messageDiv";
-        div.appendChild(message);
-        form.appendChild(div);
-    }
+// ws.onmessage = function processMessage(value) {
+//     let jsonData = JSON.parse(value.data);
+//
+//         let div = document.createElement('div');
+//         let message = jsonData.value;
+//         div.className = "messageDiv";
+//         div.appendChild(message);
+//         form.appendChild(div);
+//
+// }
+function printMessage() {
+    const messageContainer = document.createElement('div');
+    messageContainer.className = "messageDiv";
+    messageContainer.innerHTML = textarea.value;
+    messages.appendChild(messageContainer);
+
 }
 
 function sendMsg() {
@@ -43,12 +42,13 @@ function sendMsg() {
 }
 
 document.getElementById('button').addEventListener('click', (event) => {
+    printMessage();
     sendMsg();
+
 });
 
 
 ws.onclose = () => setStatus('You are offline');
 
 console.log(sessionStorage.getItem("token"))
-
 

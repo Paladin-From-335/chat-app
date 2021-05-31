@@ -102,7 +102,6 @@ public class HttpHandler extends HttpServlet {
                     case "/login/recovery/code":
                         forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
                         System.out.println("Secret code rec: " + this.secretCodeMap.get(forgotDto.getEmail()));
-                        System.out.println(forgotDto.getSecureCode());
                         if (forgotDto == null) {
                             throw new BadRequest();
                         }
@@ -120,6 +119,14 @@ public class HttpHandler extends HttpServlet {
                         }
                         this.usersController.verificationEmail(regVer);
                         resp.setStatus(HttpServletResponse.SC_OK);
+                    case "/login/recovery/change" :
+                        forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
+                        if(forgotDto == null) {
+                            throw new BadRequest();
+                        }
+                            this.usersController.updatePassword(forgotDto);
+                            resp.setStatus(HttpServletResponse.SC_OK);
+                        break;
                     default:
                         resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                         break;

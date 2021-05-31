@@ -20,23 +20,23 @@ public class SendEmail {
         props.load(UsersController.class.getClassLoader().getResourceAsStream("email.properties"));
         String email = props.getProperty("email");
         String password = props.getProperty("password");
-        try{
+        try {
             Session session = Session.getDefaultInstance(props,
-                    new Authenticator(){
+                    new Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(email, password);
-                        }});
+                        }
+                    });
             Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(email));
             msg.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(emailRecipient,false));
+                    InternetAddress.parse(emailRecipient, false));
             msg.setSubject("Hello new user");
             msg.setText(text + token);
             msg.setSentDate(new Date());
             Transport.send(msg);
-            System.out.println("Message sent.");
-        }catch (MessagingException e){
-            System.out.println("Erreur d'envoi, cause: " + e);
+        } catch (MessagingException e) {
+            log.warn(e.getMessage());
         }
     }
 }

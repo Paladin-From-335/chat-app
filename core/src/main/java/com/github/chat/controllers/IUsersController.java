@@ -16,4 +16,6 @@ public interface IUsersController {
 
     void verificationEmail(UserRegDto userRegDto);
 
+    void updatePassword(ForgotDto forgotDto);
+
 }
