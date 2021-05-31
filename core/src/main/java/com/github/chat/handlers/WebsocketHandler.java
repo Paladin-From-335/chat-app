@@ -41,9 +41,12 @@ public class WebsocketHandler {
             Envelope envelope = JsonHelper.fromJson(payload, Envelope.class).orElseThrow();
             switch (envelope.getTopic()) {
                 case AUTHORIZATION:
-                    PrivateToken result = PrivateTokenProvider.decode(envelope.getPayload());
+                    String[] token = payload.split("\\.");
+                    PrivateToken result = PrivateTokenProvider.decode(token[1]);
                     PrivateTokenProvider.checkToken(result);
+                    System.out.println(result);
                     nickname = result.getNickname();
+                    System.out.println(nickname);
                     this.wsConnectionPool.addSession(nickname, session);
                     broker.broadcast(wsConnectionPool.getSessions(), envelope);
                     break;

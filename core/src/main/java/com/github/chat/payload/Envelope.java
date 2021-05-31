@@ -1,5 +1,6 @@
 package com.github.chat.payload;
 
+import com.github.chat.entity.Message;
 import com.github.chat.handlers.Topic;
 
 import java.util.Objects;
@@ -10,12 +11,20 @@ public class Envelope {
 
     private Topic topic;
 
+    private Message message;
+
     public Envelope() {
     }
 
     public Envelope(String payload, Topic topic) {
         this.payload = payload;
         this.topic = topic;
+    }
+
+    public Envelope(String payload, Topic topic, Message message) {
+        this.payload = payload;
+        this.topic = topic;
+        this.message = message;
     }
 
     public String getPayload() {
@@ -32,6 +41,14 @@ public class Envelope {
 
     public void setTopic(Topic topic) {
         this.topic = topic;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
     }
 
     @Override

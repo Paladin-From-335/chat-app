@@ -14,7 +14,7 @@
 <div class="chat_wrapper">
     <div id="dialogs">
         <header class="dialogs__headers"><span>Dialog list</span>
-            <button>Create chat</button>
+            <button id="create_chat_btn">Create chat</button>
         </header>
         <ul>
 
@@ -27,7 +27,7 @@
                 <span id="chatname" class="header_content">GLOBAL CHAT</span>
                 <span id="status" class="header_content">You are offline</span>
             </div>
-
+            <input type="text" placeholder=" S E A R C H                  🔎" id="search_input">
             <span id="exit">✖</span>
         </header>
         <div id="messages"></div>
@@ -43,17 +43,23 @@
 
 </div>
 
+<div id="opacity_background"></div>
 <div id="create_room">
     <header>
-        <span id="creating_phrase">Creating chat</span>
+        <span id="creating_phrase">Chatroom</span>
         <span id="close_creating">✖</span></header>
     <div>
         <input type="text" id="room_input" placeholder="Enter chatname">
         <div id="user_list">User <input type="checkbox"></div>
     </div>
+    <button id="conf">Confirm</button>
 </div>
 
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="../scripts/chat_anim.js"></script>
 <script src="../scripts/chat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 </body>
 <link rel="stylesheet" href="../css/message.css">
 </html>
