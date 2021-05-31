@@ -112,7 +112,9 @@ function sendEmailForRecovery() {
 
 function sendSecretCode() {
     const secureCode = document.getElementById('secret_code').value;
+    const email = document.getElementById('email_for_recovery').value;
     let data = {
+        email: email,
         secureCode: secureCode
     }
     axios.post("http://localhost:8081/login/recovery/code", data, {

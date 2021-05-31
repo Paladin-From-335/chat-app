@@ -23,6 +23,11 @@ public class ForgotDto {
         this.email = email;
     }
 
+    public ForgotDto(String email, String secureCode) {
+        this.email = email;
+        this.secureCode = secureCode;
+    }
+
     public ForgotDto(String email, String password, String confPassword) {
         this.email = email;
         this.password = password;

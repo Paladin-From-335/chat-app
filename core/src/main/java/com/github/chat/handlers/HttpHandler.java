@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,11 +27,10 @@ public class HttpHandler extends HttpServlet {
 
     private final IUsersController usersController;
 
-    private final Map<String, String> secretCodeMap;
+    private final Map<String, String> secretCodeMap = new HashMap<>();
 
     public HttpHandler(IUsersController usersController) {
         this.usersController = usersController;
-        secretCodeMap = null;
     }
 
     @Override
@@ -96,12 +96,13 @@ public class HttpHandler extends HttpServlet {
                         if (forgotDto == null) {
                             throw new BadRequest();
                         }
+
                         this.secretCodeMap.put(this.usersController.forgotReq(forgotDto), forgotDto.getEmail());
                         resp.setStatus(HttpServletResponse.SC_OK);
                         break;
                     case "/login/recovery/code":
                         forgotDto = JsonHelper.fromJson(body, ForgotDto.class).orElseThrow(BadRequest::new);
-                        System.out.println("Secret code rec: " + this.secretCodeMap.get(forgotDto.getEmail()));
+                        log.info("Secret code rec: " + this.secretCodeMap.get(forgotDto.getEmail()));
                         if (forgotDto == null) {
                             throw new BadRequest();
                         }

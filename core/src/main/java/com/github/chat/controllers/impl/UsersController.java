@@ -134,8 +134,6 @@ public class UsersController implements IUsersController {
         throw new NullPointerException();
     }
 
-
-
     private boolean isValidFirstName(String firstName) {
         Matcher matcher = VALID_NAME_REGEX.matcher(firstName);
         return matcher.find();
@@ -176,7 +174,7 @@ public class UsersController implements IUsersController {
         if(isValidCode(forgotDto)){
             user.setPassword(forgotDto.getPassword());
             System.out.println("NEW PASS SUKA: " + user.getPassword());
-            this.userService.insert(user);
+            this.userService.update(user);
         }
     }
 }
