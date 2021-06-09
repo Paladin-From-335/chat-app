@@ -41,19 +41,21 @@ public class WebsocketHandler {
             Envelope envelope = JsonHelper.fromJson(payload, Envelope.class).orElseThrow();
             switch (envelope.getTopic()) {
                 case AUTHORIZATION:
-                    String[] token = payload.split("\\.");
+                    String[] token = envelope.getPayload().split("\\.");
                     PrivateToken result = PrivateTokenProvider.decode(token[1]);
                     PrivateTokenProvider.checkToken(result);
-                    System.out.println(result);
                     nickname = result.getNickname();
                     System.out.println(nickname);
                     this.wsConnectionPool.addSession(nickname, session);
                     broker.broadcast(wsConnectionPool.getSessions(), envelope);
                     break;
                 case MESSAGES:
+                    token = envelope.getPayload().split("\\.");
+                    result = PrivateTokenProvider.decode(token[1]);
+                    envelope.setPayload(result.getNickname());
                     this.broker.broadcast(this.wsConnectionPool.getSessions(), envelope);
-                    messageService.save(nickname, envelope.getPayload());
-                    this.broker.send(this.wsConnectionPool.getSessions(), envelope);
+                    messageService.save(result.getNickname(), envelope.getMessage());
+//                    this.broker.send(this.wsConnectionPool.getSessions(), envelope);
                     break;
                 case DISCONNECT:
                     PrivateToken discoResult = PrivateTokenProvider.decode(envelope.getPayload());

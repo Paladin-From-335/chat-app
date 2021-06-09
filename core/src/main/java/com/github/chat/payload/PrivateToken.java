@@ -26,6 +26,11 @@ public class PrivateToken implements Serializable {
     public PrivateToken() {
     }
 
+    public PrivateToken(Role role, String nickname) {
+        this.role = role;
+        this.nickname = nickname;
+    }
+
     public PrivateToken(String login, String nickname, Role role, Date expireIn, Date createdAt) {
         this.login = login;
         this.nickname = nickname;

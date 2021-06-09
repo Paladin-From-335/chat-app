@@ -11,7 +11,7 @@ public class Envelope {
 
     private Topic topic;
 
-    private Message message;
+    private String message;
 
     public Envelope() {
     }
@@ -21,7 +21,7 @@ public class Envelope {
         this.topic = topic;
     }
 
-    public Envelope(String payload, Topic topic, Message message) {
+    public Envelope(String payload, Topic topic, String message) {
         this.payload = payload;
         this.topic = topic;
         this.message = message;
@@ -43,11 +43,11 @@ public class Envelope {
         this.topic = topic;
     }
 
-    public Message getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(Message message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 

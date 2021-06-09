@@ -3,9 +3,7 @@ package com.github.chat.service.impl;
 import com.github.chat.entity.Message;
 import com.github.chat.payload.PrivateToken;
 import com.github.chat.repository.IMessageRepository;
-import com.github.chat.repository.impl.MessageRepository;
 import com.github.chat.service.IMessageService;
-import com.github.chat.utils.PrivateTokenProvider;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -15,7 +13,7 @@ public class MessageService implements IMessageService {
 
     private final IMessageRepository messageRepository;
 
-    private PrivateToken privateToken;
+    private PrivateToken token;
 
     public MessageService(IMessageRepository messageRepository) {
         this.messageRepository = messageRepository;

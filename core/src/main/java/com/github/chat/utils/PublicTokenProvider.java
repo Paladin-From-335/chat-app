@@ -1,6 +1,7 @@
 package com.github.chat.utils;
 
 import com.github.chat.exceptions.BadRequest;
+import com.github.chat.payload.PrivateToken;
 import com.github.chat.payload.PublicToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,8 +53,8 @@ public class PublicTokenProvider {
         return null;
     }
 
-    public static PublicToken publicDecode(String str) {
-        PublicToken token = null;
+    public static PrivateToken publicDecode(String str) {
+        PrivateToken token = null;
 
         try {
             IvParameterSpec ivspec = new IvParameterSpec(iv);
@@ -64,7 +65,7 @@ public class PublicTokenProvider {
 
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
             cipher.init(Cipher.DECRYPT_MODE, secretKey, ivspec);
-            token = JsonHelper.fromJson(new String(cipher.doFinal(Base64.getDecoder().decode(str))), PublicToken.class).orElse(null);
+            token = JsonHelper.fromJson(new String(cipher.doFinal(Base64.getDecoder().decode(str))), PrivateToken.class).orElse(null);
         } catch (Exception e) {
             log.error("Error while decrypting: " + e);
         }

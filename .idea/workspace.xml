@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="front">
-      <change afterPath="$PROJECT_DIR$/frontend/scripts/chat_anim.js" afterDir="false" />
+    <list default="true" id="ef96097b-60e1-4c85-85fc-1acf900100e8" name="Default Changelist" comment="Refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/handlers/WebsocketHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Envelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/Envelope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/chat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/html/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/html/chat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/PrivateToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/payload/PrivateToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/impl/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/service/impl/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/PublicTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/github/chat/utils/PublicTokenProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/scripts/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/scripts/modal_anim.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/modal_anim.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/scripts/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/scripts/requests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +24,9 @@
       <list>
         <option value="hibernate-configuration-5.2" />
         <option value="hibernate-main-5.2" />
+        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -69,25 +67,26 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Projects/practice-tasks-dev-education" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="shared-indexes" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.github.chat.handlers" />
       <recent name="com.github.chat.exceptions" />
+      <recent name="com.github.chat.handlers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\goods\Desktop\github\chat-app" />
       <recent name="C:\Users\goods\Desktop\github\chat-app\core\src\main\resources" />
+      <recent name="C:\Users\goods\Desktop\github\chat-app" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.github.chat.repository.impl" />
-      <recent name="com.github.chat.repository" />
       <recent name="com.github.chat.utils" />
       <recent name="com.github.chat.utils.impl" />
     </key>
@@ -112,17 +111,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="core" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -172,10 +160,11 @@
       <workItem from="1621335673180" duration="49650000" />
       <workItem from="1621599608851" duration="76032000" />
       <workItem from="1622103954312" duration="1196000" />
-      <workItem from="1622105299138" duration="5198000" />
-      <workItem from="1622116183764" duration="8788000" />
-      <workItem from="1622132016337" duration="18766000" />
-      <workItem from="1622325417266" duration="9587000" />
+      <workItem from="1622105299138" duration="862000" />
+      <workItem from="1622795323488" duration="32000" />
+      <workItem from="1623094476553" duration="7923000" />
+      <workItem from="1623236983473" duration="24000" />
+      <workItem from="1623265101633" duration="1644000" />
     </task>
     <task id="LOCAL-00001" summary="Test-commit">
       <created>1620845129136</created>
@@ -261,105 +250,7 @@
       <option name="project" value="LOCAL" />
       <updated>1622104564432</updated>
     </task>
-    <task id="LOCAL-00013" summary="ign">
-      <created>1622106183727</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1622106183727</updated>
-    </task>
-    <task id="LOCAL-00014" summary="ign">
-      <created>1622106232635</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1622106232635</updated>
-    </task>
-    <task id="LOCAL-00015" summary="WS">
-      <created>1622110502838</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1622110502838</updated>
-    </task>
-    <task id="LOCAL-00016" summary="initial commit">
-      <created>1622117786496</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1622117786496</updated>
-    </task>
-    <task id="LOCAL-00017" summary="gitignore">
-      <created>1622117887028</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1622117887028</updated>
-    </task>
-    <task id="LOCAL-00018" summary="handlers">
-      <created>1622118868034</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1622118868034</updated>
-    </task>
-    <task id="LOCAL-00019" summary="handlers">
-      <created>1622118902480</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1622118902480</updated>
-    </task>
-    <task id="LOCAL-00020" summary="handlers">
-      <created>1622119564029</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1622119564029</updated>
-    </task>
-    <task id="LOCAL-00021" summary="gitignore (again)">
-      <created>1622119898583</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1622119898583</updated>
-    </task>
-    <task id="LOCAL-00022" summary="fixed db">
-      <created>1622150474979</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1622150474979</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Added repositories.&#10;Fixed registration.&#10;Added chat-history.">
-      <created>1622334897739</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1622334897739</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Recovery pass (not working)">
-      <created>1622387990312</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1622387990312</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Regex front">
-      <created>1622412861907</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1622412861907</updated>
-    </task>
-    <task id="LOCAL-00026" summary="front">
-      <created>1622431311992</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1622431311992</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,41 +271,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test-commit" />
     <MESSAGE value="Registr+auth+refactor usHandl + dto" />
+    <MESSAGE value="gitignore" />
     <MESSAGE value="hibernate" />
     <MESSAGE value="hibernate refactor" />
     <MESSAGE value="services, entity" />
     <MESSAGE value="Refactor" />
     <MESSAGE value="ing" />
     <MESSAGE value="ign" />
-    <MESSAGE value="WS" />
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="gitignore" />
-    <MESSAGE value="handlers" />
-    <MESSAGE value="gitignore (again)" />
-    <MESSAGE value="fixed db" />
-    <MESSAGE value="Added repositories.&#10;Fixed registration.&#10;Added chat-history." />
-    <MESSAGE value="Recovery pass (not working)" />
-    <MESSAGE value="Regex front" />
-    <MESSAGE value="front" />
-    <option name="LAST_COMMIT_MESSAGE" value="front" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/core/src/main/java/com/github/chat/service/impl/UserService.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="ign" />
   </component>
 </project>
